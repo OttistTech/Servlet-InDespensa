@@ -1,4 +1,4 @@
-package org.example.servletsindespensa.dao;
+package org.example.servletsindespensa.util;
 
 import java.sql.DriverManager;
 import java.sql.SQLException;

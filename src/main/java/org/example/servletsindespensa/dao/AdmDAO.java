@@ -1,5 +1,7 @@
 package org.example.servletsindespensa.dao;
 
+import org.example.servletsindespensa.util.DbConnection;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
