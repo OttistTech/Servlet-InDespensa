@@ -1,0 +1,506 @@
+/* IMPORTANDO AS FONTES */
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+@font-face {
+    font-family: "montserrat";
+    src: url("./Fonts/Montserrat/Montserrat-Thin.woff");
+}
+
+@font-face {
+    font-family: "montserratP";
+    src: url("./Fonts/Montserrat/Montserrat-Regular.woff");
+}
+
+@font-face {
+    font-family: "DelaGothicOne";
+    src: url("./Fonts/DelaGothicOne/DelaGothicOne-Regular.woff");
+}
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+html{
+    scroll-behavior: smooth; /* Função para aplicar smooth scroll na página */
+}
+
+/* HEADER */
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+header{
+    display: flex;
+    color: white;
+    background-color: #F59132;
+    width: 100%;
+    height: 745px;
+}
+
+header a{
+    font-family: "montserratP";
+    font-size: 30px;
+    text-decoration: none;
+    color: white;
+}
+
+header .topicos1, .topicos2{
+    margin-top: 65px;
+}
+
+.topicos1{
+    position: absolute;
+    margin-left: 225px;
+}
+.topicos1 a{
+    padding: 15px;
+}
+
+.topicos1 a:hover{
+    color: #9D7A5E;
+}
+
+.topicos2{
+    position: absolute;
+    margin-left: 1097px;
+}
+.topicos2 a{
+    padding: 15px;
+}
+
+.topicos2 a:hover{
+    color: #9D7A5E;
+}
+
+
+#logo{
+    width: 93px;
+    height: 100px;
+    margin-top: 29px;
+    margin-left: 65px;
+}
+#cel{
+    position: absolute;
+    margin-top: 195px;
+    margin-left: 950px;
+    margin-right: 52.35px;
+    height: 550px;
+    width: 394.65px;
+}
+
+.textao{
+    font-family: "montserratP";
+    position: absolute;
+    margin-top: 320px;
+    margin-left: 84px;
+    margin-right: 623px;
+    margin-bottom: 206px;
+    text-align: center;
+    h1{
+        font-size: 128px;
+    }
+    h2{
+        font-size: 45px;
+        font-weight: 100;
+    }
+}
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+
+/* BODY */
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+
+/* QUEM SOMOS */
+/* --------------------------------------------------------------------------------*/
+.quemSomosText{
+    margin-top: 101px;
+    margin-left: 128px;
+    margin-bottom: 50px;
+    display: flex;
+    flex-direction: row;
+    font-family: "DelaGothicOne";
+    text-transform: uppercase;
+    font-size: 32px;
+}
+
+.quemSomosText #typeBlack{
+    color: black;
+}
+
+.quemSomosText #special{
+    padding-left: 10px;
+    color: #F59132;
+}
+
+
+.quadrado1{
+    display: flex;
+    flex-direction: row;
+    border-radius: 36px;
+    margin-left: 128px;
+    margin-right: 131px;
+    margin-top: 30px;
+    width: 1221px;
+    height: 256px;
+    background-color: #F59132;
+    box-shadow: rgba(0, 0, 0, 0.077) 1px 1.5px;
+}
+
+.quadrado1 p{
+    position: absolute;
+    font-family: "montserratP";
+    font-size: 24px;
+    width: 820px;
+    height: 272px;
+    text-shadow: rgba(0, 0, 0, 0.349) 1px 1px 10px;
+    color: white;
+    margin-left: 41px;
+    margin-top: 40px;
+    text-align: left;
+}
+
+
+#herique{
+    position: relative;
+    width: 392px;
+    height: 391px;
+    margin-left: 850px;
+    top: -135px;
+}
+
+.quadrado2{
+    display: flex;
+    flex-direction: row-reverse;
+    border-radius: 36px;
+    margin-left: 128px;
+    margin-right: 64px;
+    margin-top: 80px;
+    width: 1221px;
+    height: 259px;
+    background-color: #F59132;
+    box-shadow: rgba(0, 0, 0, 0.077) 1px 1.5px;
+}
+
+.quadrado2 p{
+    align-self: center;
+    position: absolute;
+    font-family: "montserratP";
+    font-size: 24px;
+    width: 810px;
+    height: 264px;
+    text-shadow: rgba(0, 0, 0, 0.349) 1px 1px 10px;
+    color: white;
+    margin-right: 40px;
+    margin-top: 130px;
+    text-align: right;
+}
+
+.ferreira{
+    position: relative;
+    width: 349px;
+    height: 316px;
+    margin-right: 863px;
+    top: -56px;
+}
+/* --------------------------------------------------------------------------------*/
+
+/* FUNCIONALIDADES */
+/* --------------------------------------------------------------------------------*/
+#funcionalidades{
+    text-align: center;
+    font-family: "DelaGothicOne";
+    text-transform: uppercase;
+    font-size: 35px;
+    margin-top: 111px;
+}
+
+.quadradoGrande{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.carrosel{
+    position: absolute;
+    top: 1750px;
+    display: flex;
+    flex-direction: column;
+    width: 966px;
+    height: 610.49px;
+    border-radius: 36px;
+    margin-top: 50px;
+    background-color: #F59132;
+}
+
+.carrosel .setas{
+    width: 71.56px;
+    height: 74.05px;
+}
+
+
+.carrosel .setaEsquerda{
+    position: absolute;
+    margin-top: 160px;
+    margin-left: 20px;
+}
+
+.carrosel .setaDireita{
+    position: absolute;
+    margin-top: 160px;
+    right: -100px;
+}
+
+
+.carrosel .bolinhas{
+    align-self: center;
+    width: 117.67px;
+    height: 23.86px;
+    margin-top: 570px;
+    margin-left: 125px;
+
+}
+
+.carrosel img{
+    position: absolute;
+    width: 322px;
+    height: 440px;
+    align-self: flex-end;
+    justify-self: center;
+    border-radius: 30px;
+    margin-top: 118px;
+    margin-right: 125px;
+}
+
+.carrosel h1{
+    margin-top: 20px;
+    font-family: 'DelaGothicOne';
+    text-transform: uppercase;
+    color: white;
+    font-size: 60px;
+    align-self: center;
+}
+
+.carrosel p{
+    font-family: 'montserrat';
+    color: white;
+    font-weight: 1000;
+    position: absolute;
+    width: 360px;
+    height: 360px;
+    margin-top: 170px;
+    margin-left: 82px;
+    text-align: right;
+    justify-self: center;
+    align-self: flex-start;
+    text-shadow: rgba(0, 0, 0, 0.349) 1px 1px 10px;
+    font-size: 32px;
+}
+
+.carrosel .linha{
+    position: absolute;
+    margin-top: 120px;
+    height: 435.24px;
+    width: 15px;
+    align-self: center;
+    justify-self: center;
+    background-color: white;
+}
+
+#carrosel1{
+    z-index: 1;
+}
+
+#carrosel2:target{
+    z-index: 1;
+}
+
+#carrosel3:target{
+    z-index: 1;
+}
+
+
+/* --------------------------------------------------------------------------------*/
+
+/* HISTÓRIA */
+/* --------------------------------------------------------------------------------*/
+#historia{
+    position: relative;
+    text-align: center;
+    font-family: "DelaGothicOne";
+    text-transform: uppercase;
+    font-size: 45px;
+    margin-top: 800px;
+}
+
+.container{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: url("./Imagens/FotoEquipe.png");
+    margin-top: 50px;
+    width: 100%;
+    height: 883px;
+}
+
+.container p{
+    font-family: 'montserratP';
+    font-size: 40px;
+    margin-top: 90px;
+    margin-bottom: 81px;
+    width: 1068px;
+    height: 306px;
+}
+
+.container img{
+    width: 1074.57px;
+    height: 410px;
+    margin-bottom: 160px;
+}
+/* --------------------------------------------------------------------------------*/
+
+/* REDES SOCIAIS */
+/* --------------------------------------------------------------------------------*/
+.container2{
+    display: flex;
+}
+
+
+#logoSombrinha{
+    margin-top: 250px;
+    margin-left: 88px;
+    width: 523.2px;
+    height: 503.09px;
+}
+
+.nossasRedesText{
+    margin-left: 90px;
+    display: flex;
+    font-family: 'DelaGothicOne';
+    font-size: 35px ;
+    color: #F59132;
+    margin-top: 168px;
+}
+
+.nossasRedesText .typeBlack{
+    color: black;
+    margin-right: 16px;
+
+}
+
+.container3{
+    display: flex;
+    background-color: #F59132;
+    margin-top: 35px;
+    margin-left: 67px;
+    width: 657px;
+    height: 97px;
+    border-radius: 31px;
+    color: white;
+    font-family: 'montserrat';
+    font-size: 20px;
+}
+
+.container3 img{
+    margin-left: 29px;
+    margin-top: 12px;
+    width: 74px;
+    height: 72px;
+}
+
+.container3 h2{
+    margin-top: 28px;
+    margin-left: 19px;
+
+}
+
+.redes{
+    margin-top: 37px;
+}
+/* --------------------------------------------------------------------------------*/
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+
+/* FOOTER */
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+footer{
+    display: flex;
+    background-color: #F59132;
+    margin-top: 116px;
+    height: 392px;
+    width: 100%;
+}
+
+.logo-container{
+    display: flex;
+    align-items: center;
+    margin-left: 91px;
+
+}
+
+.logo-container span{
+    font-family: 'montserratP';
+    color: white;
+    font-size: 65px;
+    margin-left: 22px;
+    margin-top: 20px;
+}
+
+.footer-links{
+    font-family: 'montserratP';
+    font-size: 32px;
+    list-style-type: none;
+    margin-top: 40px;
+    margin-left: 140px;
+}
+
+.footer-links a{
+    text-decoration: none;
+    color: white;
+}
+
+.footer-links li{
+    margin-top: 33px;
+}
+
+.button-container{
+    margin-top: 20px;
+    margin-left: 140px;
+}
+
+.footer-button{
+    display: flex;
+    align-items: center;
+    border-radius: 20px;
+    width: 172px;
+    height: 58px;
+    background-color: white;
+    border: none;
+    font-family: 'montserratP';
+    font-size: 24px;
+    margin-top: 45px;
+}
+
+#restrita{
+    font-size: 16px;
+}
+
+#restrita img{
+    width: 32px;
+    height: 32px;
+
+}
+
+.footer-button a{
+    text-decoration: none;
+    color: black;
+}
+
+.footer-button img{
+    width: 32px;
+    height: 40px;
+    margin-left: 11px;
+}
+
+.footer-button strong{
+    margin-left: 12px;
+}
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
