@@ -2,6 +2,7 @@ package org.example.servletsindespensa.dao;
 
 import org.example.servletsindespensa.util.DbConnection;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -10,17 +11,18 @@ import java.util.regex.Pattern;
 
 public class AdmDAO {
    // Attributes for managing database connection and statements
+
    private DbConnection connection; // Custom connection class
    private PreparedStatement pstmt;
+   private Connection conn = connection.connect();
 
    // Method to insert a new record
-   public int insert(String name, String pswd, String email) {
+   public int insertAdm(String name, String pswd, String email) {
       try {
-         java.sql.Connection conn = connection.connect(); // Connect to the database
-
+         // Connect to the database
          // Check if the password already exists
-         pstmt = conn.prepareStatement("SELECT COUNT(*) FROM ADM WHERE PASSWORD = ?");
-         pstmt.setString(1, pswd);
+         pstmt = conn.prepareStatement("SELECT COUNT(*) FROM ADM WHERE NAME = ?");
+         pstmt.setString(1, name);
          ResultSet rs = pstmt.executeQuery();
          rs.next();
          boolean passwordExists = rs.getInt(1) > 0; // Verify if the password is already registered
@@ -36,7 +38,7 @@ public class AdmDAO {
          }
 
          // Regex to validate the password format
-         String regexPassword = "^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$&])[A-Z0-9a-z%.@#_-!$&]{8,}$";
+         String regexPassword = "^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$&])[A-Z0-9a-z%.@#_-]{8,}$";
          if (!validateInput(pswd, regexPassword)) {
             return 0; // Return 0 if the password is invalid
          }
@@ -63,13 +65,11 @@ public class AdmDAO {
    }
 
    // Method to delete a record
-   public int delete(String name) {
+   public int deleteAdm(int id) {
       try {
-         java.sql.Connection conn = connection.connect(); // Connect to the database
-
          // Check if the name exists
-         pstmt = conn.prepareStatement("SELECT COUNT(*) FROM ADM WHERE NAME = ?");
-         pstmt.setString(1, name);
+         pstmt = conn.prepareStatement("SELECT COUNT(*) FROM ADM WHERE ADM_ID = ?");
+         pstmt.setInt(1, id);
          ResultSet rs = pstmt.executeQuery();
          rs.next();
          boolean nameExists = rs.getInt(1) > 0; // Verify if the name exists
@@ -79,8 +79,8 @@ public class AdmDAO {
          }
 
          // Delete the corresponding record
-         pstmt = conn.prepareStatement("DELETE FROM ADM WHERE NAME = ?");
-         pstmt.setString(1, name);
+         pstmt = conn.prepareStatement("DELETE FROM ADM WHERE ADM_ID = ?");
+         pstmt.setInt(1, id);
          return pstmt.executeUpdate() > 0 ? 1 : 0; // Return 1 if deletion is successful, otherwise 0
       } catch (SQLException sqe) {
          sqe.printStackTrace(); // Print the error if deletion fails
@@ -91,10 +91,8 @@ public class AdmDAO {
    }
 
    // Method to update a record
-   public int update(String name, String newPassword) {
+   public int updateAdm(String name, String newPassword) {
       try {
-         java.sql.Connection conn = connection.connect(); // Connect to the database
-
          // Check if the name exists
          pstmt = conn.prepareStatement("SELECT COUNT(*) FROM ADM WHERE NAME = ?");
          pstmt.setString(1, name);
@@ -127,15 +125,13 @@ public class AdmDAO {
    }
 
    // Method to read records
-   public ResultSet read() {
+   public ResultSet readAdm() {
       try {
-         java.sql.Connection conn = connection.connect(); // Connect to the database
-
-         pstmt = conn.prepareStatement("SELECT * FROM ADM ORDER BY NAME");
+         pstmt = conn.prepareStatement("SELECT ADM_ID, NOME FROM ADM ORDER BY NAME");
          return pstmt.executeQuery(); // Return the ResultSet (use with caution to avoid disconnection issues)
       } catch (SQLException sqe) {
          sqe.printStackTrace(); // Print the error if reading fails
-      return null; // Return null in case of error
+         return null; // Return null in case of error
       }finally {
          connection.disconnect(); // Disconnect from the database
       }
