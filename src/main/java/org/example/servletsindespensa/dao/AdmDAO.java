@@ -143,4 +143,5 @@ public class AdmDAO {
       Matcher matcher = pattern.matcher(input);
       return matcher.matches(); // Return true if the input matches the regex
    }
+
 }
