@@ -6,7 +6,6 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.example.servletsindespensa.dao.AdmDAO;
-import org.example.servletsindespensa.util.DbConnection;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -14,7 +13,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 @WebServlet(name = "login", value = "/login")
-public class ServletCadastroADM extends HttpServlet {
+public class ServletConsultarADM extends HttpServlet {
     AdmDAO admDAO = new AdmDAO();
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -27,7 +26,7 @@ public class ServletCadastroADM extends HttpServlet {
         try {
             // Itera sobre todos os resultados do ResultSet
             while (rs.next()) {
-                String lista = ("customer_ID: " + rs.getInt("password") + " - " +
+                String lista = ("Password: " + rs.getInt("password") + " - " +
                         "Name: " + rs.getString("email") + " - " +
                         "Plan: " + rs.getString("nome"));
                 out.println(lista);
