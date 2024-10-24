@@ -1,147 +1,199 @@
 package org.example.servletsindespensa.dao;
 
-import org.example.servletsindespensa.util.DbConnection;
+import org.example.servletsindespensa.util.Hash;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class AdmDAO {
-   // Attributes for managing database connection and statements
-
-   private DbConnection connection; // Custom connection class
+   // Atributos para a conexão com o banco de dados e manipulação de dados
+   Hash hash= new Hash();
+   private Connection conn;
    private PreparedStatement pstmt;
-   private Connection conn = connection.connect();
 
-   // Method to insert a new record
-   public int insertAdm(String name, String pswd, String email) {
+   Random rd = new Random();
+
+   // Método para conectar ao banco de dados
+   public boolean connect() {
       try {
-         // Connect to the database
-         // Check if the password already exists
-         pstmt = conn.prepareStatement("SELECT COUNT(*) FROM ADM WHERE NAME = ?");
-         pstmt.setString(1, name);
-         ResultSet rs = pstmt.executeQuery();
-         rs.next();
-         boolean passwordExists = rs.getInt(1) > 0; // Verify if the password is already registered
-
-         if (passwordExists) {
-            return 0; // Return 0 if the password already exists
-         }
-
-         // Regex to validate the name format (First Last)
-         String regexName = "^[A-Z][a-z]* [A-Z][a-z]*$";
-         if (!validateInput(name, regexName)) {
-            return 0; // Return 0 if the name is invalid
-         }
-
-         // Regex to validate the password format
-         String regexPassword = "^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$&])[A-Z0-9a-z%.@#_-]{8,}$";
-         if (!validateInput(pswd, regexPassword)) {
-            return 0; // Return 0 if the password is invalid
-         }
-
-         // Regex to validate the email format
-         String regexEmail = "^[a-z]*[^A-Z]*@(gmail|germinare)\\.(com|org)(\\.br)?$";
-         if (!validateInput(email, regexEmail)) {
-            return 0; // Return 0 if the email is invalid
-         }
-
-         // Prepare and execute the insertion
-         pstmt = conn.prepareStatement("INSERT INTO ADM (name, pswd, email) VALUES (?, ?, ?)");
-         pstmt.setString(1, name);
-         pstmt.setString(2, pswd);
-         pstmt.setString(3, email);
-
-         return pstmt.executeUpdate() > 0 ? 1 : 0; // Return 1 if insertion is successful, otherwise 0
+         Class.forName("org.postgresql.Driver"); // Registra o driver do PostgreSQL
+         conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/dbInDespensa", "postgres", "123456");
+         return true; // Retorna true se a conexão for bem-sucedida
       } catch (SQLException sqe) {
-         sqe.printStackTrace(); // Print the error if insertion fails
-         return -1; // Return -1 in case of error
-      } finally {
-         connection.disconnect(); // Ensure disconnection from the database
+         sqe.printStackTrace(); // Imprime o erro se a conexão falhar
+         return false;
+      } catch (ClassNotFoundException cnfe) {
+         cnfe.printStackTrace(); // Imprime o erro se o driver não for encontrado
+         return false;
       }
    }
 
-   // Method to delete a record
-   public int deleteAdm(int id) {
+   // Método para desconectar do banco de dados
+   public void disconnect() {
       try {
-         // Check if the name exists
-         pstmt = conn.prepareStatement("SELECT COUNT(*) FROM ADM WHERE ADM_ID = ?");
-         pstmt.setInt(1, id);
-         ResultSet rs = pstmt.executeQuery();
-         rs.next();
-         boolean nameExists = rs.getInt(1) > 0; // Verify if the name exists
-
-         if (!nameExists) {
-            return 0; // Return 0 if the name does not exist
+         if (conn != null && !conn.isClosed()) {
+            conn.close(); // Fecha a conexão se estiver aberta
          }
-
-         // Delete the corresponding record
-         pstmt = conn.prepareStatement("DELETE FROM ADM WHERE ADM_ID = ?");
-         pstmt.setInt(1, id);
-         return pstmt.executeUpdate() > 0 ? 1 : 0; // Return 1 if deletion is successful, otherwise 0
       } catch (SQLException sqe) {
-         sqe.printStackTrace(); // Print the error if deletion fails
-         return -1; // Return -1 in case of error
-      } finally {
-         connection.disconnect(); // Ensure disconnection from the database
+         sqe.printStackTrace(); // Imprime o erro ao fechar a conexão
       }
    }
 
-   // Method to update a record
-   public int updateAdm(String name, String newPassword) {
+   // Método para inserir um novo registro
+   public int insert_Adm(String name, String pswd, String email) {
       try {
-         // Check if the name exists
-         pstmt = conn.prepareStatement("SELECT COUNT(*) FROM ADM WHERE NAME = ?");
-         pstmt.setString(1, name);
+         connect(); // Conecta ao banco de dados
+
+         int id = rd.nextInt(10000) + 1; // Gera um ID aleatório entre 1 e 10000
+         PreparedStatement pstmID = conn.prepareStatement("SELECT COUNT(*) FROM ADM WHERE ADM_ID = ?");
+         pstmID.setInt(1, id);
+         ResultSet rs = pstmID.executeQuery();
+         boolean idExists = false;
+         if (rs.next()) {
+            idExists = rs.getInt(1) > 0;
+         }
+         pstmID.close();
+         rs.close();
+
+         PreparedStatement pstmEmail = conn.prepareStatement("SELECT COUNT(*) FROM customer WHERE email_login = ?");
+         pstmEmail.setString(1, email);
+         ResultSet rs1 = pstmEmail.executeQuery();
+         boolean emailExists = false;
+         if (rs1.next()) {
+            emailExists = rs1.getInt(1) > 0;
+         }
+         pstmEmail.close();
+         rs1.close();
+         if (idExists || emailExists){
+            return 0;
+         }
+         // Regex para verificar o nome
+         String regexNome = "^[A-Z][a-z]* [A-Z][a-z]*$";
+         Pattern pattern = Pattern.compile(regexNome);
+         Matcher matcher = pattern.matcher(name);
+         if (matcher.matches()) {
+            pstmt = conn.prepareStatement("INSERT INTO ADM (name, pswd, email) VALUES (?, ?, ?)"); // Prepara a inserção
+            pstmt.setString(1, name);
+         } else {
+            return 0; // Retorna 0 se o nome não for válido
+         }
+         // Regex para verificar a senha
+         String regexSenha = "^(?=.[A-Z])(?=.[0-9])(?=.*[!@#$&])[A-Z0-9a-z%.@#_-]{8,}$";
+         Pattern pattern1 = Pattern.compile(regexSenha);
+         Matcher matcher1 = pattern1.matcher(pswd);
+         if (matcher1.matches()) {
+            pstmt.setString(2, hash.hashing(pswd));
+         } else {
+            return 0; // Retorna 0 se a senha não for válida
+         }
+         // Regex para verificar o email
+         String regexEmail = "^[a-z][^A-Z]@(gmail|germinare)\\.(com|org)(\\.br)?$";
+         Pattern pattern2 = Pattern.compile(regexEmail);
+         Matcher matcher2 = pattern2.matcher(email);
+         if (matcher2.matches()) {
+            pstmt.setString(3, email);
+         } else {
+            return 0; // Retorna 0 se o email não for válido
+         }
+         // Executa a inserção no banco de dados
+         return pstmt.executeUpdate() > 0 ? 1 : 0; // Retorna 1 se a inserção for bem-sucedida
+      } catch (SQLException sqe) {
+         sqe.printStackTrace(); // Imprime o erro ao inserir
+         return -1; // Retorna -1 em caso de erro
+      } finally {
+         disconnect(); // Garante a desconexão
+      }
+   }
+
+   // Método para deletar um registro
+   public int delete_Adm(String email,String senha) {
+      try {
+         connect(); // Conecta ao banco de dados
+
+         // Verifica se o nome existe
+         pstmt = conn.prepareStatement("SELECT COUNT(*) FROM ADM WHERE email = ? and PASSWORD=?");
+         pstmt.setString(1, email);
+         pstmt.setString(2,hash.hashing(senha));
          ResultSet rs = pstmt.executeQuery();
          rs.next();
-         boolean nameExists = rs.getInt(1) > 0; // Verify if the name exists
+         boolean nameExists = rs.getInt(1) > 0;
 
          if (!nameExists) {
-            return 0; // Return 0 if the name does not exist
+            return 0; // Retorna 0 se o nome não existir
          }
 
-         // Validate the new password format
-         String regexPassword = "^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$&])[A-Z0-9a-z%.@#_-]{8,}$";
-         if (!validateInput(newPassword, regexPassword)) {
-            return 0; // Return 0 if the new password is invalid
+         // Deleta o registro correspondente
+         pstmt = conn.prepareStatement("DELETE FROM ADM WHERE email = ? and password=?");
+         pstmt.setString(1, email);
+         pstmt.setString(2,hash.hashing(senha));
+         return pstmt.executeUpdate() > 0 ? 1 : 0; // Retorna 1 se a deleção for bem-sucedida
+      } catch (SQLException sqe) {
+         sqe.printStackTrace(); // Imprime o erro ao deletar
+         return -1; // Retorna -1 em caso de erro
+      } finally {
+         disconnect(); // Garante a desconexão
+      }
+   }
+
+   // Método para atualizar um registro
+   public int update_Adm(String email, String newPassword,String senha,String nome) {
+      try {
+         connect(); // Conecta ao banco de dados
+
+         // Verifica se o nome existe
+         pstmt = conn.prepareStatement("SELECT COUNT(*) FROM ADM WHERE email = ? and password=?");
+         pstmt.setString(1, email);
+         pstmt.setString(2,hash.hashing(senha));
+         ResultSet rs = pstmt.executeQuery();
+         rs.next();
+         boolean nameExists = rs.getInt(1) > 0;
+
+         if (!nameExists) {
+            return 0; // Retorna 0 se o nome não existir
          }
 
-         // Update the password
-         pstmt = conn.prepareStatement("UPDATE ADM SET PASSWORD = ? WHERE NAME = ?");
-         pstmt.setString(1, newPassword);
-         pstmt.setString(2, name);
+         // Verifica se a nova senha é válida
+         String regexSenha = "^(?=.[A-Z])(?=.[0-9])(?=.*[!@#$&])[A-Z0-9a-z%.@#_-]{8,}$";
+         Pattern pattern1 = Pattern.compile(regexSenha);
+         Matcher matcher1 = pattern1.matcher(newPassword);
+         if (!matcher1.matches()) {
+            return 0; // Retorna 0 se a nova senha não for válida
+         }
 
-         return pstmt.executeUpdate() > 0 ? 1 : 0; // Return 1 if update is successful, otherwise 0
+         // Atualiza a senha
+         pstmt = conn.prepareStatement("UPDATE ADM SET PASSWORD = ?, EMAIL = ?, NAME = ? WHERE PASSWORD = ?");
+         pstmt.setString(1, hash.hashing(newPassword));
+         pstmt.setString(2, email);
+         pstmt.setString(3,nome);
+         pstmt.setString(4,hash.hashing(senha));
+
+         return pstmt.executeUpdate() > 0 ? 1 : 0; // Retorna 1 se a atualização for bem-sucedida
       } catch (SQLException sqle) {
-         sqle.printStackTrace(); // Print the error if update fails
-         return -1; // Return -1 in case of error
+         sqle.printStackTrace(); // Imprime o erro ao atualizar
+         return -1; // Retorna -1 em caso de erro
       } finally {
-         connection.disconnect(); // Ensure disconnection from the database
+         disconnect(); // Garante a desconexão
       }
    }
 
-   // Method to read records
-   public ResultSet readAdm() {
+   // Método para ler registros
+   public ResultSet read_Adm() {
       try {
-         pstmt = conn.prepareStatement("SELECT ADM_ID, NOME FROM ADM ORDER BY NAME");
-         return pstmt.executeQuery(); // Return the ResultSet (use with caution to avoid disconnection issues)
+         connect(); // Conecta ao banco de dados
+         pstmt = conn.prepareStatement("SELECT * FROM " +
+                 "ADM ORDER BY NAME");
+         ResultSet rset = pstmt.executeQuery(); // Executa a consulta
+         return rset; // Retorna o ResultSet para uso posterior (cuidado com a desconexão!)
       } catch (SQLException sqe) {
-         sqe.printStackTrace(); // Print the error if reading fails
-         return null; // Return null in case of error
-      }finally {
-         connection.disconnect(); // Disconnect from the database
+         sqe.printStackTrace(); // Imprime o erro ao ler
       }
-   }
-
-   // Helper method to validate input against a regex pattern
-   private boolean validateInput(String input, String regex) {
-      Pattern pattern = Pattern.compile(regex);
-      Matcher matcher = pattern.matcher(input);
-      return matcher.matches(); // Return true if the input matches the regex
+      return null; // Retorna null em caso de erro
    }
 
 }

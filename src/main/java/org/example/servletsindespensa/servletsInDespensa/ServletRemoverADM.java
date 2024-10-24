@@ -17,9 +17,9 @@ public class ServletRemoverADM extends HttpServlet {
     AdmDAO admDAO = new AdmDAO();
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String id = request.getParameter("id");
-        int intId = Integer.parseInt(id);
-        int remover = admDAO.deleteAdm(intId);
+        String email = request.getParameter("email");
+        String senha = request.getParameter("senha");
+        int remover = admDAO.delete_Adm(email,senha);
         if (remover > 0) {
             request.getRequestDispatcher("sucesso.jsp").forward(request, response);
         } else {
