@@ -8,7 +8,7 @@ import java.sql.SQLException;
 
 public class ProductDAO {
     // Class attributes: PreparedStatement, and the custom connection class
-    private DbConnection connection;
+    private DbConnection connection = new DbConnection();
     private PreparedStatement pstmt;
 
     // Method to insert a new product into the database

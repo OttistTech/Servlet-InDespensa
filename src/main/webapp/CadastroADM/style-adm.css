@@ -1,0 +1,141 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    background-color: white;
+}
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+}
+
+.header {
+    background-color: #F59132;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 10px 20px;
+    height: 70px;
+}
+
+.header img {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.header h1 {
+    color: white;
+    font-size: 24px;
+}
+
+.login-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-grow: 1;
+}
+
+.login-box h2 {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 40px;
+}
+
+.login-box label {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: left;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.login-box input {
+    width: 400px;
+    padding: 15px;
+    margin-bottom: 30px;
+    border: 2px solid #000;
+    border-radius: 10px;
+    font-size: 18px;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.login-box button {
+    width: 400px;
+    padding: 15px;
+    background-color: #F59132;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.login-box button:hover {
+    background-color: #e68217;
+}
+
+.footer {
+    background-color: #F59132;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    height: 100px;
+}
+
+.logo-footer {
+    display: flex;
+    align-items: center;
+}
+
+.logo-footer img {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.logo-footer h1 {
+    color: white;
+    font-size: 20px;
+}
+
+.footer-links {
+    display: flex;
+    gap: 15px;
+}
+
+.footer-btn {
+    background-color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.footer-btn:hover {
+    background-color: #e6e6e6;
+}

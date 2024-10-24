@@ -8,7 +8,7 @@ import java.sql.SQLException;
 
 public class TagDAO {
    // Class attributes: Connection, PreparedStatement, and custom connection class
-   private DbConnection connection;
+   private DbConnection connection = new DbConnection();
    private PreparedStatement pstmt;
 
    // Method to insert a new tag into the database
