@@ -18,9 +18,7 @@ public class ServletConsultarADM extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String email = request.getParameter("username");
-        String password = request.getParameter("password");
-        ResultSet rs = admDAO.readAdm();
+        ResultSet rs = admDAO.read_Adm();
 
         PrintWriter out = response.getWriter();
         try {

@@ -17,10 +17,15 @@ public class ServletAtualizarADM extends HttpServlet {
     AdmDAO admDAO = new AdmDAO();
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String name = request.getParameter("name");
-        String newPassword = request.getParameter("newPassword");
 
-        int atualizar = admDAO.updateAdm(name,newPassword);
+        String email = request.getParameter("email");
+        String newPassword = request.getParameter("newPassword");
+        String password = request.getParameter("password");
+        String name = request.getParameter("name");
+
+
+
+        int atualizar = admDAO.update_Adm(email,newPassword,password,name);
         if (atualizar > 0) {
             request.getRequestDispatcher("sucesso.jsp").forward(request, response);
         } else {
