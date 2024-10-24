@@ -5,17 +5,19 @@ import org.example.servletsindespensa.util.DbConnection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Random;
 
 public class CategoriesDAO {
+   Random rd = new Random();
    // Attributes for managing database connection and prepared statements
    private DbConnection connection;
    private PreparedStatement pstmt;
 
    // Method to insert a new category
-   public int insert(String name, int id) {
+   public int insert(String name) {
+      int id = rd.nextInt(1,10000);
       try {
          java.sql.Connection conn = connection.connect(); // Connect to the database
-
 
          // Check if the ID already exists
          pstmt = conn.prepareStatement("SELECT COUNT(*) FROM CATEGORIES WHERE CATEGORY_ID = ?");

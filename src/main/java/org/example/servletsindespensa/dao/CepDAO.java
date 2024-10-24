@@ -11,13 +11,13 @@ public class CepDAO {
    private PreparedStatement pstmt;
 
    // Method to insert a new CEP (Postal Code)
-   public int insert(int id) {
+   public int insert(String id) {  // Alterado de int para String
       try {
          java.sql.Connection conn = connection.connect();  // Establishes the database connection
 
          // Check if the ID already exists
          pstmt = conn.prepareStatement("SELECT COUNT(*) FROM CEP WHERE CEP_ID = ?");
-         pstmt.setInt(1, id);
+         pstmt.setString(1, id);  // Usando setString para String
          ResultSet rs = pstmt.executeQuery();
          rs.next();
 
@@ -29,7 +29,7 @@ public class CepDAO {
 
          // Insert new CEP
          pstmt = conn.prepareStatement("INSERT INTO CEP (CEP_ID) VALUES (?)");
-         pstmt.setInt(1, id);
+         pstmt.setString(1, id);  // Usando setString para String
          return pstmt.executeUpdate() > 0 ? 1 : 0; // Return 1 if successful, otherwise 0
       } catch (SQLException sqe) {
          sqe.printStackTrace();
@@ -40,13 +40,13 @@ public class CepDAO {
    }
 
    // Method to delete a CEP by its ID
-   public int delete(int id) {
+   public int delete(String id) {  // Alterado de int para String
       try {
          java.sql.Connection conn = connection.connect();  // Establishes the database connection
 
          // Check if the ID exists
          pstmt = conn.prepareStatement("SELECT COUNT(*) FROM CEP WHERE CEP_ID = ?");
-         pstmt.setInt(1, id);
+         pstmt.setString(1, id);  // Usando setString para String
          ResultSet rs = pstmt.executeQuery();
          rs.next();
 
@@ -58,7 +58,7 @@ public class CepDAO {
 
          // Delete the CEP
          pstmt = conn.prepareStatement("DELETE FROM CEP WHERE CEP_ID = ?");
-         pstmt.setInt(1, id);
+         pstmt.setString(1, id);  // Usando setString para String
          return pstmt.executeUpdate() > 0 ? 1 : 0; // Return 1 if successful, otherwise 0
       } catch (SQLException sqe) {
          sqe.printStackTrace();
@@ -69,13 +69,13 @@ public class CepDAO {
    }
 
    // Method to update an existing CEP ID
-   public int update(int oldCep, int newCep) {
+   public int update(String oldCep, String newCep) {  // Alterado de int para String
       try {
          java.sql.Connection conn = connection.connect();  // Establishes the database connection
 
          // Check if the old CEP exists
          pstmt = conn.prepareStatement("SELECT COUNT(*) FROM CEP WHERE CEP_ID = ?");
-         pstmt.setInt(1, oldCep);
+         pstmt.setString(1, oldCep);  // Usando setString para String
          ResultSet rs = pstmt.executeQuery();
          rs.next();
 
@@ -87,8 +87,8 @@ public class CepDAO {
 
          // Update the CEP
          pstmt = conn.prepareStatement("UPDATE CEP SET CEP_ID = ? WHERE CEP_ID = ?");
-         pstmt.setInt(1, newCep);
-         pstmt.setInt(2, oldCep);
+         pstmt.setString(1, newCep);  // Usando setString para String
+         pstmt.setString(2, oldCep);  // Usando setString para String
          return pstmt.executeUpdate() > 0 ? 1 : 0; // Return 1 if successful, otherwise 0
       } catch (SQLException sqle) {
          sqle.printStackTrace();
@@ -109,7 +109,7 @@ public class CepDAO {
       } catch (SQLException sqe) {
          sqe.printStackTrace();
          return null;
-      }finally {
+      } finally {
          connection.disconnect(); // Disconnect from the database
       }
    }

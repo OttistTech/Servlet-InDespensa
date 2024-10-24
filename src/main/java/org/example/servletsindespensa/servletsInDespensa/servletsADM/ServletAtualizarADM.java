@@ -1,4 +1,4 @@
-package org.example.servletsindespensa.servletsInDespensa;
+package org.example.servletsindespensa.servletsInDespensa.servletsADM;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -8,12 +8,11 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.example.servletsindespensa.dao.AdmDAO;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 
 @WebServlet(name = "login", value = "/login")
 public class ServletAtualizarADM extends HttpServlet {
+
+
     AdmDAO admDAO = new AdmDAO();
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -27,9 +26,9 @@ public class ServletAtualizarADM extends HttpServlet {
 
         int atualizar = admDAO.update_Adm(email,newPassword,password,name);
         if (atualizar > 0) {
-            request.getRequestDispatcher("sucesso.jsp").forward(request, response);
+            request.getRequestDispatcher("sucessoCrud.jsp").forward(request, response);
         } else {
-            request.getRequestDispatcher("erro.jsp").forward(request, response);
+            request.getRequestDispatcher("erroCrud.jsp").forward(request, response);
 
         }
 

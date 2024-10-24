@@ -44,7 +44,7 @@ public class TagDAO {
    }
 
    // Method to remove a tag by its ID
-   public int remove(int id) {
+   public int delete(int id) {
       try {
          java.sql.Connection conn = connection.connect(); // Connects to the database
 
@@ -107,7 +107,7 @@ public class TagDAO {
    }
 
    // Method to fetch all tags from the database
-   public ResultSet consult() {
+   public ResultSet read() {
       ResultSet rset = null;
       try {
          java.sql.Connection conn = connection.connect(); // Connects to the database

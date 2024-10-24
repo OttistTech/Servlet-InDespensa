@@ -49,36 +49,35 @@ public class AdmDAO {
    public int insert_Adm(String name, String pswd, String email) {
       try {
          connect(); // Conecta ao banco de dados
-
-         int id = rd.nextInt(1, 10000);  // Gera um ID aleatório
-         PreparedStatement pstmID = conn.prepareStatement("SELECT COUNT(*) FROM ADM WHERE ADM_ID = ?");
-         pstmID.setInt(1, id);
-         ResultSet rs = pstmID.executeQuery();
          boolean idExists = false;
-         if (rs.next()) {
-            idExists = rs.getInt(1) > 0;
-         }
-         pstmID.close();
-         rs.close();
-
-         PreparedStatement pstmEmail = conn.prepareStatement("SELECT COUNT(*) FROM customer WHERE email_login = ?");
-         pstmEmail.setString(1, email);
-         ResultSet rs1 = pstmEmail.executeQuery();
          boolean emailExists = false;
-         if (rs1.next()) {
-            emailExists = rs1.getInt(1) > 0;
-         }
-         pstmEmail.close();
-         rs1.close();
-         if (idExists || emailExists){
-            return 0;
-         }
+         int id = rd.nextInt(1, 10000);  // Gera um ID aleatório
+         do {
+
+            PreparedStatement pstmID = conn.prepareStatement("SELECT COUNT(*) FROM ADM WHERE ADM_ID = ?");
+            pstmID.setInt(1, id);
+            ResultSet rs = pstmID.executeQuery();
+            if (rs.next()) {
+               idExists = rs.getInt(1) > 0;
+            }
+            pstmID.close();
+            rs.close();
+
+            PreparedStatement pstmEmail = conn.prepareStatement("SELECT COUNT(*) FROM customer WHERE email_login = ?");
+            pstmEmail.setString(1, email);
+            ResultSet rs1 = pstmEmail.executeQuery();
+            if (rs1.next()) {
+               emailExists = rs1.getInt(1) > 0;
+            }
+            pstmEmail.close();
+            rs1.close();
+         }while (emailExists || idExists);
          // Regex para verificar o nome
          String regexNome = "^[A-Z][a-z]* [A-Z][a-z]*$";
          Pattern pattern = Pattern.compile(regexNome);
          Matcher matcher = pattern.matcher(name);
          if (matcher.matches()) {
-            pstmt = conn.prepareStatement("INSERT INTO ADM (name, pswd, email) VALUES (?, ?, ?)"); // Prepara a inserção
+            pstmt = conn.prepareStatement("INSERT INTO ADM (name, pswd, email,adm_id) VALUES (?, ?, ?,?)"); // Prepara a inserção
             pstmt.setString(1, name);
          } else {
             return 0; // Retorna 0 se o nome não for válido
@@ -101,6 +100,7 @@ public class AdmDAO {
          } else {
             return 0; // Retorna 0 se o email não for válido
          }
+         pstmt.setInt(4,id);
          // Executa a inserção no banco de dados
          return pstmt.executeUpdate() > 0 ? 1 : 0; // Retorna 1 se a inserção for bem-sucedida
       } catch (SQLException sqe) {

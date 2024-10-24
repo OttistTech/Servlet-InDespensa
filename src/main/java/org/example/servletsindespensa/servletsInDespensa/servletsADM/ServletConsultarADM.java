@@ -1,4 +1,4 @@
-package org.example.servletsindespensa.servletsInDespensa;
+package org.example.servletsindespensa.servletsInDespensa.servletsADM;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -25,8 +25,9 @@ public class ServletConsultarADM extends HttpServlet {
             // Itera sobre todos os resultados do ResultSet
             while (rs.next()) {
                 String lista = ("Password: " + rs.getInt("password") + " - " +
-                        "Name: " + rs.getString("email") + " - " +
-                        "Plan: " + rs.getString("nome"));
+                        "Email: " + rs.getString("email") + " - " +
+                        "Name: " + rs.getString("name") + " - " +
+                        "ID: " + rs.getString("adm_id"));
                 out.println(lista);
             }
         } catch (SQLException sqe) {

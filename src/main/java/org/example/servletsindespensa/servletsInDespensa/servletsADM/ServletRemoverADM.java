@@ -1,4 +1,4 @@
-package org.example.servletsindespensa.servletsInDespensa;
+package org.example.servletsindespensa.servletsInDespensa.servletsADM;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -8,9 +8,6 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.example.servletsindespensa.dao.AdmDAO;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 
 @WebServlet(name = "login", value = "/login")
 public class ServletRemoverADM extends HttpServlet {
@@ -21,9 +18,9 @@ public class ServletRemoverADM extends HttpServlet {
         String senha = request.getParameter("senha");
         int remover = admDAO.delete_Adm(email,senha);
         if (remover > 0) {
-            request.getRequestDispatcher("sucesso.jsp").forward(request, response);
+            request.getRequestDispatcher("sucessoCrud.jsp").forward(request, response);
         } else {
-            request.getRequestDispatcher("erro.jsp").forward(request, response);
+            request.getRequestDispatcher("erroCrud.jsp").forward(request, response);
 
         }
 

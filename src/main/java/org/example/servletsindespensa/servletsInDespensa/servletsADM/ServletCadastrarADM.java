@@ -1,4 +1,4 @@
-package org.example.servletsindespensa.servletsInDespensa;
+package org.example.servletsindespensa.servletsInDespensa.servletsADM;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -18,9 +18,9 @@ public class ServletCadastrarADM extends HttpServlet {
             String password = request.getParameter("password");
             int inserir = admDAO.insert_Adm("Piassi", password, email);
             if (inserir > 0) {
-                request.getRequestDispatcher("sucesso.jsp").forward(request, response);
+                request.getRequestDispatcher("sucessoCrud.jsp").forward(request, response);
             } else {
-                request.getRequestDispatcher("erro.jsp").forward(request, response);
+                request.getRequestDispatcher("erroCrud.jsp").forward(request, response);
 
             }
 
