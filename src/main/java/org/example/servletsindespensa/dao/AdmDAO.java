@@ -13,7 +13,7 @@ import java.util.regex.Pattern;
 
 public class AdmDAO {
    // Atributos para a conexão com o banco de dados e manipulação de dados
-   Hash hash=new Hash();
+   Hash hash= new Hash();
    private Connection conn;
    private PreparedStatement pstmt;
 
@@ -49,6 +49,14 @@ public class AdmDAO {
    public int insert_Adm(String name, String pswd, String email) {
       try {
          connect(); // Conecta ao banco de dados
+<<<<<<< HEAD
+=======
+
+         int id = rd.nextInt(10000) + 1; // Gera um ID aleatório entre 1 e 10000
+         PreparedStatement pstmID = conn.prepareStatement("SELECT COUNT(*) FROM ADM WHERE ADM_ID = ?");
+         pstmID.setInt(1, id);
+         ResultSet rs = pstmID.executeQuery();
+>>>>>>> bc94129affdc63805e887c3c617ddc89c368d2a2
          boolean idExists = false;
          boolean emailExists = false;
          int id = rd.nextInt(1, 10000);  // Gera um ID aleatório
@@ -195,4 +203,5 @@ public class AdmDAO {
       }
       return null; // Retorna null em caso de erro
    }
+
 }
