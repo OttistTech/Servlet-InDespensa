@@ -12,9 +12,10 @@ import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+
 public class AdmDAO {
     // Atributos para a conexão com o banco de dados e manipulação de dados
-    Hash hash = new Hash();
+    Hash hash= new Hash();
     private Connection conn;
     private DbConnection connection = new DbConnection();
     private PreparedStatement pstmt;
@@ -106,7 +107,7 @@ public class AdmDAO {
             // Deleta o registro correspondente
             pstmt = conn.prepareStatement("DELETE FROM ADM WHERE email = ? and password=?");
             pstmt.setString(1, email);
-            pstmt.setString(2, hash.hashing(senha));
+            pstmt.setString(2,hash.hashing(senha));
             return pstmt.executeUpdate() > 0 ? 1 : 0; // Retorna 1 se a deleção for bem-sucedida
         } catch (SQLException sqe) {
             sqe.printStackTrace(); // Imprime o erro ao deletar
@@ -117,14 +118,13 @@ public class AdmDAO {
     }
 
     // Método para atualizar um registro
-    public int updateAdm(String email, String newPassword, String senha) {
+    public int updateAdm(String email, String newPassword,String senha,String nome) {
         try {
-            connection.connect(); // Conecta ao banco de dados
-
+            conn = connection.connect(); // Conecta ao banco de dados
             // Verifica se o nome existe
             pstmt = conn.prepareStatement("SELECT COUNT(*) FROM ADM WHERE email = ? and password=?");
             pstmt.setString(1, email);
-            pstmt.setString(2, hash.hashing(senha));
+            pstmt.setString(2,hash.hashing(senha));
             ResultSet rs = pstmt.executeQuery();
             rs.next();
             boolean nameExists = rs.getInt(1) > 0;
@@ -143,8 +143,8 @@ public class AdmDAO {
 
             // Atualiza a senha
             pstmt = conn.prepareStatement("UPDATE ADM SET PASSWORD = ? WHERE NAME = ?");
-            pstmt.setString(1, hash.hashing(newPassword));
-            pstmt.setString(2, email);
+            pstmt.setString(1,hash.hashing(newPassword));
+            pstmt.setString(2,nome);
 
             return pstmt.executeUpdate() > 0 ? 1 : 0; // Retorna 1 se a atualização for bem-sucedida
         } catch (SQLException sqle) {
@@ -160,6 +160,9 @@ public class AdmDAO {
         try {
             connection.connect(); // Conecta ao banco de dados
             pstmt = conn.prepareStatement("SELECT * FROM ADM ORDER BY NAME");
+            conn = connection.connect(); // Conecta ao banco de dados
+            pstmt = conn.prepareStatement("SELECT * FROM " +
+                    "ADM ORDER BY NAME");
             ResultSet rset = pstmt.executeQuery(); // Executa a consulta
             return rset; // Retorna o ResultSet para uso posterior (cuidado com a desconexão!)
         } catch (SQLException sqe) {
@@ -167,7 +170,6 @@ public class AdmDAO {
         }
         return null; // Retorna null em caso de erro
     }
-
     public int autenticarAdm(String pswd, String email) {
         try {
             connection.connect(); // Conecta ao banco de dados
@@ -194,5 +196,4 @@ public class AdmDAO {
         }
 
     }
-
 }

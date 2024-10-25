@@ -1,8 +1,8 @@
 * {
+    font-family: 'montserrat' ,serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
 }
 
 html, body {
@@ -94,48 +94,63 @@ body {
     background-color: #e68217;
 }
 
-.footer {
+footer{
     background-color: #F59132;
+    margin-top: 197px;
+    height: 392px;
+    width: 100%;
+}
+.logo-container{
     display: flex;
-    justify-content: space-between;
+    font-family: 'montserrat' ,serif;
     align-items: center;
-    padding: 20px;
-    height: 100px;
+    margin-left: 91px;
 }
-
-.logo-footer {
-    display: flex;
-    align-items: center;
-}
-
-.logo-footer img {
-    width: 40px;
-    height: 40px;
-    margin-right: 10px;
-}
-
-.logo-footer h1 {
+.logo-container span{
     color: white;
-    font-size: 20px;
+    font-size: 65px;
+    margin-left: 22px;
+    margin-top: 20px;
 }
-
-.footer-links {
+.footer-links{
+    font-family: 'montserrat' ,serif;
+    font-size: 32px;
+    list-style-type: none;
+    margin-top: 40px;
+    margin-left: 140px;
+}
+.footer-links a{
+    text-decoration: none;
+    color: white;
+}
+.footer-links li{
+    margin-top: 33px;
+}
+.button-container{
+    margin-top: 20px;
+    margin-left: 140px;
+}
+.footer-button{
     display: flex;
-    gap: 15px;
-}
-
-.footer-btn {
+    align-items: center;
+    border-radius: 20px;
+    width: 172px;
+    height: 58px;
     background-color: white;
     border: none;
-    border-radius: 20px;
-    padding: 10px 20px;
-    font-size: 16px;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    cursor: pointer;
+    font-family: 'montserrat',serif;
+    font-size: 24px;
+    margin-top: 45px;
 }
-
-.footer-btn:hover {
-    background-color: #e6e6e6;
+.footer-button a{
+    text-decoration: none;
+    color: black;
+}
+.footer-button img{
+    width: 32px;
+    height: 40px;
+    margin-left: 11px;
+}
+.footer-button strong{
+    margin-left: 12px;
 }

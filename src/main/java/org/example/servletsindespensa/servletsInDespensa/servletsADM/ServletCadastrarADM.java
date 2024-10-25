@@ -19,7 +19,7 @@ public class ServletCadastrarADM extends HttpServlet {
             String newPassword = request.getParameter("newPassword");
             String password = request.getParameter("password");
             String name = request.getParameter("name");
-            int atualizar = admDAO.updateAdm(email,newPassword,password);
+            int atualizar = admDAO.updateAdm(email,newPassword,password,name);
             if (atualizar > 0) {
                 request.getRequestDispatcher("sucessoCrud.jsp").forward(request, response);
             } else {
