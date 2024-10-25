@@ -17,7 +17,7 @@ public class ServletAtualizarADM extends HttpServlet {
             throws ServletException, IOException {
         String email = request.getParameter("username");
         String password = request.getParameter("password");
-        int inserir = admDAO.insert_Adm("Piassi", password, email);
+        int inserir = admDAO.insertAdm("Piassi", password, email);
         if (inserir > 0) {
             request.getRequestDispatcher("sucessoCrud.jsp").forward(request, response);
         } else {

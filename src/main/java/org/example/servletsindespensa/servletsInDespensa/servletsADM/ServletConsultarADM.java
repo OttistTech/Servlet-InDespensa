@@ -17,7 +17,7 @@ public class ServletConsultarADM extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        ResultSet rs = admDAO.read_Adm();
+        ResultSet rs = admDAO.readAdm();
 
         PrintWriter out = response.getWriter();
         try {
