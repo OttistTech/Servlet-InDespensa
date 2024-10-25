@@ -14,17 +14,21 @@
     font-family: "montserratBold";
     src: url("../LandingPage/Fonts/Montserrat/Montserrat-Bold.woff");
 }
+
+@font-face {
+    font-family: "montserratSemiBold";
+    src: url("../LandingPage/Fonts/Montserrat/Montserrat-SemiBold.woff");
+}
+
+@font-face {
+    font-family: "DelaGothicOne";
+    src: url("../LandingPage/Fonts/DelaGothicOne/DelaGothicOne-Regular.woff");
+}
 /* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
 
 *{
     margin: 0;
     padding: 0;
-}
-
-body{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
 }
 
 header{
@@ -39,7 +43,7 @@ header{
 
 header h1{
     position: absolute;
-    font-family: "montserratP",serif;
+    font-family: "montserratP", serif;
     margin-left: 142px;
     font-size: 48px;
 }
@@ -51,90 +55,57 @@ header img{
     height: 57px;
 }
 
-.container{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+
+.content h1{
+    font-size: 48px;
+    font-family: "montserratBold", serif;
 }
-
-.container #texto1{
-    text-align: center;
-    font-family: "montserratBold",serif;
-    font-size: 56px;
-    margin-top: 80px;
-}
-
-.container #texto2{
-    text-align: left;
-    align-self: flex-start;
-    margin-top: 40px;
-    margin-left: 25px;
-    font-family: "montserratP",serif;
-
-}
-
-.container textarea{
-    width: 865px;
-    height: 248px;
-    border: solid black 2px;
-    border-radius: 20px;
+.content h4{
     font-size: 24px;
+    font-weight: 500;
     font-family: "montserratP", serif;
-    margin-top: 24px;
-    margin-bottom: 24px;
-    padding-top: 24px;
-    padding-left: 24px;
-    box-sizing: border-box;
-    text-align: start;
-    resize: none;
-    box-shadow:  0 3px 4px -2px rgb(91, 75, 75);
+    margin-top: 8px;
 }
-
-.container input{
-    width: 865px;
-    height: 67px;
-    border: solid black 2px;
-    border-radius: 20px;
-    font-size: 24px;
-    box-sizing: border-box;
-    padding-left: 24px;
-    font-family: "montserratP",serif;
-    box-shadow:  0 3px 4px -2px rgb(91, 75, 75);
+.buttons{
+    margin-top: 9px;
 }
-
-.container button{
+button{
     display: flex;
-    align-items: center;
-    color: white;
+    align-items: baseline;
+    width: 240px;
+    height: 49px;
+    border: solid black 1px;
     border-radius: 20px;
-    border: none;
-    box-shadow:  0 2px 5px -2px rgb(91, 75, 75);
-    margin-bottom: 128px;
-    align-self: flex-end;
-    background-color: #F59132;
-    width: 184px;
-    height: 38px;
+    box-sizing: border-box;
+    text-align: center;
+    resize: none;
+    margin-top: 29px;
+    box-shadow:  0 3px 4px -2px rgb(91, 75, 75);
+    background-color: white;
+}
+button:hover{
+    box-shadow:  0 3px 10px -2px rgb(91, 75, 75);
 }
 
-.container button:hover{
-    background-color: #ffa550;
-}
-
-.container button:active{
-    background-color: #F59132;
-}
-
-.container button h2{
-    font-family: "montserratP",serif;
+button p{
+    display: flex;
+    align-self: center;
     font-size: 24px;
-    margin-left: 32px;
+    font-family: "montserratSemiBold", serif;
+    margin-left: 28px;
+
+}
+.content{
+    margin-top: 90px;
+    margin-left: 125px;
+    margin-bottom: 129px;
 }
 
-.container button img{
-    margin-left: 12px;
-    width: 28px;
-    height: 28px;
+.content a{
+    text-decoration: none;
 }
+
+
 
 footer{
     display: flex;
@@ -149,6 +120,7 @@ footer{
     align-items: center;
     margin-left: 116px;
     margin-top: 48px;
+
 }
 
 .logo-container img{
@@ -177,6 +149,7 @@ footer{
     height: 58px;
     background-color: white;
     border: none;
+    margin-top: 31px;
     font-family: 'montserratP',serif;
     font-size: 24px;
     color: black;

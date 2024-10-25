@@ -14,7 +14,7 @@ public class CategoriesDAO {
 
    // Method to insert a new category
    public int insert(String name) {
-      int id = rd.nextInt(1, 10000);
+      int id = rd.nextInt(10000)+1;
       try (Connection conn = connection.connect()) {
          // Check if the ID already exists
          try (PreparedStatement pstmt = conn.prepareStatement("SELECT COUNT(*) FROM CATEGORIES WHERE CATEGORY_ID = ?")) {
