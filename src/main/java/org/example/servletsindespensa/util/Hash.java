@@ -21,44 +21,6 @@ public class Hash {
                 if (hex.length() == 1) hexString.append('0');
                 hexString.append(hex);
             }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             return hexString.toString();
         } catch (NoSuchAlgorithmException e) {
             throw new RuntimeException("Erro ao gerar o hash da senha", e);

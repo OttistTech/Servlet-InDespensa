@@ -10,7 +10,7 @@ import java.util.Random;
 public class CategoriesDAO {
    Random rd = new Random();
    // Attributes for managing database connection and prepared statements
-   private DbConnection connection;
+   private DbConnection connection = new DbConnection();
    private PreparedStatement pstmt;
 
    // Method to insert a new category

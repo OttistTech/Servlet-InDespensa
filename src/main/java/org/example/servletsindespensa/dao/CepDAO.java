@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class CepDAO {
-   private DbConnection connection;
+   private DbConnection connection = new DbConnection();
    private PreparedStatement pstmt;
 
    // Method to insert a new CEP (Postal Code)
