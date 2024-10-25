@@ -10,7 +10,7 @@ import org.example.servletsindespensa.dao.AdmDAO;
 
 import java.io.IOException;
 
-@WebServlet(name = "login", value = "/login")
+@WebServlet(name = "cadastrarADM", value = "/cadastrarADM")
 public class ServletCadastrarADM extends HttpServlet {
     AdmDAO admDAO = new AdmDAO();
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -19,7 +19,7 @@ public class ServletCadastrarADM extends HttpServlet {
             String newPassword = request.getParameter("newPassword");
             String password = request.getParameter("password");
             String name = request.getParameter("name");
-            int atualizar = admDAO.update_Adm(email,newPassword,password,name);
+            int atualizar = admDAO.updateAdm(email,newPassword,password);
             if (atualizar > 0) {
                 request.getRequestDispatcher("sucessoCrud.jsp").forward(request, response);
             } else {

@@ -11,13 +11,13 @@ import java.io.PrintWriter;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-@WebServlet(name = "login", value = "/login")
+@WebServlet(name = "consultarADM", value = "/consultarADM")
 public class ServletConsultarADM extends HttpServlet {
     AdmDAO admDAO = new AdmDAO();
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        ResultSet rs = admDAO.read_Adm();
+        ResultSet rs = admDAO.readAdm();
 
         PrintWriter out = response.getWriter();
         try {

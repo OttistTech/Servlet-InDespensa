@@ -10,7 +10,7 @@ import org.example.servletsindespensa.dao.AdmDAO;
 
 import java.io.IOException;
 
-@WebServlet(name = "login", value = "/login")
+@WebServlet(name = "removerADM", value = "/removerADM")
 public class ServletRemoverADM extends HttpServlet {
     AdmDAO admDAO = new AdmDAO();
 
@@ -18,7 +18,7 @@ public class ServletRemoverADM extends HttpServlet {
             throws ServletException, IOException {
         String email = request.getParameter("email");
         String senha = request.getParameter("senha");
-        int remover = admDAO.delete_Adm(email, senha);
+        int remover = admDAO.deleteAdm(email, senha);
         if (remover > 0) {
             request.getRequestDispatcher("sucessoCrud.jsp").forward(request, response);
         } else {

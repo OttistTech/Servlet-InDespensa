@@ -9,7 +9,7 @@ import org.example.servletsindespensa.dao.CategoriesDAO;
 
 import java.io.IOException;
 
-@WebServlet(name = "login", value = "/login")
+@WebServlet(name = "cadastrarCATEGORIES", value = "/cadastrarCATEGORIES")
 public class ServletCadastrarCATEGORIES extends HttpServlet {
     CategoriesDAO categoriesDAO = new CategoriesDAO();
 

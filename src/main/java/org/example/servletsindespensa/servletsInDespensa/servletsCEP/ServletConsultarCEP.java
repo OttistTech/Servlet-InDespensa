@@ -11,7 +11,7 @@ import java.io.PrintWriter;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-@WebServlet(name = "login", value = "/login")
+@WebServlet(name = "consultarCEP", value = "/consultarCEP")
 public class ServletConsultarCEP extends HttpServlet {
    CepDAO cepDAO = new CepDAO();
     protected void doPost(HttpServletRequest request, HttpServletResponse response)

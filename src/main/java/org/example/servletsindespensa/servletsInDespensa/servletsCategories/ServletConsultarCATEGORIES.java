@@ -12,7 +12,7 @@ import java.io.PrintWriter;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-@WebServlet(name = "login", value = "/login")
+@WebServlet(name = "consultarCATEGORIES", value = "/consultarCATEGORIES")
 public class ServletConsultarCATEGORIES extends HttpServlet {
     CategoriesDAO categoriesDAO = new CategoriesDAO();
     protected void doPost(HttpServletRequest request, HttpServletResponse response)

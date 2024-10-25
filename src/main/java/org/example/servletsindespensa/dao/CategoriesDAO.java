@@ -15,7 +15,7 @@ public class CategoriesDAO {
 
    // Method to insert a new category
    public int insert(String name) {
-      int id = rd.nextInt(1,10000);
+      int id = rd.nextInt(10000-1)+1;
       try {
          java.sql.Connection conn = connection.connect(); // Connect to the database
 

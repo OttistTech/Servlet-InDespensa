@@ -9,7 +9,7 @@ import org.example.servletsindespensa.dao.ProductDAO;
 
 import java.io.IOException;
 
-@WebServlet(name = "login", value = "/login")
+@WebServlet(name = "removerPRODUCT", value = "/removerPRODUCT")
 public class ServletRemoverPRODUCT extends HttpServlet {
     ProductDAO productDAO = new ProductDAO();
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
