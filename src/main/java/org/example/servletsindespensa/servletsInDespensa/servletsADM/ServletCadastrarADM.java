@@ -16,9 +16,11 @@ public class ServletCadastrarADM extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
             String email = request.getParameter("username");
+            String newPassword = request.getParameter("newPassword");
             String password = request.getParameter("password");
-            int inserir = admDAO.insert_Adm("Piassi", password, email);
-            if (inserir > 0) {
+            String name = request.getParameter("name");
+            int atualizar = admDAO.update_Adm(email,newPassword,password,name);
+            if (atualizar > 0) {
                 request.getRequestDispatcher("sucessoCrud.jsp").forward(request, response);
             } else {
                 request.getRequestDispatcher("erroCrud.jsp").forward(request, response);
