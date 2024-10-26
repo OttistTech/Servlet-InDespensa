@@ -6,12 +6,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>InDespensa - Login</title>
-    <link rel="stylesheet" href="../CadastroADM/style-adm.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/CadastroADM/style-adm.css">
 </head>
 <body>
 <div class="login-container">
     <div class="header">
-        <img src="../LandingPage/imagens/Logo.png" alt="InDespensa Logo">
+        <img src="${pageContext.request.contextPath}/LandingPage/imagens/Logo.png" alt="InDespensa Logo">
         <h1>InDespensa</h1>
     </div>
 
@@ -43,17 +43,17 @@
 
     <footer>
         <div class="logo-container">
-            <img src="../LandingPage/imagens/Logo.png" alt="InDespensa Logo" class="logo">
+            <img src="${pageContext.request.contextPath}/LandingPage/imagens/Logo.png" alt="InDespensa Logo" class="logo">
             <span>InDespensa</span>
         </div>
         <div class="button-container">
             <button class="footer-button">
-                <img src="../LandingPage/imagens/OnlineSupport.png" alt="Suporte">
-                <a href="../SupportPage/index.html">Suporte</a>
+                <img src="${pageContext.request.contextPath}/LandingPage/imagens/OnlineSupport.png" alt="Suporte">
+                <a href="${pageContext.request.contextPath}/SupportPage/index.html">Suporte</a>
             </button>
             <button class="footer-button">
-                <img src="../LandingPage/imagens/InternetPreto.png" alt="Site">
-                <a href="../"><strong>Site</strong></a>
+                <img src="${pageContext.request.contextPath}/LandingPage/imagens/InternetPreto.png" alt="Site">
+                <a href="${pageContext.request.contextPath}/"><strong>Site</strong></a>
             </button>
         </div>
     </footer>

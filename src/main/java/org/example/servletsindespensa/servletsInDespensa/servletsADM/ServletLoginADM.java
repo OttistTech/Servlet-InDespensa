@@ -25,12 +25,10 @@ public class ServletLoginADM extends HttpServlet {
         int resultado = admDAO.autenticarAdm(email, password);
 
         if (resultado == 1) {
-            // Redireciona para a página de menu do CRUD
-            request.getRequestDispatcher("/PaginasCRUD/index.jsp").forward(request,response);
+            response.sendRedirect(request.getContextPath() + "/PaginasCRUD/index.jsp");
         } else {
-            // Se o login falhar, envia o usuário de volta para a página de login com um erro
             request.setAttribute("errorMessage", "Email ou senha inválidos!");
-            request.getRequestDispatcher("CadastroADM/index.jsp").forward(request, response);
+            request.getRequestDispatcher("/CadastroADM/index.jsp").forward(request, response);
         }
     }
 }
