@@ -30,12 +30,12 @@
             }
         %>
 
-        <form action="loginADM" method="post">
+        <form action="../CadastroADM/index.jsp" method="post">
             <label for="email">Informe seu Email:</label>
-            <input type="email" name="email" id="email" placeholder="Informe seu Email" required>
+            <input type="text" name="email" id="email" placeholder="Informe seu Email" required>
 
             <label for="senha">Informe sua Senha:</label>
-            <input type="password" name="password" id="senha" placeholder="Informe sua Senha" required>
+            <input type="text" name="password" id="senha" placeholder="Informe sua Senha" required>
             <br>
             <button type="submit">Enviar</button>
         </form>

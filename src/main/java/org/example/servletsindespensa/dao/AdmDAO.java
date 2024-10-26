@@ -178,12 +178,14 @@ public class AdmDAO {
     }
     public int autenticarAdm(String email, String password) {
         // Hash a senha usando a classe Hash
-        Hash hashUtil = new Hash();
-        String hashedPassword = hashUtil.hashing(password);
-        Connection conn = connection.connect();
 
-        String sql = "SELECT COUNT(*) FROM adm WHERE email = ? AND senha = ?";
+
+
         try {
+            Hash hashUtil = new Hash();
+            String hashedPassword = hashUtil.hashing(password);
+            Connection conn = connection.connect();
+            String sql = "SELECT COUNT(*) FROM adm WHERE email = ? AND senha = ?";
             PreparedStatement pstmt = conn.prepareStatement(sql);
 
             // Definir os parâmetros da consulta

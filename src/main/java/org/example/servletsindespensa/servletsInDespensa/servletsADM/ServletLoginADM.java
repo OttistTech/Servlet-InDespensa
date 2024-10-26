@@ -8,7 +8,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.example.servletsindespensa.dao.AdmDAO;
 import java.io.IOException;
 
-@WebServlet(name = "log", value = "/loginADM")
+@WebServlet(name = "login", value = "../CadastroADM/index.jsp")
 public class ServletLoginADM extends HttpServlet {
 
     // Instância do DAO para interação com o banco de dados
@@ -16,6 +16,7 @@ public class ServletLoginADM extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         // Obtendo parâmetros de email e senha da requisição
         String email = request.getParameter("email");
         String password = request.getParameter("password");
@@ -25,11 +26,11 @@ public class ServletLoginADM extends HttpServlet {
 
         if (resultado == 1) {
             // Redireciona para a página de menu do CRUD
-            response.sendRedirect("../PaginasCRUD/index.jsp");
+            request.getRequestDispatcher("PaginasCRUD/index.jsp").forward(request,response);
         } else {
             // Se o login falhar, envia o usuário de volta para a página de login com um erro
             request.setAttribute("errorMessage", "Email ou senha inválidos!");
-            request.getRequestDispatcher("../PaginasCRUD/index.jsp").forward(request, response);
+            request.getRequestDispatcher("LandingPage/index.html").forward(request, response);
         }
     }
 }
