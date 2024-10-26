@@ -9,7 +9,7 @@ import org.example.servletsindespensa.dao.CepDAO;
 
 import java.io.IOException;
 
-@WebServlet(name = "login", value = "/login")
+//@WebServlet(name = "login", value = "/login")
 public class ServletAtualizarCEP extends HttpServlet {
     CepDAO cepDAO = new CepDAO();
     protected void doPost(HttpServletRequest request, HttpServletResponse response)

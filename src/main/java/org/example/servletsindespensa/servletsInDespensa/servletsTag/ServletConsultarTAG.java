@@ -12,7 +12,7 @@ import java.io.PrintWriter;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-@WebServlet(name = "login", value = "/login")
+//@WebServlet(name = "login", value = "/login")
 public class ServletConsultarTAG extends HttpServlet {
     TagDAO tagDAO = new TagDAO();
     protected void doPost(HttpServletRequest request, HttpServletResponse response)

@@ -9,7 +9,7 @@ import org.example.servletsindespensa.dao.TagDAO;
 
 import java.io.IOException;
 
-@WebServlet(name = "login", value = "/login")
+//@WebServlet(name = "login", value = "/login")
 public class ServletCadastrarTAG extends HttpServlet {
     TagDAO tagDAO = new TagDAO();
     protected void doPost(HttpServletRequest request, HttpServletResponse response)

@@ -10,7 +10,7 @@ import org.example.servletsindespensa.dao.AdmDAO;
 
 import java.io.IOException;
 
-@WebServlet(name = "login", value = "/login")
+//@WebServlet(name = "login", value = "/login")
 public class ServletRemoverADM extends HttpServlet {
     AdmDAO admDAO = new AdmDAO();
 

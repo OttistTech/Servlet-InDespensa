@@ -8,7 +8,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.example.servletsindespensa.dao.AdmDAO;
 import java.io.IOException;
 
-@WebServlet(name = "login", value = "../CadastroADM/index.jsp")
+@WebServlet(name = "login", urlPatterns = {"/login"})
 public class ServletLoginADM extends HttpServlet {
 
     // Instância do DAO para interação com o banco de dados
@@ -26,11 +26,11 @@ public class ServletLoginADM extends HttpServlet {
 
         if (resultado == 1) {
             // Redireciona para a página de menu do CRUD
-            request.getRequestDispatcher("PaginasCRUD/index.jsp").forward(request,response);
+            request.getRequestDispatcher("/PaginasCRUD/index.jsp").forward(request,response);
         } else {
             // Se o login falhar, envia o usuário de volta para a página de login com um erro
             request.setAttribute("errorMessage", "Email ou senha inválidos!");
-            request.getRequestDispatcher("LandingPage/index.html").forward(request, response);
+            request.getRequestDispatcher("CadastroADM/index.jsp").forward(request, response);
         }
     }
 }
