@@ -7,119 +7,119 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class TagDAO {
-   // Class attributes: Connection, PreparedStatement, and custom connection class
+   // Atributos da classe: Conexão, PreparedStatement e classe de conexão personalizada
    private DbConnection connection = new DbConnection();
    private PreparedStatement pstmt;
 
-   // Method to insert a new tag into the database
-   public int insert(int id, String description) {
+   // Método para inserir uma nova tag no banco de dados
+   public int insertTag(int id, String description) {
       try {
-         java.sql.Connection conn = connection.connect(); // Connects to the database
+         java.sql.Connection conn = connection.connect(); // Conecta ao banco de dados
 
-         // Check if the tag ID already exists
+         // Verifica se o ID da tag já existe
          pstmt = conn.prepareStatement("SELECT COUNT(*) FROM TAG WHERE ID = ?");
-         pstmt.setInt(1, id); // Set the tag ID parameter
-         ResultSet rs = pstmt.executeQuery(); // Execute the query
+         pstmt.setInt(1, id); // Define o parâmetro do ID da tag
+         ResultSet rs = pstmt.executeQuery(); // Executa a consulta
          rs.next();
 
          if (rs.getInt(1) > 0) {
-            rs.close(); // Close ResultSet
-            return 0; // Tag ID already exists, return 0 to indicate failure
+            rs.close(); // Fecha o ResultSet
+            return 0; // ID da tag já existe, retorna 0 para indicar falha
          }
-         rs.close(); // Close ResultSet if ID does not exist
+         rs.close(); // Fecha o ResultSet se o ID não existir
 
-         // Prepare the SQL statement to insert a new tag
+         // Prepara a instrução SQL para inserir uma nova tag
          pstmt = conn.prepareStatement("INSERT INTO TAG (id, description) VALUES (?, ?)");
-         pstmt.setInt(1, id); // Set the tag ID
-         pstmt.setString(2, description); // Set the tag description
+         pstmt.setInt(1, id); // Define o ID da tag
+         pstmt.setString(2, description); // Define a descrição da tag
 
-         // Return 1 if insertion is successful, otherwise return 0
+         // Retorna 1 se a inserção for bem-sucedida, caso contrário retorna 0
          return pstmt.executeUpdate() > 0 ? 1 : 0;
       } catch (SQLException sqe) {
-         sqe.printStackTrace(); // Print SQL errors during insertion
-         return -1; // Return -1 to indicate a database error
+         sqe.printStackTrace(); // Imprime erros SQL durante a inserção
+         return -1; // Retorna -1 para indicar um erro no banco de dados
       } finally {
-         connection.disconnect();// Disconnect from the database
+         connection.disconnect(); // Desconecta do banco de dados
       }
    }
 
-   // Method to remove a tag by its ID
-   public int delete(int id) {
+   // Método para remover uma tag pelo seu ID
+   public int deleteTag(int id) {
       try {
-         java.sql.Connection conn = connection.connect(); // Connects to the database
+         java.sql.Connection conn = connection.connect(); // Conecta ao banco de dados
 
-         // Check if the tag ID exists before attempting to delete
+         // Verifica se o ID da tag existe antes de tentar deletar
          pstmt = conn.prepareStatement("SELECT COUNT(*) FROM TAG WHERE ID = ?");
-         pstmt.setInt(1, id); // Set the tag ID parameter
-         ResultSet rs = pstmt.executeQuery(); // Execute the query
+         pstmt.setInt(1, id); // Define o parâmetro do ID da tag
+         ResultSet rs = pstmt.executeQuery(); // Executa a consulta
          rs.next();
 
          if (rs.getInt(1) == 0) {
-            rs.close(); // Close ResultSet
-            return 0; // Tag ID does not exist, return 0 to indicate failure
+            rs.close(); // Fecha o ResultSet
+            return 0; // ID da tag não existe, retorna 0 para indicar falha
          }
-         rs.close(); // Close ResultSet if ID exists
+         rs.close(); // Fecha o ResultSet se o ID existir
 
-         // Prepare the SQL statement to delete the tag
+         // Prepara a instrução SQL para deletar a tag
          pstmt = conn.prepareStatement("DELETE FROM TAG WHERE ID = ?");
-         pstmt.setInt(1, id); // Set the tag ID
+         pstmt.setInt(1, id); // Define o ID da tag
 
-         // Return 1 if deletion is successful, otherwise return 0
+         // Retorna 1 se a deleção for bem-sucedida, caso contrário retorna 0
          return pstmt.executeUpdate() > 0 ? 1 : 0;
       } catch (SQLException sqe) {
-         sqe.printStackTrace(); // Print SQL errors during deletion
-         return -1; // Return -1 to indicate a database error
+         sqe.printStackTrace(); // Imprime erros SQL durante a deleção
+         return -1; // Retorna -1 para indicar um erro no banco de dados
       } finally {
-         connection.disconnect();// Disconnect from the database
+         connection.disconnect(); // Desconecta do banco de dados
       }
    }
 
-   // Method to update a tag's description by its ID
-   public int update(String description, int id) {
+   // Método para atualizar a descrição de uma tag pelo seu ID
+   public int updateTag(String description, int id) {
       try {
-         java.sql.Connection conn = connection.connect(); // Connects to the database
+         java.sql.Connection conn = connection.connect(); // Conecta ao banco de dados
 
-         // Check if the tag ID exists before attempting to update
+         // Verifica se o ID da tag existe antes de tentar atualizar
          pstmt = conn.prepareStatement("SELECT COUNT(*) FROM TAG WHERE ID = ?");
-         pstmt.setInt(1, id); // Set the tag ID parameter
-         ResultSet rs = pstmt.executeQuery(); // Execute the query
+         pstmt.setInt(1, id); // Define o parâmetro do ID da tag
+         ResultSet rs = pstmt.executeQuery(); // Executa a consulta
          rs.next();
 
          if (rs.getInt(1) == 0) {
-            rs.close(); // Close ResultSet
-            return 0; // Tag ID does not exist, return 0 to indicate failure
+            rs.close(); // Fecha o ResultSet
+            return 0; // ID da tag não existe, retorna 0 para indicar falha
          }
-         rs.close(); // Close ResultSet if ID exists
+         rs.close(); // Fecha o ResultSet se o ID existir
 
-         // Prepare the SQL statement to update the tag description
+         // Prepara a instrução SQL para atualizar a descrição da tag
          pstmt = conn.prepareStatement("UPDATE TAG SET DESCRIPTION = ? WHERE ID = ?");
-         pstmt.setString(1, description); // Set the new description
-         pstmt.setInt(2, id); // Set the tag ID
+         pstmt.setString(1, description); // Define a nova descrição
+         pstmt.setInt(2, id); // Define o ID da tag
 
-         // Return 1 if update is successful, otherwise return 0
+         // Retorna 1 se a atualização for bem-sucedida, caso contrário retorna 0
          return pstmt.executeUpdate() > 0 ? 1 : 0;
       } catch (SQLException sqle) {
-         sqle.printStackTrace(); // Print SQL errors during update
-         return -1; // Return -1 to indicate a database error
+         sqle.printStackTrace(); // Imprime erros SQL durante a atualização
+         return -1; // Retorna -1 para indicar um erro no banco de dados
       } finally {
-         connection.disconnect();// Disconnect from the database
+         connection.disconnect(); // Desconecta do banco de dados
       }
    }
 
-   // Method to fetch all tags from the database
-   public ResultSet read() {
+   // Método para buscar todas as tags do banco de dados
+   public ResultSet readTag() {
       ResultSet rset = null;
       try {
-         java.sql.Connection conn = connection.connect(); // Connects to the database
+         java.sql.Connection conn = connection.connect(); // Conecta ao banco de dados
 
-         // Prepare the SQL query to select all tags ordered by ID
+         // Prepara a consulta SQL para selecionar todas as tags ordenadas pelo ID
          pstmt = conn.prepareStatement("SELECT * FROM TAG ORDER BY ID");
-         rset = pstmt.executeQuery(); // Execute the query and store the result set
+         rset = pstmt.executeQuery(); // Executa a consulta e armazena o conjunto de resultados
       } catch (SQLException sqe) {
-         sqe.printStackTrace(); // Print SQL errors during query execution
-      }finally{
-         connection.disconnect();// Disconnect from the database
-         return rset; // Return the result set containing the tags
+         sqe.printStackTrace(); // Imprime erros SQL durante a execução da consulta
+      } finally {
+         connection.disconnect(); // Desconecta do banco de dados
+         return rset; // Retorna o conjunto de resultados contendo as tags
       }
    }
 }

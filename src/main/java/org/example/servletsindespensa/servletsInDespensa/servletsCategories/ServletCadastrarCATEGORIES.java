@@ -18,7 +18,7 @@ public class ServletCadastrarCATEGORIES extends HttpServlet {
 
         String name = request.getParameter("category_name");
 
-        int inserir = categoriesDAO.insert(name);
+        int inserir = categoriesDAO.insertCategories(name);
         if (inserir > 0) {
             request.getRequestDispatcher("sucessoCrud.jsp").forward(request, response);
         } else {

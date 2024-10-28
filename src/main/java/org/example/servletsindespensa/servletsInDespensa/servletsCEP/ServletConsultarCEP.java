@@ -1,7 +1,6 @@
 package org.example.servletsindespensa.servletsInDespensa.servletsCEP;
 
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -17,7 +16,7 @@ public class ServletConsultarCEP extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        ResultSet rs = cepDAO.read();
+        ResultSet rs = cepDAO.readCep();
 
         PrintWriter out = response.getWriter();
         try {

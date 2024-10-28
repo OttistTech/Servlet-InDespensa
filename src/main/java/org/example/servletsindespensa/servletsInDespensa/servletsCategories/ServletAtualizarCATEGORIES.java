@@ -1,7 +1,6 @@
 package org.example.servletsindespensa.servletsInDespensa.servletsCategories;
 
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -21,7 +20,7 @@ public class ServletAtualizarCATEGORIES extends HttpServlet {
         int intId = Integer.parseInt(id);
 
 
-        int atualizar = categoriesDAO.update(name, intId);
+        int atualizar = categoriesDAO.updateCategories(name, intId);
         if (atualizar > 0) {
             request.getRequestDispatcher("sucessoCrud.jsp").forward(request, response);
         } else {

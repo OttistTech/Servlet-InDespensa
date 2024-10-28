@@ -24,7 +24,7 @@ public class AdmDAO {
         try {
             conn = dbConnection.connect(); // Conecta ao banco de dados
             if (conn == null) {
-                System.err.println("Falha ao estabelecer a conexão com o banco de dados.");
+                System.out.println("Falha ao estabelecer a conexão com o banco de dados.");
                 return -1; // Retorne erro se não conseguiu conectar
             }
 
@@ -116,7 +116,7 @@ public class AdmDAO {
         try {
             conn = dbConnection.connect(); // Conecta ao banco de dados
             if (conn == null) {
-                System.err.println("Falha ao estabelecer a conexão com o banco de dados.");
+                System.out.println("Falha ao estabelecer a conexão com o banco de dados.");
                 return -1; // Retorne erro se não conseguiu conectar
             }
 
@@ -155,7 +155,7 @@ public class AdmDAO {
         try {
             conn = dbConnection.connect(); // Conecta ao banco de dados
             if (conn == null) {
-                System.err.println("Falha ao estabelecer a conexão com o banco de dados.");
+                System.out.println("Falha ao estabelecer a conexão com o banco de dados.");
                 return null; // Retorne null se não conseguiu conectar
             }
             pstmt = conn.prepareStatement("SELECT * FROM ADM ORDER BY name");
@@ -173,7 +173,7 @@ public class AdmDAO {
         try {
             conn = dbConnection.connect(); // Conecta ao banco de dados
             if (conn == null) {
-                System.err.println("Falha ao estabelecer a conexão com o banco de dados.");
+                System.out.println("Falha ao estabelecer a conexão com o banco de dados.");
                 return -1; // Retorne erro se não conseguiu conectar
             }
             String hashedPassword = hash.hashing(password); // Usa o hash correto

@@ -10,12 +10,12 @@ public class CepDAO {
    private DbConnection connection = new DbConnection();
    private PreparedStatement pstmt;
 
-   // Method to insert a new CEP (Postal Code)
-   public int insert(String id) {  // Alterado de int para String
+   // Método para inserir um novo CEP (Código Postal)
+   public int insertCep(String id) {  // Alterado de int para String
       try {
-         java.sql.Connection conn = connection.connect();  // Establishes the database connection
+         java.sql.Connection conn = connection.connect();  // Estabelece a conexão com o banco de dados
 
-         // Check if the ID already exists
+         // Verificar se o ID já existe
          pstmt = conn.prepareStatement("SELECT COUNT(*) FROM CEP WHERE CEP_ID = ?");
          pstmt.setString(1, id);  // Usando setString para String
          ResultSet rs = pstmt.executeQuery();
@@ -23,28 +23,28 @@ public class CepDAO {
 
          if (rs.getInt(1) > 0) {
             rs.close();
-            return 0; // ID already exists, return 0
+            return 0; // ID já existe, retorna 0
          }
          rs.close();
 
-         // Insert new CEP
+         // Inserir novo CEP
          pstmt = conn.prepareStatement("INSERT INTO CEP (CEP_ID) VALUES (?)");
          pstmt.setString(1, id);  // Usando setString para String
-         return pstmt.executeUpdate() > 0 ? 1 : 0; // Return 1 if successful, otherwise 0
+         return pstmt.executeUpdate() > 0 ? 1 : 0; // Retornar 1 se bem-sucedido, caso contrário 0
       } catch (SQLException sqe) {
          sqe.printStackTrace();
-         return -1; // Return -1 in case of error
+         return -1; // Retornar -1 em caso de erro
       } finally {
-         connection.disconnect(); // Disconnect from the database
+         connection.disconnect(); // Desconectar do banco de dados
       }
    }
 
-   // Method to delete a CEP by its ID
-   public int delete(String id) {  // Alterado de int para String
+   // Método para deletar um CEP pelo seu ID
+   public int deleteCep(String id) {  // Alterado de int para String
       try {
-         java.sql.Connection conn = connection.connect();  // Establishes the database connection
+         java.sql.Connection conn = connection.connect();  // Estabelece a conexão com o banco de dados
 
-         // Check if the ID exists
+         // Verificar se o ID existe
          pstmt = conn.prepareStatement("SELECT COUNT(*) FROM CEP WHERE CEP_ID = ?");
          pstmt.setString(1, id);  // Usando setString para String
          ResultSet rs = pstmt.executeQuery();
@@ -52,28 +52,28 @@ public class CepDAO {
 
          if (rs.getInt(1) == 0) {
             rs.close();
-            return 0; // ID doesn't exist, return 0
+            return 0; // ID não existe, retorna 0
          }
          rs.close();
 
-         // Delete the CEP
+         // Deletar o CEP
          pstmt = conn.prepareStatement("DELETE FROM CEP WHERE CEP_ID = ?");
          pstmt.setString(1, id);  // Usando setString para String
-         return pstmt.executeUpdate() > 0 ? 1 : 0; // Return 1 if successful, otherwise 0
+         return pstmt.executeUpdate() > 0 ? 1 : 0; // Retornar 1 se bem-sucedido, caso contrário 0
       } catch (SQLException sqe) {
          sqe.printStackTrace();
-         return -1; // Return -1 in case of error
+         return -1; // Retornar -1 em caso de erro
       } finally {
-         connection.disconnect(); // Disconnect from the database
+         connection.disconnect(); // Desconectar do banco de dados
       }
    }
 
-   // Method to update an existing CEP ID
-   public int update(String oldCep, String newCep) {  // Alterado de int para String
+   // Método para atualizar um ID de CEP existente
+   public int updateCep(String oldCep, String newCep) {  // Alterado de int para String
       try {
-         java.sql.Connection conn = connection.connect();  // Establishes the database connection
+         java.sql.Connection conn = connection.connect();  // Estabelece a conexão com o banco de dados
 
-         // Check if the old CEP exists
+         // Verificar se o CEP antigo existe
          pstmt = conn.prepareStatement("SELECT COUNT(*) FROM CEP WHERE CEP_ID = ?");
          pstmt.setString(1, oldCep);  // Usando setString para String
          ResultSet rs = pstmt.executeQuery();
@@ -81,36 +81,36 @@ public class CepDAO {
 
          if (rs.getInt(1) == 0) {
             rs.close();
-            return 0; // Old CEP doesn't exist, return 0
+            return 0; // CEP antigo não existe, retorna 0
          }
          rs.close();
 
-         // Update the CEP
+         // Atualizar o CEP
          pstmt = conn.prepareStatement("UPDATE CEP SET CEP_ID = ? WHERE CEP_ID = ?");
          pstmt.setString(1, newCep);  // Usando setString para String
          pstmt.setString(2, oldCep);  // Usando setString para String
-         return pstmt.executeUpdate() > 0 ? 1 : 0; // Return 1 if successful, otherwise 0
+         return pstmt.executeUpdate() > 0 ? 1 : 0; // Retornar 1 se bem-sucedido, caso contrário 0
       } catch (SQLException sqle) {
          sqle.printStackTrace();
-         return -1; // Return -1 in case of error
+         return -1; // Retornar -1 em caso de erro
       } finally {
-         connection.disconnect(); // Disconnect from the database
+         connection.disconnect(); // Desconectar do banco de dados
       }
    }
 
-   // Method to retrieve all CEPs
-   public ResultSet read() {
+   // Método para recuperar todos os CEPs
+   public ResultSet readCep() {
       try {
-         java.sql.Connection conn = connection.connect();  // Establishes the database connection
+         java.sql.Connection conn = connection.connect();  // Estabelece a conexão com o banco de dados
 
-         // Retrieve all CEPs
+         // Recuperar todos os CEPs
          pstmt = conn.prepareStatement("SELECT * FROM CEP ORDER BY CEP_ID");
          return pstmt.executeQuery();
       } catch (SQLException sqe) {
          sqe.printStackTrace();
          return null;
       } finally {
-         connection.disconnect(); // Disconnect from the database
+         connection.disconnect(); // Desconectar do banco de dados
       }
    }
 }

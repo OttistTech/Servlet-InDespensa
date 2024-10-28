@@ -21,7 +21,7 @@ public class ServletCadastrarTAG extends HttpServlet {
         String desc = request.getParameter("description");
 
 
-        int inserir = tagDAO.insert(intId,desc);
+        int inserir = tagDAO.insertTag(intId,desc);
         if (inserir > 0) {
             request.getRequestDispatcher("sucessoCrud.jsp").forward(request, response);
         } else {

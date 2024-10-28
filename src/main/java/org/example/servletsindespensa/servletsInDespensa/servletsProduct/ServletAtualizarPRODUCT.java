@@ -1,7 +1,6 @@
 package org.example.servletsindespensa.servletsInDespensa.servletsProduct;
 
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -21,7 +20,7 @@ public class ServletAtualizarPRODUCT extends HttpServlet {
         String id = request.getParameter("product_id");
         int intId = Integer.parseInt(id);
 
-        int atualizar = productDAO.update(doubleWeight_volume,intId);
+        int atualizar = productDAO.updateProduct(doubleWeight_volume,intId);
         if (atualizar > 0) {
             request.getRequestDispatcher("sucessoCrud.jsp").forward(request, response);
         } else {

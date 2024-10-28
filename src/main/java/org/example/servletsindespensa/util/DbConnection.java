@@ -4,35 +4,35 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DbConnection {
-   private java.sql.Connection conn; // Connection object to interact with the database
+   private java.sql.Connection conn; // Objeto de conexão para interagir com o banco de dados
 
-   // Method to connect to the PostgreSQL database
+   // Método para conectar ao banco de dados PostgreSQL
    public java.sql.Connection connect() {
       try {
-         // Load the PostgreSQL driver
+         // Carregar o driver do PostgreSQL
          Class.forName("org.postgresql.Driver");
-         // Establish a connection using environment variables for host, user, and password
+         // Estabelecer uma conexão usando variáveis de ambiente para host, usuário e senha
          conn = DriverManager.getConnection(
-                 System.getenv("DB_HOST2"), // Database host (URL)
-                 System.getenv("DB_USER2"), // Database user
-                 System.getenv("DB_PASSWORD2") // Database password
+                 System.getenv("DB_HOST"), // Host do banco de dados (URL)
+                 System.getenv("DB_USER"), // Usuário do banco de dados
+                 System.getenv("DB_PASSWORD") // Senha do banco de dados
          );
       } catch (ClassNotFoundException | SQLException e) {
-         e.printStackTrace(); // Print any error that occurs during the connection attempt
+         e.printStackTrace(); // Imprimir qualquer erro que ocorre durante a tentativa de conexão
          return null;
       }
-      return conn; // Retorne a conexão corretamente
+      return conn; // Retornar a conexão corretamente
    }
 
-   // Method to disconnect from the PostgreSQL database
+   // Método para desconectar do banco de dados PostgreSQL
    public void disconnect() {
       try {
          if (conn != null && !conn.isClosed()) {
-            // Close the connection if it is open
+            // Fechar a conexão se estiver aberta
             conn.close();
          }
       } catch (SQLException e) {
-         e.printStackTrace(); // Print any error that occurs during disconnection
+         e.printStackTrace(); // Imprimir qualquer erro que ocorre durante a desconexão
       }
    }
 }

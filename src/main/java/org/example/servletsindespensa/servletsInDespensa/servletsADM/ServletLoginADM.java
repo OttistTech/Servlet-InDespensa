@@ -26,7 +26,7 @@ public class ServletLoginADM extends HttpServlet {
 
         if (resultado == 1) {
             response.sendRedirect(request.getContextPath() + "/PaginasCRUD/index.jsp");
-        } else {
+        }else {
             request.setAttribute("errorMessage", "Email ou senha inválidos!");
             request.getRequestDispatcher("/CadastroADM/index.jsp").forward(request, response);
         }

@@ -18,7 +18,7 @@ public class ServletConsultarTAG extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        ResultSet rs = tagDAO.read();
+        ResultSet rs = tagDAO.readTag();
 
         PrintWriter out = response.getWriter();
         try {

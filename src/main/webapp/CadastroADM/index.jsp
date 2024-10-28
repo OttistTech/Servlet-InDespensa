@@ -18,7 +18,6 @@
     <div class="login-box">
         <h2>É Bom te ver de volta Chefinho!</h2>
 
-        <!-- Exibir mensagem de erro, se houver -->
         <%
             String errorMessage = (String) request.getAttribute("errorMessage");
             if (errorMessage != null) {

@@ -1,7 +1,6 @@
 package org.example.servletsindespensa.servletsInDespensa.servletsProduct;
 
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -32,7 +31,7 @@ public class ServletCadastrarPRODUCT extends HttpServlet {
         String weight_volume = request.getParameter("weight_volume");
         double doubleWeight_volume = Double.parseDouble(weight_volume);
 
-        int inserir = productDAO.insert(intId,desc,longBarcode,brand,name,type,doubleWeight_volume);
+        int inserir = productDAO.insertProduct(intId,desc,longBarcode,brand,name,type,doubleWeight_volume);
         if (inserir > 0) {
             request.getRequestDispatcher("sucessoCrud.jsp").forward(request, response);
         } else {
