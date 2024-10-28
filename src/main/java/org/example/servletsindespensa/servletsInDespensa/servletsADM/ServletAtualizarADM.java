@@ -15,10 +15,13 @@ public class ServletAtualizarADM extends HttpServlet {
     AdmDAO admDAO = new AdmDAO();
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
         String email = request.getParameter("username");
+        String newPassword = request.getParameter("newPassword");
         String password = request.getParameter("password");
-        int inserir = admDAO.insertAdm("Piassi", password, email);
-        if (inserir > 0) {
+        String name = request.getParameter("name");
+        int update = admDAO.updateAdm(email,newPassword,password,name);
+        if (update > 0) {
             request.getRequestDispatcher("sucessoCrud.jsp").forward(request, response);
         } else {
             request.getRequestDispatcher("erroCrud.jsp").forward(request, response);

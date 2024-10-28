@@ -2,33 +2,40 @@
 /* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
 @font-face {
     font-family: "montserrat";
-    src: url("../LandingPage/Fonts/Montserrat/Montserrat-Thin.woff");
+    src: url("Fonts/Montserrat/Montserrat-Regular.woff");
 }
 
 @font-face {
     font-family: "montserratP";
-    src: url("../LandingPage/Fonts/Montserrat/Montserrat-Regular.woff");
-}
-
-@font-face {
-    font-family: "montserratBold";
-    src: url("../LandingPage/Fonts/Montserrat/Montserrat-Bold.woff");
+    src: url("Fonts/Montserrat/Montserrat-Light.woff");
 }
 
 @font-face {
     font-family: "montserratSemiBold";
-    src: url("../LandingPage/Fonts/Montserrat/Montserrat-SemiBold.woff");
+    src: url("Fonts/Montserrat/Montserrat-SemiBold.woff");
+}
+
+
+@font-face {
+    font-family: "montserratBold";
+    src: url("Fonts/Montserrat/Montserrat-Bold.woff");
 }
 
 @font-face {
-    font-family: "DelaGothicOne";
-    src: url("../LandingPage/Fonts/DelaGothicOne/DelaGothicOne-Regular.woff");
+    font-family: "montserratExtraBold";
+    src: url("Fonts/Montserrat/Montserrat-ExtraBold.woff");
 }
 /* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
 
 *{
     margin: 0;
     padding: 0;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 header{
@@ -43,7 +50,7 @@ header{
 
 header h1{
     position: absolute;
-    font-family: "montserratP", serif;
+    font-family: "montserratBold",serif;
     margin-left: 142px;
     font-size: 48px;
 }
@@ -54,59 +61,65 @@ header img{
     width: 54px;
     height: 57px;
 }
-
-
-.content h1{
-    font-size: 48px;
-    font-family: "montserratBold", serif;
-}
-.content h4{
-    font-size: 24px;
-    font-weight: 500;
-    font-family: "montserratP", serif;
-    margin-top: 8px;
-}
-.buttons{
-    margin-top: 9px;
-}
-button{
-    display: flex;
-    align-items: baseline;
-    width: 240px;
-    height: 49px;
-    border: solid black 1px;
-    border-radius: 20px;
-    box-sizing: border-box;
-    text-align: center;
-    resize: none;
-    margin-top: 29px;
-    box-shadow:  0 3px 4px -2px rgb(91, 75, 75);
-    background-color: white;
-}
-button:hover{
-    box-shadow:  0 3px 10px -2px rgb(91, 75, 75);
-}
-
-button p{
-    display: flex;
-    align-self: center;
-    font-size: 24px;
-    font-family: "montserratSemiBold", serif;
-    margin-left: 28px;
-
-}
 .content{
-    margin-top: 90px;
-    margin-left: 125px;
-    margin-bottom: 129px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.content h1{
+    padding-top: 48px;
+    padding-bottom: 56px;
+    font-size: 48px;
+    font-family: "montserratBold",serif;
+}
+.content h2{
+    font-family: "montserrat",serif;
+    font-size: 24px;
+    margin-left: 26px;
+}
+.params{
+    padding-bottom: 42px;
 }
 
-.content a{
-    text-decoration: none;
+.params input{
+    width: 609px;
+    height: 67px;
+    border: solid black 2px;
+    border-radius: 20px;
+    font-size: 24px;
+    box-sizing: border-box;
+    padding-left: 24px;
+    font-family: "montserratP",serif;
+    box-shadow:  0 3px 4px -2px rgb(91, 75, 75);
+    transition: 0.2s;
+}
+.params input:hover{
+    box-shadow:  0 3px 10px -2px rgb(91, 75, 75);
+    transition: 0.2s;
 }
 
+.send input{
+    cursor: pointer;
+    width: 355px;
+    height: 50px;
+    text-align: center;
+    background-color: #F59132;
+    color: white;
+    box-shadow:  0 3px 4px -2px rgb(91, 75, 75);
+    border: 0;
+    border-radius: 11px;
+    font-family: "montserratSemiBold", serif;
+    font-size: 36px;
+    align-items: center;
+    margin-bottom: 206px;
+    transition: 0.2s;
 
+}
 
+.send input:hover{
+    box-shadow:  0 3px 10px -2px rgb(91, 75, 75);
+    transition: 0.2s;
+}
 footer{
     display: flex;
     flex-direction: column;
@@ -120,7 +133,6 @@ footer{
     align-items: center;
     margin-left: 116px;
     margin-top: 48px;
-
 }
 
 .logo-container img{
@@ -149,7 +161,6 @@ footer{
     height: 58px;
     background-color: white;
     border: none;
-    margin-top: 31px;
     font-family: 'montserratP',serif;
     font-size: 24px;
     color: black;

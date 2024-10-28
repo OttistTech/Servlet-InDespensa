@@ -20,12 +20,11 @@ public class ServletLoginADM extends HttpServlet {
         // Obtendo parâmetros de email e senha da requisição
         String email = request.getParameter("email");
         String password = request.getParameter("password");
-
         // Verificando credenciais no banco de dados
         int resultado = admDAO.autenticarAdm(email, password);
-
-        if (resultado == 1) {
-            response.sendRedirect(request.getContextPath() + "/PaginasCRUD/index.jsp");
+        if (resultado > 0) {
+            //response.sendRedirect(request.getContextPath() + "/PaginasCRUD/index.jsp");
+            request.getRequestDispatcher("/PaginasCRUD/MENU/index.jsp").forward(request, response);
         } else {
             request.setAttribute("errorMessage", "Email ou senha inválidos!");
             request.getRequestDispatcher("/CadastroADM/index.jsp").forward(request, response);

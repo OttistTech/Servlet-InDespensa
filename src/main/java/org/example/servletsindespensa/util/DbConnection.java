@@ -1,10 +1,11 @@
 package org.example.servletsindespensa.util;
 
+import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DbConnection {
-   private java.sql.Connection conn; // Connection object to interact with the database
+   Connection conn; // Connection object to interact with the database
 
    // Method to connect to the PostgreSQL database
    public java.sql.Connection connect() {
@@ -17,6 +18,7 @@ public class DbConnection {
                  System.getenv("DB_USER2"), // Database user
                  System.getenv("DB_PASSWORD2") // Database password
          );
+
       } catch (ClassNotFoundException | SQLException e) {
          e.printStackTrace(); // Print any error that occurs during the connection attempt
          return null;

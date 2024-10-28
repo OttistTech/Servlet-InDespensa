@@ -24,16 +24,17 @@ public class AdmDAO {
         try {
             conn = dbConnection.connect(); // Conecta ao banco de dados
             if (conn == null) {
-                System.err.println("Falha ao estabelecer a conexão com o banco de dados.");
+                System.out.println("Falha ao estabelecer a conexão com o banco de dados.");
                 return -1; // Retorne erro se não conseguiu conectar
             }
 
             boolean idExists;
             boolean emailExists;
             int id;
+            id = rd.nextInt(10000) + 1;
 
             do {
-                id = rd.nextInt(10000) + 1; // Gera um ID aleatório
+                // Gera um ID aleatório
                 // Verifica se o ID já existe
                 pstmt = conn.prepareStatement("SELECT COUNT(*) FROM ADM WHERE ADM_ID = ?");
                 pstmt.setInt(1, id);
@@ -54,26 +55,23 @@ public class AdmDAO {
             if (!Pattern.matches(regexNome, name)) {
                 return 0; // Retorna 0 se o nome não for válido
             }
-
             // Valida a senha
             String regexSenha = "^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$&])[A-Z0-9a-z%.@#_-]{8,}$";
             if (!Pattern.matches(regexSenha, pswd)) {
                 return 0; // Retorna 0 se a senha não for válida
             }
-
             // Valida o email
-            String regexEmail = "^[a-z][^A-Z]@(gmail|germinare)\\.(com|org)(\\.br)?$";
+            String regexEmail = "^[a-z][^A-Z]*@(gmail|germinare)\\.(com|org)(\\.br)?$";
             if (!Pattern.matches(regexEmail, email)) {
                 return 0; // Retorna 0 se o email não for válido
             }
-
             // Insere o novo administrador
-            pstmt = conn.prepareStatement("INSERT INTO ADM (name, pswd, email, adm_id) VALUES (?, ?, ?, ?)");
-            pstmt.setString(1, name);
-            pstmt.setString(2, hash.hashing(pswd));
-            pstmt.setString(3, email);
-            pstmt.setInt(4, id);
-            return pstmt.executeUpdate() > 0 ? 1 : 0; // Retorna 1 se a inserção for bem-sucedida
+            pstmt = conn.prepareStatement("INSERT INTO ADM (adm_id,name,email, password) VALUES (?, ?, ?, ?)");
+                        pstmt.setInt(1, id);
+                        pstmt.setString(2, name);
+                        pstmt.setString(3, email);
+                        pstmt.setString(4, hash.hashing(pswd));
+            return pstmt.executeUpdate(); // Retorna 1 se a inserção for bem-sucedida
         } catch (SQLException sqe) {
             sqe.printStackTrace(); // Imprime o erro ao inserir
             return -1; // Retorna -1 em caso de erro
@@ -116,7 +114,7 @@ public class AdmDAO {
         try {
             conn = dbConnection.connect(); // Conecta ao banco de dados
             if (conn == null) {
-                System.err.println("Falha ao estabelecer a conexão com o banco de dados.");
+                System.out.println("Falha ao estabelecer a conexão com o banco de dados.");
                 return -1; // Retorne erro se não conseguiu conectar
             }
 
@@ -127,7 +125,7 @@ public class AdmDAO {
             ResultSet rs = pstmt.executeQuery();
             if (rs.next() && rs.getInt(1) > 0) {
                 // Verifica se a nova senha é válida
-                String regexSenha = "^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$&])[A-Z0-9a-z%.@#_-]{8,}$";
+                String regexSenha = "^(?=.[A-Z])(?=.[0-9])(?=.*[!@#$&])[A-Z0-9a-z%.@#_-]{8,}$";
                 if (!Pattern.matches(regexSenha, newPassword)) {
                     return 0; // Retorna 0 se a nova senha não for válida
                 }
@@ -155,7 +153,7 @@ public class AdmDAO {
         try {
             conn = dbConnection.connect(); // Conecta ao banco de dados
             if (conn == null) {
-                System.err.println("Falha ao estabelecer a conexão com o banco de dados.");
+                System.out.println("Falha ao estabelecer a conexão com o banco de dados.");
                 return null; // Retorne null se não conseguiu conectar
             }
             pstmt = conn.prepareStatement("SELECT * FROM ADM ORDER BY name");
@@ -173,11 +171,11 @@ public class AdmDAO {
         try {
             conn = dbConnection.connect(); // Conecta ao banco de dados
             if (conn == null) {
-                System.err.println("Falha ao estabelecer a conexão com o banco de dados.");
+                System.out.println("Falha ao estabelecer a conexão com o banco de dados.");
                 return -1; // Retorne erro se não conseguiu conectar
             }
             String hashedPassword = hash.hashing(password); // Usa o hash correto
-            String sql = "SELECT COUNT(*) FROM ADM WHERE email = ? AND pswd = ?";
+            String sql = "SELECT COUNT(*) FROM ADM WHERE email = ? AND password = ?";
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, email);
             pstmt.setString(2, hashedPassword);
