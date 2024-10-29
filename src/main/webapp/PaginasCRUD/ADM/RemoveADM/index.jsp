@@ -15,21 +15,14 @@
 </header>
 <div class="content">
     <h1>Inserção de Parâmetros</h1>
-    <form action="${pageContext.request.contextPath}/cadastroADM" method="post">
+    <form action="${pageContext.request.contextPath}/removerADM" method="post">
         <div class="params">
-            <label for="name"> nome: </label>
-            <br>
-            <input type="text" id="name" name="name" required>
+            <h2>Informe o email do user:</h2>
+            <input type="text" name="email" required>
         </div>
         <div class="params">
-            <label for="password"> password: </label>
-            <br>
-            <input type="password" id="password" name="password" required>
-        </div>
-        <div class="params">
-            <label for="email"> email: </label>
-            <br>
-            <input type="email" id="email" name="email" required>
+            <h2>Informe a senha do user:</h2>
+            <input type="password" name="password" required>
         </div>
         <div class="send">
             <input type="submit" value="Enviar">
@@ -50,4 +43,3 @@
 </footer>
 </body>
 </html>
-

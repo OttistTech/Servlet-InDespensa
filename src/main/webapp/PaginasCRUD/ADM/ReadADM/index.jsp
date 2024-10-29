@@ -15,14 +15,14 @@
 <body>
 <header>
     <!-- colocar logo branca -->
-    <img src="Imagens/LogoEscurinha.png" alt="logo">
+    <img src="${pageContext.request.contextPath}/LandingPage/imagens/LogoEscurinha.png" alt="logo">
     <h1>InDespensa</h1>
 </header>
 <div class="titulo">
     <h1>Tabela Produto</h1>
     <h2>Verifique os dados da tabela</h2>
 </div>
-<form action="${pageContext.request.contextPath}/search" method="post">
+<form action="${pageContext.request.contextPath}/LandingPage/imagens/search" method="post">
     <button type="submit" class="iconBusca"><img src="Imagens/Search.svg" alt="Lupa"></button>
     <input type="text" placeholder="Pesquisar...">
 </form>
@@ -70,6 +70,9 @@
                 <div class="data-item"><%= adms.getString("name") %></div>
                 <div class="data-item"><%= adms.getString("password") %></div>
             </div>
+<%--pegar a tabela,
+fazer uma div para tabela, nessa div voce coloca overflow-x e y
+os dois com valor auto no css, depois coloca border-collapse na table com valor collapse            --%>
             <%
                 }
                 if (adms != null) {
@@ -82,14 +85,14 @@
 
 <footer>
     <div class="logo-container">
-        <img src="Imagens/LogoEscurinha.png" alt="InDespensa Logo" class="logo">
+        <img src="${pageContext.request.contextPath}/LandingPage/imagens/LogoEscurinha.png" alt="InDespensa Logo" class="logo">
         <span>InDespensa</span>
     </div>
 
     <div class="button-container">
         <button class="footer-button">
-            <img src="Imagens/image.png" alt="Site">
-            <a href="../../../../../../../VScode/Display/InDesoensa/CRUD"><strong>Site</strong></a>
+            <img src="${pageContext.request.contextPath}/LandingPage/imagens/InternetPreto.png" alt="Site">
+            <a href="${pageContext.request.contextPath}/LandingPage/index.html"><strong>Site</strong></a>
         </button>
     </div>
 </footer>

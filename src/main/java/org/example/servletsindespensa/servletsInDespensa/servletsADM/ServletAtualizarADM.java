@@ -10,17 +10,16 @@ import org.example.servletsindespensa.dao.AdmDAO;
 
 import java.io.IOException;
 
-//@WebServlet(name = "login", value = "/login")
+@WebServlet(name = "atualizarADM", urlPatterns = {"/atualizarADM"})
 public class ServletAtualizarADM extends HttpServlet {
     AdmDAO admDAO = new AdmDAO();
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String email = request.getParameter("username");
+        String email = request.getParameter("email");
         String newPassword = request.getParameter("newPassword");
         String password = request.getParameter("password");
-        String name = request.getParameter("name");
-        int update = admDAO.updateAdm(email,newPassword,password,name);
+        int update = admDAO.updateAdm(email,newPassword,password);
         if (update > 0) {
             request.getRequestDispatcher("sucessoCrud.jsp").forward(request, response);
         } else {

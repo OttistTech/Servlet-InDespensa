@@ -90,12 +90,12 @@ public class AdmDAO {
             }
 
             // Verifica se o nome existe
-            pstmt = conn.prepareStatement("SELECT COUNT(*) FROM ADM WHERE pswd = ?");
+            pstmt = conn.prepareStatement("SELECT COUNT(*) FROM ADM WHERE password = ?");
             pstmt.setString(1, hash.hashing(senha));
             ResultSet rs = pstmt.executeQuery();
             if (rs.next() && rs.getInt(1) > 0) {
                 // Deleta o registro correspondente
-                pstmt = conn.prepareStatement("DELETE FROM ADM WHERE email = ? AND pswd = ?");
+                pstmt = conn.prepareStatement("DELETE FROM ADM WHERE email = ? AND password = ?");
                 pstmt.setString(1, email);
                 pstmt.setString(2, hash.hashing(senha));
                 return pstmt.executeUpdate() > 0 ? 1 : 0; // Retorna 1 se a deleção for bem-sucedida
@@ -110,7 +110,7 @@ public class AdmDAO {
     }
 
     // Método para atualizar um registro
-    public int updateAdm(String email, String newPassword, String senha, String nome) {
+    public int updateAdm(String email, String newPassword, String senha) {
         try {
             conn = dbConnection.connect(); // Conecta ao banco de dados
             if (conn == null) {
@@ -119,25 +119,23 @@ public class AdmDAO {
             }
 
             // Verifica se o nome existe
-            pstmt = conn.prepareStatement("SELECT COUNT(*) FROM ADM WHERE email = ? AND pswd = ?");
+            pstmt = conn.prepareStatement("SELECT COUNT(*) FROM ADM WHERE email = ? AND password = ?");
             pstmt.setString(1, email);
             pstmt.setString(2, hash.hashing(senha));
             ResultSet rs = pstmt.executeQuery();
             if (rs.next() && rs.getInt(1) > 0) {
                 // Verifica se a nova senha é válida
-                String regexSenha = "^(?=.[A-Z])(?=.[0-9])(?=.*[!@#$&])[A-Z0-9a-z%.@#_-]{8,}$";
+                String regexSenha = "^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$&])[A-Z0-9a-z%.@#_-]{8,}$";
                 if (!Pattern.matches(regexSenha, newPassword)) {
                     return 0; // Retorna 0 se a nova senha não for válida
                 }
 
                 // Atualiza a senha
-                pstmt = conn.prepareStatement("UPDATE ADM SET pswd = ?, email = ?, name = ? WHERE email = ? AND pswd = ?");
+                pstmt = conn.prepareStatement("UPDATE ADM SET password = ? WHERE email = ? AND password = ?");
                 pstmt.setString(1, hash.hashing(newPassword));
                 pstmt.setString(2, email);
-                pstmt.setString(3, nome);
-                pstmt.setString(4, email);
-                pstmt.setString(5, hash.hashing(senha));
-                return pstmt.executeUpdate() > 0 ? 1 : 0; // Retorna 1 se a atualização for bem-sucedida
+                pstmt.setString(3, hash.hashing(senha));
+                return pstmt.executeUpdate(); // Retorna 1 se a atualização for bem-sucedida
             }
             return 0; // Retorna 0 se o nome não existir
         } catch (SQLException sqle) {

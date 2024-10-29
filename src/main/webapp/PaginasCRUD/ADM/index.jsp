@@ -49,8 +49,8 @@
 
     <div class="button-container">
         <button class="footer-button">
-            <img src="${pageContext.request.contextPath}/LandingPage/imagens/image-Photoroom%20(12)%201.png" alt="Site">
-            <a href="../"><strong>Site</strong></a>
+            <img src="${pageContext.request.contextPath}/LandingPage/imagens/InternetPreto.png" alt="Site">
+            <a href="/LandingPage/index.html"><strong>Site</strong></a>
         </button>
     </div>
 </footer>

@@ -10,14 +10,14 @@ import org.example.servletsindespensa.dao.AdmDAO;
 
 import java.io.IOException;
 
-//@WebServlet(name = "login", value = "/login")
+@WebServlet(name = "removerADM", urlPatterns = {"/removerADM"})
 public class ServletRemoverADM extends HttpServlet {
     AdmDAO admDAO = new AdmDAO();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String email = request.getParameter("email");
-        String senha = request.getParameter("senha");
+        String senha = request.getParameter("password");
         int remover = admDAO.deleteAdm(email, senha);
         if (remover > 0) {
             request.getRequestDispatcher("sucessoCrud.jsp").forward(request, response);
