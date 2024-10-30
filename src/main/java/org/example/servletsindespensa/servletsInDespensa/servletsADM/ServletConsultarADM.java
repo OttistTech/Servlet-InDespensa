@@ -11,7 +11,7 @@ import java.io.PrintWriter;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-@WebServlet(name = "read", urlPatterns = {"/search"})
+@WebServlet(name = "read", urlPatterns = {"/lerADM"})
 public class ServletConsultarADM extends HttpServlet {
     AdmDAO admDAO = new AdmDAO();
     protected void doPost(HttpServletRequest request, HttpServletResponse response)

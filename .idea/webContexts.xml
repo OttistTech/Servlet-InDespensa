@@ -5,8 +5,10 @@
       <map>
         <entry key="file://$PROJECT_DIR$/src/main/webapp/CadastroADM/index.jsp" value="file://$PROJECT_DIR$/src/main/webapp/CadastroADM" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/LandingPage/index.html" value="file://$PROJECT_DIR$/src/main/webapp/LandingPage" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/LandingPage/index.jsp" value="file://$PROJECT_DIR$/src/main/webapp/LandingPage" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/PaginasCRUD/ADM/index.html" value="file://$PROJECT_DIR$/src/main/webapp/PaginasCRUD/ADM" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/PaginasCRUD/ADM/index.jsp" value="file://$PROJECT_DIR$/src/main/webapp/PaginasCRUD/ADM" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/PaginasCRUD/Product/lerPRODUCT/index.jsp" value="file://$PROJECT_DIR$/src/main/webapp/PaginasCRUD/Product/lerPRODUCT" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/SupportPage/index.html" value="file://$PROJECT_DIR$/src/main/webapp/SupportPage" />
       </map>
     </option>

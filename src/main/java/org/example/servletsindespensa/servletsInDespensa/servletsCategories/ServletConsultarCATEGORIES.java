@@ -11,8 +11,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
-//@WebServlet(name = "login", value = "/login")
+@WebServlet(name = "inserirCATEGORIES", urlPatterns = {"/lerCATEGORIES"})
 public class ServletConsultarCATEGORIES extends HttpServlet {
     CategoriesDAO categoriesDAO = new CategoriesDAO();
     protected void doPost(HttpServletRequest request, HttpServletResponse response)

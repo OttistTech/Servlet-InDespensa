@@ -12,7 +12,7 @@ import java.io.PrintWriter;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-//@WebServlet(name = "login", value = "/login")
+@WebServlet(name = "atualizarPRODUCT", urlPatterns = {"/lerPRODUCT"})
 public class ServletConsultarPRODUCT extends HttpServlet {
     ProductDAO productDAO = new ProductDAO();
     protected void doPost(HttpServletRequest request, HttpServletResponse response)

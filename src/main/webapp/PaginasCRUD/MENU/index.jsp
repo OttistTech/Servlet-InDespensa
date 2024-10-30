@@ -19,10 +19,10 @@
     <h4>Selecione a tabela que voce deseja realizar o CRUD</h4>
     <div class="buttons">
         <a href="${pageContext.request.contextPath}/PaginasCRUD/ADM/index.jsp"><button class="admin"><p>ADM</p></button></a>
-        <a href="${pageContext.request.contextPath}/categorias"><button class="admin"><p>Categorias</p></button></a>
-        <a href="${pageContext.request.contextPath}/cep"><button class="admin"><p>CEP</p></button></a>
-        <a href="${pageContext.request.contextPath}/produtos"><button class="admin"><p>Produtos</p></button></a>
-        <a href="${pageContext.request.contextPath}/tag"><button class="admin"><p>Tag</p></button></a>
+        <a href="${pageContext.request.contextPath}/PaginasCRUD/Categories/index.jsp"><button class="admin"><p>Categorias</p></button></a>
+        <a href="${pageContext.request.contextPath}/PaginasCRUD/Cep/index.jsp"><button class="admin"><p>CEP</p></button></a>
+        <a href="${pageContext.request.contextPath}/PaginasCRUD/Product/index.jsp"><button class="admin"><p>Produtos</p></button></a>
+        <a href="${pageContext.request.contextPath}/PaginasCRUD/Tags/index.jsp"><button class="admin"><p>Tag</p></button></a>
     </div>
 </div>
 

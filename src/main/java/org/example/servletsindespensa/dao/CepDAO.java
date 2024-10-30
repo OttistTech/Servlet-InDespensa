@@ -5,31 +5,35 @@ import org.example.servletsindespensa.util.DbConnection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
 
 public class CepDAO {
    private DbConnection connection = new DbConnection();
    private PreparedStatement pstmt;
 
    // Method to insert a new CEP (Postal Code)
-   public int insert(String id) {  // Alterado de int para String
+   public int insert(String cep_id) {  // Alterado de int para String
       try {
          java.sql.Connection conn = connection.connect();  // Establishes the database connection
+         boolean IDexists;
 
          // Check if the ID already exists
          pstmt = conn.prepareStatement("SELECT COUNT(*) FROM CEP WHERE CEP_ID = ?");
-         pstmt.setString(1, id);  // Usando setString para String
-         ResultSet rs = pstmt.executeQuery();
+         pstmt.setString(1,cep_id);
+         ResultSet rs=pstmt.executeQuery();
          rs.next();
-
-         if (rs.getInt(1) > 0) {
-            rs.close();
-            return 0; // ID already exists, return 0
+         IDexists=rs.getInt(1)>0;
+         if (IDexists){
+            return 0;
          }
-         rs.close();
-
-         // Insert new CEP
-         pstmt = conn.prepareStatement("INSERT INTO CEP (CEP_ID) VALUES (?)");
-         pstmt.setString(1, id);  // Usando setString para String
+         String regex = "^\\S?[0-9]{5}-?[0-9]{3}\\S?$";
+         if (!Pattern.matches(regex,cep_id)){
+            return 0;
+         }
+         // Insere novo cep
+          pstmt = conn.prepareStatement("INSERT INTO CEP (CEP_ID) VALUES (?)");
+         pstmt.setString(1, cep_id);  // Usando setString para String
          return pstmt.executeUpdate() > 0 ? 1 : 0; // Return 1 if successful, otherwise 0
       } catch (SQLException sqe) {
          sqe.printStackTrace();

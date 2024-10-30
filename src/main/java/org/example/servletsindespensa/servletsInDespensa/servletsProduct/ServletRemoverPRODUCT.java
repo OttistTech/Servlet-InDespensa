@@ -9,13 +9,13 @@ import org.example.servletsindespensa.dao.ProductDAO;
 
 import java.io.IOException;
 
-//@WebServlet(name = "login", value = "/login")
+@WebServlet(name = "removerPRODUCT", urlPatterns = {"/removerPRODUCT"})
 public class ServletRemoverPRODUCT extends HttpServlet {
     ProductDAO productDAO = new ProductDAO();
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String id = request.getParameter("product_id");
+        String id = request.getParameter("id");
         int intId = Integer.parseInt(id);
 
         int remover = productDAO.delete(intId);

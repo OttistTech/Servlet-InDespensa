@@ -9,18 +9,16 @@ import org.example.servletsindespensa.dao.CategoriesDAO;
 
 import java.io.IOException;
 
-//@WebServlet(name = "login", value = "/login")
+@WebServlet(name = "atualizarCATEGORIES", urlPatterns = {"/atualizarCATEGORIES"})
 public class ServletAtualizarCATEGORIES extends HttpServlet {
     CategoriesDAO categoriesDAO = new CategoriesDAO();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String name = request.getParameter("category_name");
-        String id = request.getParameter("category_id");
+        String id = request.getParameter("categoryId");
         int intId = Integer.parseInt(id);
-
-
+        String name = request.getParameter("name");
         int atualizar = categoriesDAO.update(name, intId);
         if (atualizar > 0) {
             request.getRequestDispatcher("sucessoCrud.jsp").forward(request, response);

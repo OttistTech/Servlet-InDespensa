@@ -9,14 +9,14 @@ import org.example.servletsindespensa.dao.CategoriesDAO;
 
 import java.io.IOException;
 
-//@WebServlet(name = "login", value = "/login")
+@WebServlet(name = "inserirCATEGORIES", urlPatterns = {"/cadastrarCATEGORIES"})
 public class ServletCadastrarCATEGORIES extends HttpServlet {
     CategoriesDAO categoriesDAO = new CategoriesDAO();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String name = request.getParameter("category_name");
+        String name = request.getParameter("CATEGORY_NAME");
 
         int inserir = categoriesDAO.insert(name);
         if (inserir > 0) {

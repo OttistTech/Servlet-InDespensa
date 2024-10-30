@@ -9,19 +9,19 @@ import org.example.servletsindespensa.dao.CepDAO;
 
 import java.io.IOException;
 
-//@WebServlet(name = "login", value = "/login")
+@WebServlet(name = "atualizarCEP", urlPatterns = {"/atualizarCEP"})
 public class ServletAtualizarCEP extends HttpServlet {
     CepDAO cepDAO = new CepDAO();
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String oldCep = request.getParameter("old_cep");
-        String newCep = request.getParameter("new_cep");
+        String oldCep = request.getParameter("oldCep");
+        String newCep = request.getParameter("newCep");
         int atualizar = cepDAO.update(oldCep,newCep);
         if (atualizar > 0) {
-            request.getRequestDispatcher("sucessoCrud.jsp").forward(request, response);
+            request.getRequestDispatcher("SucessoCRUD.html").forward(request, response);
         } else {
-            request.getRequestDispatcher("erroCrud.jsp").forward(request, response);
+            request.getRequestDispatcher("ErroCRUD.html").forward(request, response);
 
         }
 

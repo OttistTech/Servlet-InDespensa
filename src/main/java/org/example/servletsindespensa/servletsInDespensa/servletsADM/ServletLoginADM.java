@@ -8,7 +8,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.example.servletsindespensa.dao.AdmDAO;
 import java.io.IOException;
 
-@WebServlet(name = "login", urlPatterns = {"/login"})
+@WebServlet(name = "verificarLogin", urlPatterns = {"/verificarLogin"})
 public class ServletLoginADM extends HttpServlet {
 
     // Instância do DAO para interação com o banco de dados

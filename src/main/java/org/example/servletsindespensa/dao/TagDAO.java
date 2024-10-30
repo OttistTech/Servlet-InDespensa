@@ -5,29 +5,32 @@ import org.example.servletsindespensa.util.DbConnection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Random;
 
 public class TagDAO {
+   Random rd=new Random();
    // Class attributes: Connection, PreparedStatement, and custom connection class
    private DbConnection connection = new DbConnection();
    private PreparedStatement pstmt;
 
    // Method to insert a new tag into the database
-   public int insert(int id, String description) {
+   public int insert(String description) {
       try {
+         int id=rd.nextInt(10000)+1;
          java.sql.Connection conn = connection.connect(); // Connects to the database
-
+         Boolean idExists;
          // Check if the tag ID already exists
-         pstmt = conn.prepareStatement("SELECT COUNT(*) FROM TAG WHERE ID = ?");
-         pstmt.setInt(1, id); // Set the tag ID parameter
-         ResultSet rs = pstmt.executeQuery(); // Execute the query
-         rs.next();
-
-         if (rs.getInt(1) > 0) {
-            rs.close(); // Close ResultSet
-            return 0; // Tag ID already exists, return 0 to indicate failure
-         }
-         rs.close(); // Close ResultSet if ID does not exist
-
+         do {
+            pstmt = conn.prepareStatement("SELECT COUNT(*) FROM TAG WHERE ID = ?");
+            pstmt.setInt(1, id); // Set the tag ID parameter
+            ResultSet rs = pstmt.executeQuery(); // Execute the query
+            rs.next();
+            idExists = rs.getInt(1) > 0;
+            // Close ResultSet
+            // Tag ID already exists, return 0 to indicate failure
+            rs.close();
+            // Close ResultSet if ID does not exist
+         }while (idExists);
          // Prepare the SQL statement to insert a new tag
          pstmt = conn.prepareStatement("INSERT INTO TAG (id, description) VALUES (?, ?)");
          pstmt.setInt(1, id); // Set the tag ID

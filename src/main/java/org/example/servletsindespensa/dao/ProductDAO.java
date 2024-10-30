@@ -5,30 +5,30 @@ import org.example.servletsindespensa.util.DbConnection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Random;
 
 public class ProductDAO {
+    Random rd=new Random();
     // Class attributes: PreparedStatement, and the custom connection class
     private DbConnection connection = new DbConnection();
     private PreparedStatement pstmt;
 
     // Method to insert a new product into the database
-    public int insert(int id, String desc, long barcode, String brand, String name, String type, double weight_volume) {
+    public int insert(String desc, long barcode, String brand, String name, String type, double weight_volume) {
         try {
-
+            int id=rd.nextInt(10000)+1;
+            Boolean idExists;
             java.sql.Connection conn = connection.connect(); // Open connection to the database
-
             // Check if the product_id already exists in the database
-            pstmt = conn.prepareStatement("SELECT COUNT(*) FROM PRODUCT WHERE PRODUCT_ID = ?");
-            pstmt.setInt(1, id); // Set product ID parameter
-            ResultSet rs = pstmt.executeQuery(); // Execute the query
-            rs.next();
-
+            do {
+                pstmt = conn.prepareStatement("SELECT COUNT(*) FROM PRODUCT WHERE PRODUCT_ID = ?");
+                pstmt.setInt(1, id); // Set product ID parameter
+                ResultSet rs = pstmt.executeQuery(); // Execute the query
+                rs.next();
+                idExists=rs.getInt(1)>0;
+            }while (idExists);
             // If the product ID exists, return 0 to indicate failure
-            if (rs.getInt(1) > 0) {
-                rs.close(); // Close ResultSet
-                return 0;
-            }
-            rs.close(); // Close ResultSet if the ID doesn't exist
+            // Close ResultSet if the ID doesn't exist
 
             // Prepare the SQL statement to insert the new product
             pstmt = conn.prepareStatement("INSERT INTO PRODUCT (PRODUCT_ID, DESCRIPTION, BARCODE, BRAND, NAME, TYPE, WEIGHT_VOLUME) VALUES (?, ?, ?, ?, ?, ?, ?)");

@@ -9,7 +9,6 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.example.servletsindespensa.dao.AdmDAO;
 
 import java.io.IOException;
-
 @WebServlet(name = "atualizarADM", urlPatterns = {"/atualizarADM"})
 public class ServletAtualizarADM extends HttpServlet {
     AdmDAO admDAO = new AdmDAO();
@@ -21,9 +20,9 @@ public class ServletAtualizarADM extends HttpServlet {
         String password = request.getParameter("password");
         int update = admDAO.updateAdm(email,newPassword,password);
         if (update > 0) {
-            request.getRequestDispatcher("sucessoCrud.jsp").forward(request, response);
+            request.getRequestDispatcher("SucessoCRUD.html").forward(request, response);
         } else {
-            request.getRequestDispatcher("erroCrud.jsp").forward(request, response);
+            request.getRequestDispatcher("ErroCRUD.html").forward(request, response);
 
         }
 
