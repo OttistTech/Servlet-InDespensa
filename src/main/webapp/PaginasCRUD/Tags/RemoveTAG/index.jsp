@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/PaginasCRUD/ADM/RemoveADM/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/PaginasCRUD/Tags/ReadTAG/style.css">
     <title>Página de CRUD</title>
 </head>
 <body>
@@ -15,7 +15,7 @@
 </header>
 <div class="content">
     <h1>Inserção de Parâmetros</h1>
-    <form action="${pageContext.request.contextPath}/removerADM" method="post">
+    <form action="${pageContext.request.contextPath}/removerTAG" method="post">
         <div class="params">
             <h2>Informe o email do user:</h2>
             <input type="text" name="email" required>

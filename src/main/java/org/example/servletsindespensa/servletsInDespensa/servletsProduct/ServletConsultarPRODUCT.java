@@ -18,7 +18,7 @@ public class ServletConsultarPRODUCT extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        ResultSet rs = productDAO.read();
+        ResultSet rs = productDAO.readProduct();
 
         PrintWriter out = response.getWriter();
         try {

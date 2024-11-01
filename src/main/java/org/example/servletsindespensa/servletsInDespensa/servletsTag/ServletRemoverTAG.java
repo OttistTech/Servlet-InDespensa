@@ -1,7 +1,6 @@
 package org.example.servletsindespensa.servletsInDespensa.servletsTag;
 
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -18,7 +17,7 @@ public class ServletRemoverTAG extends HttpServlet {
         String id = request.getParameter("tag_id");
         int intId = Integer.parseInt(id);
 
-        int remover = tagDAO.delete(intId);
+        int remover = tagDAO.deleteTag(intId);
         if (remover > 0) {
             request.getRequestDispatcher("sucessoCrud.jsp").forward(request, response);
         } else {

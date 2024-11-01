@@ -50,7 +50,7 @@
     <div class="button-container">
         <button class="footer-button">
             <img src="${pageContext.request.contextPath}/LandingPage/imagens/InternetPreto.png" alt="Site">
-            <a href="/LandingPage/index1.html"><strong>Site</strong></a>
+            <a href="${pageContext.request.contextPath}/LandingPage/index.jsp"><strong>Site</strong></a>
         </button>
     </div>
 </footer>

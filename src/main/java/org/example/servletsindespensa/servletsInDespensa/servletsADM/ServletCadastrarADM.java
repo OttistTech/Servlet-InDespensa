@@ -20,9 +20,9 @@ public class ServletCadastrarADM extends HttpServlet {
             String email = request.getParameter("email");
             int inserir = admDAO.insertAdm(name,password,email);
             if (inserir > 0) {
-                request.getRequestDispatcher("SucessoCRUD.html").forward(request, response);
+                request.getRequestDispatcher("sucessoCrud.jsp").forward(request, response);
             } else {
-                request.getRequestDispatcher("ErroCRUD.html").forward(request, response);
+                request.getRequestDispatcher("erroCrud.jsp").forward(request, response);
 
             }
 

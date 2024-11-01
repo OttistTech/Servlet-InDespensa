@@ -2,17 +2,28 @@
 /* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
 @font-face {
     font-family: "montserrat";
-    src: url("/LandingPage/Fonts/Montserrat/Montserrat-Thin.woff");
-}
-
-@font-face {
-    font-family: "montserratP";
     src: url("/LandingPage/Fonts/Montserrat/Montserrat-Regular.woff");
 }
 
 @font-face {
+    font-family: "montserratP";
+    src: url("/LandingPage/Fonts/Montserrat/Montserrat-Light.woff");
+}
+
+@font-face {
+    font-family: "montserratSemiBold";
+    src: url("/LandingPage/Fonts/Montserrat/Montserrat-SemiBold.woff");
+}
+
+
+@font-face {
     font-family: "montserratBold";
     src: url("/LandingPage/Fonts/Montserrat/Montserrat-Bold.woff");
+}
+
+@font-face {
+    font-family: "montserratExtraBold";
+    src: url("/LandingPage/Fonts/Montserrat/Montserrat-ExtraBold.woff");
 }
 /* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
 
@@ -23,8 +34,8 @@
 
 body{
     display: flex;
-    align-items: center;
     flex-direction: column;
+    align-items: center;
 }
 
 header{
@@ -39,7 +50,7 @@ header{
 
 header h1{
     position: absolute;
-    font-family: "montserratP",serif;
+    font-family: "montserratBold",serif;
     margin-left: 142px;
     font-size: 48px;
 }
@@ -50,92 +61,65 @@ header img{
     width: 54px;
     height: 57px;
 }
-
-.container{
+.content{
     display: flex;
-    align-items: center;
     flex-direction: column;
-}
-
-.container #texto1{
-    text-align: center;
-    font-family: "montserratBold",serif;
-    font-size: 56px;
-    margin-top: 80px;
-}
-
-.container #texto2{
-    text-align: left;
-    align-self: flex-start;
-    margin-top: 40px;
-    margin-left: 25px;
-    font-family: "montserratP",serif;
-
-}
-
-.container textarea{
-    width: 865px;
-    height: 248px;
-    border: solid black 2px;
-    border-radius: 20px;
-    font-size: 24px;
-    font-family: "montserratP", serif;
-    margin-top: 24px;
-    margin-bottom: 24px;
-    padding-top: 24px;
-    padding-left: 24px;
-    box-sizing: border-box;
-    text-align: start;
-    resize: none;
-    box-shadow:  0 3px 4px -2px rgb(91, 75, 75);
-}
-
-.container input{
-    width: 865px;
-    height: 67px;
-    border: solid black 2px;
-    border-radius: 20px;
-    font-size: 24px;
-    box-sizing: border-box;
-    padding-left: 24px;
-    font-family: "montserratP",serif;
-    box-shadow:  0 3px 4px -2px rgb(91, 75, 75);
-}
-
-.container button{
-    display: flex;
     align-items: center;
-    color: white;
+}
+.content h1{
+    padding-top: 48px;
+    padding-bottom: 56px;
+    font-size: 48px;
+    font-family: "montserratBold",serif;
+}
+.content h2{
+    font-family: "montserrat",serif;
+    font-size: 20px;
+    margin-left: 26px;
+}
+.params{
+    padding-bottom: 42px;
+}
+
+.params input{
+    width: 509px;
+    height: 47px;
+    border: solid black 2px;
     border-radius: 20px;
-    border: none;
-    box-shadow:  0 2px 5px -2px rgb(91, 75, 75);
-    margin-bottom: 128px;
-    align-self: flex-end;
-    background-color: #F59132;
-    width: 184px;
-    height: 38px;
-}
-
-.container button:hover{
-    background-color: #ffa550;
-}
-
-.container button:active{
-    background-color: #F59132;
-}
-
-.container button h2{
-    font-family: "montserratP",serif;
     font-size: 24px;
-    margin-left: 32px;
+    box-sizing: border-box;
+    padding-left: 24px;
+    font-family: "montserratP",serif;
+    box-shadow:  0 3px 4px -2px rgb(91, 75, 75);
+    transition: 0.2s;
+}
+.params input:hover{
+    box-shadow:  0 3px 10px -2px rgb(91, 75, 75);
+    transition: 0.2s;
 }
 
-.container button img{
-    margin-left: 12px;
-    width: 28px;
-    height: 28px;
+.send input{
+    cursor: pointer;
+    width: 355px;
+    height: 50px;
+    text-align: center;
+    background-color: #F59132;
+    color: white;
+    box-shadow:  0 3px 4px -2px rgb(91, 75, 75);
+    border: 0;
+    border-radius: 11px;
+    font-family: "montserratSemiBold", serif;
+    font-size: 36px;
+    align-items: center;
+    margin-bottom: 206px;
+    transition: 0.2s;
+
 }
 
+.send input:hover{
+    box-shadow:  0 3px 10px -2px rgb(91, 75, 75);
+    transition: 0.2s;
+}
 footer{
     display: flex;
     flex-direction: column;

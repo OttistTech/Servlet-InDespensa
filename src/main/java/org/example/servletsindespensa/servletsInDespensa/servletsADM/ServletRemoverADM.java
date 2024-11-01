@@ -20,9 +20,9 @@ public class ServletRemoverADM extends HttpServlet {
         String senha = request.getParameter("password");
         int remover = admDAO.deleteAdm(email, senha);
         if (remover > 0) {
-            request.getRequestDispatcher("SucessoCRUD.html").forward(request, response);
+            request.getRequestDispatcher("sucessoCrud.jsp").forward(request, response);
         } else {
-            request.getRequestDispatcher("ErroCRUD.html").forward(request, response);
+            request.getRequestDispatcher("erroCrud.jsp").forward(request, response);
 
         }
     }

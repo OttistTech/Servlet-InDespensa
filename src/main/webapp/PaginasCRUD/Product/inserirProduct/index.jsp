@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/PaginasCRUD/Product/inserirProduct/style.css">
     <title>Página de Inserção de Produto</title>
 </head>
 <body>
@@ -59,7 +59,7 @@
     <div class="button-container">
         <button class="footer-button">
             <img src="${pageContext.request.contextPath}/LandingPage/imagens/InternetPreto.png" alt="Site">
-            <a href="${pageContext.request.contextPath}/LandingPage/index"><strong>Site</strong></a>
+            <a href="${pageContext.request.contextPath}/LandingPage/index.jsp"><strong>Site</strong></a>
         </button>
     </div>
 </footer>

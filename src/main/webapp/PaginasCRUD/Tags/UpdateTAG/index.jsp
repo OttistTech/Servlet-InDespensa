@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/PaginasCRUD/ADM/RemoveADM/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/PaginasCRUD/Tags/UpdateTAG/style.css">
     <title>Página de CRUD</title>
 </head>
 <body>
@@ -15,13 +15,17 @@
 </header>
 <div class="content">
     <h1>Inserção de Parâmetros</h1>
-    <form action="${pageContext.request.contextPath}/removerADM" method="post">
+    <form action="${pageContext.request.contextPath}/atualizarTAG" method="post">
         <div class="params">
             <h2>Informe o email do user:</h2>
             <input type="text" name="email" required>
         </div>
         <div class="params">
-            <h2>Informe a senha do user:</h2>
+            <h2>Informe a nova senha do user:</h2>
+            <input type="password" name="newPassword" required>
+        </div>
+        <div class="params">
+            <h2>Informe a senha antiga do user:</h2>
             <input type="password" name="password" required>
         </div>
         <div class="send">

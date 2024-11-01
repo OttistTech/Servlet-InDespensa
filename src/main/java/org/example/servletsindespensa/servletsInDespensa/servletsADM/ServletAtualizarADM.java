@@ -20,9 +20,9 @@ public class ServletAtualizarADM extends HttpServlet {
         String password = request.getParameter("password");
         int update = admDAO.updateAdm(email,newPassword,password);
         if (update > 0) {
-            request.getRequestDispatcher("SucessoCRUD.html").forward(request, response);
+            request.getRequestDispatcher("sucessoCrud.jsp").forward(request, response);
         } else {
-            request.getRequestDispatcher("ErroCRUD.html").forward(request, response);
+            request.getRequestDispatcher("erroCrud.jsp").forward(request, response);
 
         }
 

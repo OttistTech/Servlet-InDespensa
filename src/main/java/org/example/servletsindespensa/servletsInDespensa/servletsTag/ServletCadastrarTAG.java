@@ -15,7 +15,7 @@ public class ServletCadastrarTAG extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String desc = request.getParameter("description");
-        int inserir = tagDAO.insert(desc);
+        int inserir = tagDAO.insertTag(desc);
         if (inserir > 0) {
             request.getRequestDispatcher("sucessoCrud.jsp").forward(request, response);
         } else {

@@ -13,7 +13,7 @@ public class CategoriesDAO {
    private final DbConnection connection = new DbConnection();
 
    // Method to insert a new category
-   public int insert(String name) {
+   public int insertCategories(String name) {
       int id = rd.nextInt(10000)+1;
       try (Connection conn = connection.connect()) {
          // Check if the ID already exists
@@ -38,7 +38,7 @@ public class CategoriesDAO {
    }
 
    // Method to delete a category by its ID
-   public int delete(int id) {
+   public int deleteCategories(int id) {
       try (Connection conn = connection.connect()) {
          // Check if the ID exists
          try (PreparedStatement pstmt = conn.prepareStatement("SELECT COUNT(*) FROM CATEGORIES WHERE CATEGORY_ID = ?")) {
@@ -61,7 +61,7 @@ public class CategoriesDAO {
    }
 
    // Method to update a category's name by its ID
-   public int update(String name, int id) {
+   public int updateCategories(String name, int id) {
       try (Connection conn = connection.connect()) {
          // Check if the ID exists
          try (PreparedStatement pstmt = conn.prepareStatement("SELECT COUNT(*) FROM CATEGORIES WHERE CATEGORY_ID = ?")) {
@@ -85,7 +85,7 @@ public class CategoriesDAO {
    }
 
    // Method to read and retrieve all categories
-   public ResultSet read() {
+   public ResultSet readCategories() {
       try (Connection conn = connection.connect()) {
          PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM CATEGORIES ORDER BY CATEGORY_ID");
          return pstmt.executeQuery(); // Return the result set for further use

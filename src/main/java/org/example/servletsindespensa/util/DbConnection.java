@@ -16,7 +16,8 @@ public class DbConnection {
          conn = DriverManager.getConnection(
                  System.getenv("DB_HOST2"), // Database host (URL)
                  System.getenv("DB_USER2"), // Database user
-                 System.getenv("DB_PASSWORD2") // Database password
+                 System.getenv("DB_PASSWORD2")
+                 // Database password
          );
 
       } catch (ClassNotFoundException | SQLException e) {

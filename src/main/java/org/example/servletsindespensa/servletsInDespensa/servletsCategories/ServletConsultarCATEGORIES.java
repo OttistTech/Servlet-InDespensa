@@ -17,7 +17,7 @@ public class ServletConsultarCATEGORIES extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        ResultSet rs = categoriesDAO.read();
+        ResultSet rs = categoriesDAO.readCategories();
 
         PrintWriter out = response.getWriter();
         try {

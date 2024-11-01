@@ -19,7 +19,7 @@ public class ServletRemoverCATEGORIES extends HttpServlet {
         String id = request.getParameter("CATEGORY_ID");
         int intId = Integer.parseInt(id);
 
-        int inserir = categoriesDAO.delete(intId);
+        int inserir = categoriesDAO.deleteCategories(intId);
         if (inserir > 0) {
             request.getRequestDispatcher("sucessoCrud.jsp").forward(request, response);
         } else {

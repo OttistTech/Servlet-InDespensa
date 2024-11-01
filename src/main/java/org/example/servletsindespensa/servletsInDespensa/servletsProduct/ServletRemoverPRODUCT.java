@@ -18,7 +18,7 @@ public class ServletRemoverPRODUCT extends HttpServlet {
         String id = request.getParameter("id");
         int intId = Integer.parseInt(id);
 
-        int remover = productDAO.delete(intId);
+        int remover = productDAO.deleteProduct(intId);
         if (remover > 0) {
             request.getRequestDispatcher("sucessoCrud.jsp").forward(request, response);
         } else {

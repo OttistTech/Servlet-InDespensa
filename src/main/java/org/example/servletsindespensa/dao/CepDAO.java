@@ -6,14 +6,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.regex.Pattern;
-import java.util.regex.Matcher;
 
 public class CepDAO {
    private DbConnection connection = new DbConnection();
    private PreparedStatement pstmt;
 
    // Method to insert a new CEP (Postal Code)
-   public int insert(String cep_id) {  // Alterado de int para String
+   public int insertCep(String cep_id) {  // Alterado de int para String
       try {
          java.sql.Connection conn = connection.connect();  // Establishes the database connection
          boolean IDexists;
@@ -44,7 +43,7 @@ public class CepDAO {
    }
 
    // Method to delete a CEP by its ID
-   public int delete(String id) {  // Alterado de int para String
+   public int deleteCep(String id) {  // Alterado de int para String
       try {
          java.sql.Connection conn = connection.connect();  // Establishes the database connection
 
@@ -73,7 +72,7 @@ public class CepDAO {
    }
 
    // Method to update an existing CEP ID
-   public int update(String oldCep, String newCep) {  // Alterado de int para String
+   public int updateCep(String oldCep, String newCep) {  // Alterado de int para String
       try {
          java.sql.Connection conn = connection.connect();  // Establishes the database connection
 
@@ -103,7 +102,7 @@ public class CepDAO {
    }
 
    // Method to retrieve all CEPs
-   public ResultSet read() {
+   public ResultSet readCep() {
       try {
          java.sql.Connection conn = connection.connect();  // Establishes the database connection
 

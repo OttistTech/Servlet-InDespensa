@@ -8,29 +8,29 @@ import java.sql.SQLException;
 import java.util.Random;
 
 public class ProductDAO {
-    Random rd=new Random();
-    // Class attributes: PreparedStatement, and the custom connection class
+    Random rd = new Random();
+    // Atributos da classe: PreparedStatement e a classe de conexão personalizada
     private DbConnection connection = new DbConnection();
     private PreparedStatement pstmt;
 
-    // Method to insert a new product into the database
-    public int insert(String desc, long barcode, String brand, String name, String type, double weight_volume) {
+    // Método para inserir um novo produto no banco de dados
+    public int insertProduct(String desc, long barcode, String brand, String name, String type, double weight_volume) {
         try {
-            int id=rd.nextInt(10000)+1;
+            int id = rd.nextInt(10000) + 1;
             Boolean idExists;
-            java.sql.Connection conn = connection.connect(); // Open connection to the database
-            // Check if the product_id already exists in the database
+            java.sql.Connection conn = connection.connect(); // Abre a conexão com o banco de dados
+            // Verifica se o product_id já existe no banco de dados
             do {
                 pstmt = conn.prepareStatement("SELECT COUNT(*) FROM PRODUCT WHERE PRODUCT_ID = ?");
-                pstmt.setInt(1, id); // Set product ID parameter
-                ResultSet rs = pstmt.executeQuery(); // Execute the query
+                pstmt.setInt(1, id); // Define o parâmetro do ID do produto
+                ResultSet rs = pstmt.executeQuery(); // Executa a consulta
                 rs.next();
-                idExists=rs.getInt(1)>0;
-            }while (idExists);
-            // If the product ID exists, return 0 to indicate failure
-            // Close ResultSet if the ID doesn't exist
+                idExists = rs.getInt(1) > 0;
+            } while (idExists);
+            // Se o ID do produto existir, retorna 0 para indicar falha
+            // Fecha o ResultSet se o ID não existir
 
-            // Prepare the SQL statement to insert the new product
+            // Prepara a declaração SQL para inserir o novo produto
             pstmt = conn.prepareStatement("INSERT INTO PRODUCT (PRODUCT_ID, DESCRIPTION, BARCODE, BRAND, NAME, TYPE, WEIGHT_VOLUME) VALUES (?, ?, ?, ?, ?, ?, ?)");
             pstmt.setInt(1, id);
             pstmt.setString(2, desc);
@@ -40,108 +40,108 @@ public class ProductDAO {
             pstmt.setString(6, type);
             pstmt.setDouble(7, weight_volume);
 
-            // Execute the insertion and return success (1) or failure (0)
+            // Executa a inserção e retorna sucesso (1) ou falha (0)
             if (pstmt.executeUpdate() > 0) {
-                return 1;  // Insert was successful
+                return 1;  // Inserção foi bem-sucedida
             } else {
-                return 0;  // Insert failed
+                return 0;  // Inserção falhou
             }
         } catch (SQLException sqe) {
-            sqe.printStackTrace(); // Print SQL errors
-            return -1;  // Return -1 to indicate a database error
+            sqe.printStackTrace(); // Imprime erros SQL
+            return -1;  // Retorna -1 para indicar um erro no banco de dados
         } finally {
-            connection.disconnect(); // Disconnect from the database
+            connection.disconnect(); // Desconecta do banco de dados
         }
     }
 
-    // Method to delete a product from the database by its ID
-    public int delete(int id) {
+    // Método para deletar um produto do banco de dados pelo seu ID
+    public int deleteProduct(int id) {
         try {
-            java.sql.Connection conn = connection.connect(); // Open connection to the database
+            java.sql.Connection conn = connection.connect(); // Abre a conexão com o banco de dados
 
-            // Check if the product_id exists
+            // Verifica se o product_id existe
             pstmt = conn.prepareStatement("SELECT COUNT(*) FROM PRODUCT WHERE PRODUCT_ID = ?");
-            pstmt.setInt(1, id); // Set product ID parameter
-            ResultSet rs = pstmt.executeQuery(); // Execute the query
+            pstmt.setInt(1, id); // Define o parâmetro do ID do produto
+            ResultSet rs = pstmt.executeQuery(); // Executa a consulta
             rs.next();
 
-            // If the product ID does not exist, return 0 to indicate failure
+            // Se o ID do produto não existir, retorna 0 para indicar falha
             if (rs.getInt(1) == 0) {
-                rs.close(); // Close ResultSet
+                rs.close(); // Fecha o ResultSet
                 return 0;
             }
-            rs.close(); // Close ResultSet if the ID exists
+            rs.close(); // Fecha o ResultSet se o ID existir
 
-            // Prepare SQL statement to delete the product
+            // Prepara a declaração SQL para deletar o produto
             String remover = "DELETE FROM PRODUCT WHERE PRODUCT_ID = ?";
             pstmt = conn.prepareStatement(remover);
             pstmt.setInt(1, id);
 
-            // Execute the deletion and return success (1) or failure (0)
+            // Executa a deleção e retorna sucesso (1) ou falha (0)
             if (pstmt.executeUpdate() > 0) {
-                return 1;  // Deletion was successful
+                return 1;  // Deleção foi bem-sucedida
             } else {
-                return 0;  // No rows were deleted
+                return 0;  // Nenhuma linha foi deletada
             }
         } catch (SQLException sqe) {
-            sqe.printStackTrace(); // Print SQL errors
-            return -1;  // Return -1 to indicate a database error
+            sqe.printStackTrace(); // Imprime erros SQL
+            return -1;  // Retorna -1 para indicar um erro no banco de dados
         } finally {
-            connection.disconnect(); // Disconnect from the database
+            connection.disconnect(); // Desconecta do banco de dados
         }
     }
 
-    // Method to update the weight_volume of a product in the database by its ID
-    public int update(double weight_volume, int id) {
+    // Método para atualizar o weight_volume de um produto no banco de dados pelo seu ID
+    public int updateProduct(double weight_volume, int id) {
         try {
-            java.sql.Connection conn = connection.connect(); // Open connection to the database
+            java.sql.Connection conn = connection.connect(); // Abre a conexão com o banco de dados
 
-            // Check if the product_id exists in the database
+            // Verifica se o product_id existe no banco de dados
             pstmt = conn.prepareStatement("SELECT COUNT(*) FROM PRODUCT WHERE PRODUCT_ID = ?");
-            pstmt.setInt(1, id); // Set product ID parameter
-            ResultSet rs = pstmt.executeQuery(); // Execute the query
+            pstmt.setInt(1, id); // Define o parâmetro do ID do produto
+            ResultSet rs = pstmt.executeQuery(); // Executa a consulta
             rs.next();
 
-            // If the product ID does not exist, return 0 to indicate failure
+            // Se o ID do produto não existir, retorna 0 para indicar falha
             if (rs.getInt(1) == 0) {
-                rs.close(); // Close ResultSet
+                rs.close(); // Fecha o ResultSet
                 return 0;
             }
-            rs.close(); // Close ResultSet if the ID exists
+            rs.close(); // Fecha o ResultSet se o ID existir
 
-            // Prepare SQL statement to update the product's weight_volume
+            // Prepara a declaração SQL para atualizar o weight_volume do produto
             pstmt = conn.prepareStatement("UPDATE PRODUCT SET WEIGHT_VOLUME = ? WHERE PRODUCT_ID = ?");
-            pstmt.setDouble(1, weight_volume); // Set the new weight_volume
-            pstmt.setInt(2, id); // Set the product ID
+            pstmt.setDouble(1, weight_volume); // Define o novo weight_volume
+            pstmt.setInt(2, id); // Define o ID do produto
 
-            // Execute the update and return success (1) or failure (0)
+            // Executa a atualização e retorna sucesso (1) ou falha (0)
             if (pstmt.executeUpdate() > 0) {
-                return 1;  // Update was successful
+                return 1;  // Atualização foi bem-sucedida
             } else {
-                return 0;  // No rows were updated
+                return 0;  // Nenhuma linha foi atualizada
             }
         } catch (SQLException sqle) {
-            sqle.printStackTrace(); // Print SQL errors
-            return -1;  // Return -1 to indicate a database error
+            sqle.printStackTrace(); // Imprime erros SQL
+            return -1;  // Retorna -1 para indicar um erro no banco de dados
         } finally {
-            connection.disconnect(); // Disconnect from the database
+            connection.disconnect(); // Desconecta do banco de dados
         }
     }
 
-    // Method to read all products from the database
-    public ResultSet read() {
+    // Método para ler todos os produtos do banco de dados
+    public ResultSet readProduct() {
         ResultSet rset = null;
         try {
-            java.sql.Connection conn = connection.connect(); // Open connection to the database
+            java.sql.Connection conn = connection.connect(); // Abre a conexão com o banco de dados
 
-            // Prepare SQL query to select all products ordered by their ID
+            // Prepara a consulta SQL para selecionar todos os produtos ordenados pelo seu ID
             pstmt = conn.prepareStatement("SELECT * FROM PRODUCT ORDER BY PRODUCT_ID");
-            rset = pstmt.executeQuery(); // Execute the query and return the result set
+            rset = pstmt.executeQuery(); // Executa a consulta e retorna o conjunto de resultados
         } catch (SQLException sqe) {
-            sqe.printStackTrace(); // Print SQL errors
-        }finally {
-            connection.disconnect(); // Disconnect from the database
+            sqe.printStackTrace(); // Imprime erros SQL
+        } finally {
+            connection.disconnect(); // Desconecta do banco de dados
         }
-            return rset;  // Return the result set containing the products
+        return rset;  // Retorna o conjunto de resultados contendo os produtos
     }
 }

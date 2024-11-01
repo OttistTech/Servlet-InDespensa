@@ -21,7 +21,7 @@ public class ServletAtualizarPRODUCT extends HttpServlet {
         String id = request.getParameter("id");
         int intId = Integer.parseInt(id);
 
-        int atualizar = productDAO.update(doubleWeight_volume,intId);
+        int atualizar = productDAO.updateProduct(doubleWeight_volume,intId);
         if (atualizar > 0) {
             request.getRequestDispatcher("sucessoCrud.jsp").forward(request, response);
         } else {

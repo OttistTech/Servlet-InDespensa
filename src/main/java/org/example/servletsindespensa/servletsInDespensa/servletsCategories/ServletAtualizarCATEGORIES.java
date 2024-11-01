@@ -19,7 +19,7 @@ public class ServletAtualizarCATEGORIES extends HttpServlet {
         String id = request.getParameter("categoryId");
         int intId = Integer.parseInt(id);
         String name = request.getParameter("name");
-        int atualizar = categoriesDAO.update(name, intId);
+        int atualizar = categoriesDAO.updateCategories(name, intId);
         if (atualizar > 0) {
             request.getRequestDispatcher("sucessoCrud.jsp").forward(request, response);
         } else {

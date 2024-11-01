@@ -17,7 +17,7 @@ public class ServletConsultarCEP extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        ResultSet rs = cepDAO.read();
+        ResultSet rs = cepDAO.readCep();
 
         PrintWriter out = response.getWriter();
         try {

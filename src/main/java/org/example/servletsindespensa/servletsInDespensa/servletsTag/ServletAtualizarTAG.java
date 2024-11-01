@@ -1,7 +1,6 @@
 package org.example.servletsindespensa.servletsInDespensa.servletsTag;
 
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -20,7 +19,7 @@ public class ServletAtualizarTAG extends HttpServlet {
 
         String desc = request.getParameter("description");
 
-        int atualizar = tagDAO.update(desc,intId);
+        int atualizar = tagDAO.updateTag(desc,intId);
         if (atualizar > 0) {
             request.getRequestDispatcher("sucessoCrud.jsp").forward(request, response);
         } else {

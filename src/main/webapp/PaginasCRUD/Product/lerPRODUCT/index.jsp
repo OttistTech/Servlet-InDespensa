@@ -2,14 +2,14 @@
 <%@ page import="java.sql.ResultSet" %>
 <%
     ProductDAO productDao = new ProductDAO();
-    ResultSet products= productDao.read();
+    ResultSet products= productDao.readProduct();
 %>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/PaginasCRUD/Product/lerPRODUCT/style.css">
     <title>Pagina de CRUD</title>
 </head>
 <body>
@@ -28,26 +28,26 @@
 </form>
 <div class="tabela">
     <div class="bar">
-        <li>ID</li>
-        <li>Descrição</li>
-        <li>C. de Barras</li>
-        <li>Marca</li>
-        <li>Nome</li>
-        <li>Tipo</li>
-        <li>Peso</li>
+        <div class="header-item">Id</div>
+        <div class="header-item">Descrição</div>
+        <div class="header-item">C. de barras</div>
+        <div class="header-item">Marca</div>
+        <div class="header-item">Nome</div>
+        <div class="header-item">Tipo</div>
+        <div class="header-item">Peso</div>
     </div>
     <div class="dados">
         <%
             while (products != null && products.next()) {
         %>
         <div class="linha">
-            <li><%= products.getString("product_id") %></li>
-            <li><%= products.getString("description") %></li>
-            <li><%= products.getString("barcode") %></li>
-            <li><%= products.getString("brand") %></li>
-            <li><%= products.getString("name") %></li>
-            <li><%= products.getString("type") %></li>
-            <li><%= products.getString("weight_volume") %></li>
+            <div class="data-item"><%= products.getString("product_id") %></div>
+            <div class="data-item"><%= products.getString("description") %></div>
+            <div class="data-item"><%= products.getString("barcode") %></div>
+            <div class="data-item"><%= products.getString("brand") %></div>
+            <div class="data-item"><%= products.getString("name") %></div>
+            <div class="data-item"><%= products.getString("type") %></div>
+            <div class="data-item"><%= products.getString("weight_volume") %></div>
         </div>
         <%
             }
@@ -66,7 +66,7 @@
     <div class="button-container">
         <button class="footer-button">
             <img src="Imagens/image.png" alt="Site">
-            <a href="${pageContext.request.contextPath}/LandingPage/index"><strong>Site</strong></a>
+            <a href="${pageContext.request.contextPath}/LandingPage/index.jsp"><strong>Site</strong></a>
         </button>
     </div>
 </footer>

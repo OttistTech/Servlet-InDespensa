@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>InDespensa</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/LandingPage/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/LandingPage/styleLanding.css">
     <link rel="icon" href="${pageContext.request.contextPath}/LandingPage/imagens/LogoSombrinha.png">
 </head>
 <body>
@@ -133,7 +133,7 @@
             <img src="${pageContext.request.contextPath}/LandingPage/imagens/InternetPreto.png" alt="Site">
             <strong>Site</strong>
         </button></a>
-        <a href="${pageContext.request.contextPath}/CadastroADM/index.jsp"><button class="footer-button">
+        <a href="${pageContext.request.contextPath}/PaginasCRUD/MENU/index.jsp"><button class="footer-button">
             <img src="${pageContext.request.contextPath}/LandingPage/imagens/restrita.png" alt="Cadastro ADM">
             <strong>Área restrita</strong>
         </button></a>
