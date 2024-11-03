@@ -31,6 +31,11 @@
             <br>
             <input type="email" id="email" name="email" required>
         </div>
+        <div class="params">
+            <label for="cep"> cep: </label>
+            <br>
+            <input type="text" id="cep" name="cep" required>
+        </div>
         <div class="send">
             <input type="submit" value="Enviar">
         </div>

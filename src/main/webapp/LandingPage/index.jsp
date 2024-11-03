@@ -133,7 +133,7 @@
             <img src="${pageContext.request.contextPath}/LandingPage/imagens/InternetPreto.png" alt="Site">
             <strong>Site</strong>
         </button></a>
-        <a href="${pageContext.request.contextPath}/PaginasCRUD/MENU/index.jsp"><button class="footer-button">
+        <a href="${pageContext.request.contextPath}/CadastroADM/index.jsp"><button class="footer-button">
             <img src="${pageContext.request.contextPath}/LandingPage/imagens/restrita.png" alt="Cadastro ADM">
             <strong>Área restrita</strong>
         </button></a>

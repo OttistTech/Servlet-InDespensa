@@ -40,7 +40,7 @@
                     while (adms != null && adms.next()) {
                 %>
                 <div class="linha">
-                    <div class="data-item"><%= adms.getInt("id") %></div>
+                    <div class="data-item"><%= adms.getInt("customer_id") %></div>
                     <div class="data-item"><%= adms.getString("email") %></div>
                     <div class="data-item"><%= adms.getString("name") %></div>
                     <div class="data-item"><%= adms.getString("password") %></div>

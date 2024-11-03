@@ -1,7 +1,18 @@
 package org.example.servletsindespensa.dao;
 
 import org.example.servletsindespensa.util.DbConnection;
+import org.example.servletsindespensa.util.GetCategoryId;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Random;
+
+
+
+
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -10,8 +21,12 @@ import java.util.Random;
 public class ProductDAO {
     Random rd = new Random();
     // Atributos da classe: PreparedStatement e a classe de conexão personalizada
-    private DbConnection connection = new DbConnection();
+    private DbConnection  connection = new DbConnection();
     private PreparedStatement pstmt;
+    private Connection conn;
+    GetCategoryId getCat=new GetCategoryId();
+
+
 
     // Método para inserir um novo produto no banco de dados
     public int insertProduct(String desc, long barcode, String brand, String name, String type, double weight_volume) {
@@ -31,7 +46,7 @@ public class ProductDAO {
             // Fecha o ResultSet se o ID não existir
 
             // Prepara a declaração SQL para inserir o novo produto
-            pstmt = conn.prepareStatement("INSERT INTO PRODUCT (PRODUCT_ID, DESCRIPTION, BARCODE, BRAND, NAME, TYPE, WEIGHT_VOLUME) VALUES (?, ?, ?, ?, ?, ?, ?)");
+            pstmt = conn.prepareStatement("INSERT INTO PRODUCT (PRODUCT_ID, DESCRIPTION, BARCODE, BRAND, NAME, TYPE, WEIGHT_VOLUME,CATEGORY_ID) VALUES (?, ?, ?, ?, ?, ?, ?,?)");
             pstmt.setInt(1, id);
             pstmt.setString(2, desc);
             pstmt.setLong(3, barcode);
@@ -39,6 +54,8 @@ public class ProductDAO {
             pstmt.setString(5, name);
             pstmt.setString(6, type);
             pstmt.setDouble(7, weight_volume);
+            int categoryId=getCat.getCategoryId(type);
+            pstmt.setInt(8,categoryId);
 
             // Executa a inserção e retorna sucesso (1) ou falha (0)
             if (pstmt.executeUpdate() > 0) {
@@ -144,4 +161,6 @@ public class ProductDAO {
         }
         return rset;  // Retorna o conjunto de resultados contendo os produtos
     }
+
 }
+

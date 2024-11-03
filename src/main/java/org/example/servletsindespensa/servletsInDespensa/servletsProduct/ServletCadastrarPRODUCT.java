@@ -28,6 +28,7 @@ public class ServletCadastrarPRODUCT extends HttpServlet {
         String weight_volume = request.getParameter("WEIGHT_VOLUME");
         double doubleWeight_volume = Double.parseDouble(weight_volume);
 
+
         int inserir = productDAO.insertProduct(desc,longBarcode,brand,name,type,doubleWeight_volume);
         if (inserir > 0) {
             request.getRequestDispatcher("sucessoCrud.jsp").forward(request, response);

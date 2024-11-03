@@ -1,6 +1,7 @@
 package org.example.servletsindespensa.dao;
-
+import java.time.LocalDateTime;
 import org.example.servletsindespensa.util.DbConnection;
+import org.example.servletsindespensa.util.GetAddressId;
 import org.example.servletsindespensa.util.Hash;
 
 import java.sql.Connection;
@@ -12,6 +13,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class AdmDAO {
+    GetAddressId getAdrId=new GetAddressId();
+
     // Atributos para a conexão com o banco de dados e manipulação de dados
     private final Hash hash = new Hash();
     private Connection conn;
@@ -20,65 +23,85 @@ public class AdmDAO {
     private final Random rd = new Random();
 
     // Método para inserir um novo registro
-    public int insertAdm(String name, String pswd, String email) {
+    public int insertAdm(String name, String pswd, String email, String cep) {
+        PreparedStatement pstmID = null;
+        PreparedStatement pstmEmail = null;
+        ResultSet rs = null;
         try {
-            conn = dbConnection.connect(); // Conecta ao banco de dados
+            conn = dbConnection.connect();
             if (conn == null) {
                 System.out.println("Falha ao estabelecer a conexão com o banco de dados.");
-                return -1; // Retorne erro se não conseguiu conectar
+                return -1;
             }
 
             boolean idExists;
             boolean emailExists;
             int id;
-            id = rd.nextInt(10000) + 1;
 
             do {
-                // Gera um ID aleatório
+                id = rd.nextInt(10000) + 1;
+
                 // Verifica se o ID já existe
-                pstmt = conn.prepareStatement("SELECT COUNT(*) FROM ADM WHERE ADM_ID = ?");
-                pstmt.setInt(1, id);
-                ResultSet rs = pstmt.executeQuery();
+                pstmID = conn.prepareStatement("SELECT COUNT(*) FROM customer WHERE customer_id = ?");
+                pstmID.setInt(1, id);
+                rs = pstmID.executeQuery();
                 idExists = rs.next() && rs.getInt(1) > 0;
-                rs.close();
+                pstmID.close();
 
                 // Verifica se o email já existe
-                pstmt = conn.prepareStatement("SELECT COUNT(*) FROM ADM WHERE email = ?");
-                pstmt.setString(1, email);
-                ResultSet rsEmail = pstmt.executeQuery();
-                emailExists = rsEmail.next() && rsEmail.getInt(1) > 0;
-                rsEmail.close();
-            } while (emailExists || idExists);
+                pstmEmail = conn.prepareStatement("SELECT COUNT(*) FROM customer WHERE email = ?");
+                pstmEmail.setString(1, email);
+                ResultSet rs1 = pstmEmail.executeQuery();
+                emailExists = rs1.next() && rs1.getInt(1) > 0;
+                if (emailExists){
+                    return 0;
+                }
+                pstmEmail.close();
+                rs1.close();
+            } while (idExists || emailExists);
 
-            // Valida o nome
+            // Prepara a inserção na tabela customer
+            pstmt = conn.prepareStatement("INSERT INTO customer (customer_id, name, plan, type, password, email, register_date, address_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+            // Validações (mantenha como está)
+            // ...
             String regexNome = "^[A-Z][a-z]* [A-Z][a-z]*$";
-            if (!Pattern.matches(regexNome, name)) {
-                return 0; // Retorna 0 se o nome não for válido
+            if (!Pattern.matches(regexNome,name)) {
+                return 0;
             }
-            // Valida a senha
-            String regexSenha = "^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$&])[A-Z0-9a-z%.@#_-]{8,}$";
-            if (!Pattern.matches(regexSenha, pswd)) {
-                return 0; // Retorna 0 se a senha não for válida
+            String regexSenha = "^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$&])[A-Z0-9a-z%.@#-]{8,}$";
+            if (!Pattern.matches(regexSenha,pswd)) {
+                return 0;
             }
-            // Valida o email
             String regexEmail = "^[a-z][^A-Z]*@(gmail|germinare)\\.(com|org)(\\.br)?$";
-            if (!Pattern.matches(regexEmail, email)) {
-                return 0; // Retorna 0 se o email não for válido
+            if (!Pattern.matches(regexEmail,email)) {
+                return 0;
             }
-            // Insere o novo administrador
-            pstmt = conn.prepareStatement("INSERT INTO ADM (adm_id,name,email, password) VALUES (?, ?, ?, ?)");
-                        pstmt.setInt(1, id);
-                        pstmt.setString(2, name);
-                        pstmt.setString(3, email);
-                        pstmt.setString(4, hash.hashing(pswd));
-            return pstmt.executeUpdate(); // Retorna 1 se a inserção for bem-sucedida
+            pstmt.setInt(1, id);
+            pstmt.setString(2, name);
+            pstmt.setString(3, "ADM");
+            pstmt.setString(4, "ADM");
+            pstmt.setString(5, hash.hashing(pswd));
+            pstmt.setString(6, email);
+            pstmt.setDate(7, java.sql.Date.valueOf(LocalDateTime.now().toLocalDate()));
+            pstmt.setInt(8, getAdrId.getAddressId(cep));
+
+
+            // Executa a inserção e verifica se foi bem-sucedida
+            return pstmt.executeUpdate();
         } catch (SQLException sqe) {
-            sqe.printStackTrace(); // Imprime o erro ao inserir
-            return -1; // Retorna -1 em caso de erro
+            sqe.printStackTrace();
+            return -1;
         } finally {
-            dbConnection.disconnect(); // Garante a desconexão
+            try {
+                if (rs != null) rs.close(); // Fecha o ResultSet
+                if (pstmt != null) pstmt.close(); // Fecha o PreparedStatement
+                if (conn != null) dbConnection.disconnect(); // Fecha a conexão
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
+
 
     // Método para deletar um registro
     public int deleteAdm(String email, String senha) {
@@ -90,14 +113,15 @@ public class AdmDAO {
             }
 
             // Verifica se o nome existe
-            pstmt = conn.prepareStatement("SELECT COUNT(*) FROM ADM WHERE password = ?");
+            pstmt = conn.prepareStatement("SELECT COUNT(*) FROM CUSTOMER WHERE password = ?");
             pstmt.setString(1, hash.hashing(senha));
             ResultSet rs = pstmt.executeQuery();
             if (rs.next() && rs.getInt(1) > 0) {
                 // Deleta o registro correspondente
-                pstmt = conn.prepareStatement("DELETE FROM ADM WHERE email = ? AND password = ?");
+                pstmt = conn.prepareStatement("DELETE FROM CUSTOMER WHERE email = ? AND password = ? and type=?");
                 pstmt.setString(1, email);
                 pstmt.setString(2, hash.hashing(senha));
+                pstmt.setString(3, "ADM");
                 return pstmt.executeUpdate() > 0 ? 1 : 0; // Retorna 1 se a deleção for bem-sucedida
             }
             return 0; // Retorna 0 se o nome não existir
@@ -119,7 +143,7 @@ public class AdmDAO {
             }
 
             // Verifica se o nome existe
-            pstmt = conn.prepareStatement("SELECT COUNT(*) FROM ADM WHERE email = ? AND password = ?");
+            pstmt = conn.prepareStatement("SELECT COUNT(*) FROM CUSTOMER WHERE email = ? AND password = ?");
             pstmt.setString(1, email);
             pstmt.setString(2, hash.hashing(senha));
             ResultSet rs = pstmt.executeQuery();
@@ -131,7 +155,7 @@ public class AdmDAO {
                 }
 
                 // Atualiza a senha
-                pstmt = conn.prepareStatement("UPDATE ADM SET password = ? WHERE email = ? AND password = ?");
+                pstmt = conn.prepareStatement("UPDATE customer SET password = ? WHERE email = ? AND password = ?");
                 pstmt.setString(1, hash.hashing(newPassword));
                 pstmt.setString(2, email);
                 pstmt.setString(3, hash.hashing(senha));
@@ -154,7 +178,7 @@ public class AdmDAO {
                 System.out.println("Falha ao estabelecer a conexão com o banco de dados.");
                 return null; // Retorne null se não conseguiu conectar
             }
-            pstmt = conn.prepareStatement("SELECT * FROM ADM ORDER BY name");
+            pstmt = conn.prepareStatement("SELECT * FROM CUSTOMER ORDER BY name");
             return pstmt.executeQuery(); // Retorna o ResultSet para uso posterior
         } catch (SQLException sqe) {
             sqe.printStackTrace(); // Imprime o erro ao ler
@@ -173,7 +197,7 @@ public class AdmDAO {
                 return -1; // Retorne erro se não conseguiu conectar
             }
             String hashedPassword = hash.hashing(password); // Usa o hash correto
-            String sql = "SELECT COUNT(*) FROM ADM WHERE email = ? AND password = ?";
+            String sql = "SELECT COUNT(*) FROM CUSTOMER WHERE email = ? AND password = ?";
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, email);
             pstmt.setString(2, hashedPassword);
@@ -184,14 +208,9 @@ public class AdmDAO {
             e.printStackTrace();
             return -1; // Retorna -1 se ocorrer um erro
         } finally {
-            // Fechar ResultSet e PreparedStatement
-            try {
-                if (rs != null) rs.close();
-                if (pstmt != null) pstmt.close();
-                dbConnection.disconnect(); // Fecha a conexão aqui
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+            // Fechar ResultSet e PreparedStatement]
+            dbConnection.disconnect();
         }
     }
+
 }

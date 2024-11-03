@@ -4,7 +4,7 @@
 <%@ page import="org.example.servletsindespensa.dao.CepDAO" %>
 <%
     CepDAO cepDAO = new CepDAO();
-    ResultSet ceps = cepDAO.read();
+    ResultSet ceps = cepDAO.readCep();
 %>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -35,15 +35,15 @@
             </div>
             <div class="dados">
                 <%
-                    while (adms != null && adms.next()) {
+                    while (ceps != null && ceps.next()) {
                 %>
                 <div class="linha">
-                    <div class="data-item"><%= adms.getString("cep_id") %></div>
+                    <div class="data-item"><%= ceps.getString("cep_id") %></div>
                 </div>
                 <%
                     }
-                    if (adms != null) {
-                        adms.close();
+                    if (ceps != null) {
+                        ceps.close();
                     }
                 %>
             </div>
