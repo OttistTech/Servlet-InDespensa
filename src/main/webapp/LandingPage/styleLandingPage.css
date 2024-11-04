@@ -1,0 +1,705 @@
+/* IMPORTANDO AS FONTES */
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+@font-face {
+    font-family: "montserrat";
+    src: url("Fonts/Montserrat/Montserrat-Thin.woff");
+}
+@font-face {
+    font-family: "montserratP";
+    src: url("Fonts/Montserrat/Montserrat-Regular.woff");
+}
+@font-face {
+    font-family: "DelaGothicOne";
+    src: url("Fonts/DelaGothicOne/DelaGothicOne-Regular.woff");
+}
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+*{
+    margin: 0;
+    padding: 0;
+}
+
+html{
+    scroll-behavior: smooth; /* Função para aplicar smooth scroll na página */
+}
+
+/* HEADER */
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+/* HEADER */
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+header{
+    display: flex;
+    color: white;
+    background-color: #F59132;
+    width: 100%;
+    height: 49.8vw;
+}
+header a{
+    font-family: "montserratP",serif;
+    font-size: 2vw;
+    text-decoration: none;
+    color: white;
+}
+header .topicos1{
+    margin-top: 4.3vw;
+}
+.topicos1{
+    position: absolute;
+    margin-left: 15vw;
+}
+.topicos1 a{
+    padding: 2.5vw;
+}
+.topicos1 a:hover{
+    text-decoration: underline;
+}
+
+#logo{
+    width: 6vw;
+    height: 6.5vw;
+    margin-top: 2vw;
+    margin-left: 4.5vw;
+}
+#cel {
+    margin-top: 13.05vw;
+    margin-left: 10vw;
+    height: 36.75vw;
+    width: 26.3vw;
+}
+.textao{
+    font-family: "montserratP", serif;
+    margin-top: 21vw;
+    margin-left: -5.5vw;
+    text-align: center;
+    h1{
+        font-size: 8.5vw;
+    }
+    h2{
+        font-size: 3vw;
+        font-weight: 100;
+    }
+}
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+/* BODY */
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+/* QUEM SOMOS */
+/* --------------------------------------------------------------------------------*/
+.quemSomosText{
+    margin-top: 6vw;
+    margin-left: 8.5vw;
+    margin-bottom: 3vw;
+    display: flex;
+    flex-direction: row;
+    align-self: start;
+    font-family: "DelaGothicOne", serif;
+    text-transform: uppercase;
+    font-size: 2.2vw;
+}
+.quemSomosText #typeBlack{
+    color: black;
+}
+.quemSomosText #special{
+    padding-left: 1vw;
+    color: #F59132;
+}
+.quadrado1{
+    display: flex;
+    flex-direction: row;
+    border-radius: 2.5vw;
+    margin-left: 8.5vw;
+    width: 82vw;
+    height: 17.1vw;
+    background-color: #F59132;
+    box-shadow: rgba(0, 0, 0, 0.077) 0.06vw 0.13vw;
+}
+.quadrado1 p{
+    position: absolute;
+    font-family: "montserratP", serif;
+    font-size: 1.6vw;
+    width: 55vw;
+    height: 272px;
+    text-shadow: rgba(0, 0, 0, 0.349) 0.06vw 0.06vw 0.6vw;
+    color: white;
+    margin-left: 3vw;
+    margin-top: 3vw;
+    text-align: left;
+}
+#herique{
+    position: relative;
+    width: 30vw;
+    height: 26.15vw;
+    margin-left: 55vw;
+    top: -9.05vw;
+}
+.quadrado2{
+    display: flex;
+    flex-direction: row-reverse;
+    border-radius: 2.5vw;
+    margin-left: 8.5vw;
+    margin-top: 5vw;
+    width: 82vw;
+    height: 17.1vw;
+    background-color: #F59132;
+    box-shadow: rgba(0, 0, 0, 0.077) 0.06vw 0.13vw;
+}
+.quadrado2 p{
+    align-self: center;
+    position: absolute;
+    font-family: "montserratP",serif;
+    font-size: 1.6vw;
+    width: 54vw;
+    height: 17vw;
+    text-shadow: rgba(0, 0, 0, 0.349) 0.06vw 0.06vw 0.6vw;
+    color: white;
+    margin-right: 3vw;
+    margin-top: 9vw;
+    text-align: right;
+}
+
+#ferreira{
+    position: relative;
+    width: 23.5vw;
+    height: 20.896vw;
+    margin-right: 57vw;
+    top: -3.74vw;
+}
+/* --------------------------------------------------------------------------------*/
+/* FUNCIONALIDADES */
+/* --------------------------------------------------------------------------------*/
+#funcionalidades{
+    text-align: center;
+    font-family: "DelaGothicOne",serif;
+    text-transform: uppercase;
+    font-size: 2.4vw;
+    margin-top: 8vw;
+}
+.quadradoGrande{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    overflow: hidden;
+}
+.carrosel{
+    position: absolute;
+    top: 117vw;
+    display: flex;
+    flex-direction: column;
+    width: 65vw;
+    height: 41.5vw;
+    border-radius: 2.5vw;
+    margin-top: 3vw;
+    background-color: #F59132;
+}
+.carrosel .setas{
+    width: 4.7vw;
+    height: 4.9vw;
+}
+.carrosel .setaEsquerda{
+    position: absolute;
+    margin-top: 10.70vw;
+    margin-left: 1.3vw;
+}
+.carrosel .setaDireita{
+    position: absolute;
+    margin-top: 10.70vw;
+    right: -6.68vw;
+}
+.carrosel .bolinhas{
+    align-self: center;
+    width: 7.8vw;
+    height: 1.5vw;
+    margin-top: 38.5vw;
+    margin-left: 8.3vw;
+
+}
+.carrosel img {
+    position: absolute;
+    width: 21.5vw;
+    height: 29.4vw;
+    align-self: flex-end;
+    justify-self: center;
+    border-radius:  2.006vw;
+    margin-top: 7.8vw;
+    margin-right: 8.3vw;
+}
+.carrosel h1{
+    margin-top: 1.3vw;
+    font-family: 'DelaGothicOne', serif;
+    text-transform: uppercase;
+    color: white;
+    font-size: 4.01vw;
+    align-self: center;
+}
+.carrosel p{
+    font-family: 'montserrat', serif;
+    color: white;
+    font-weight: 1000;
+    position: absolute;
+    width: 24.08vw;
+    height: 24.08vw;
+    margin-top: 11.3vw;
+    margin-left: 5.4vw;
+    text-align: right;
+    justify-self: center;
+    align-self: flex-start;
+    text-shadow: rgba(0, 0, 0, 0.349) 0.06vw 0.06vw 0.6vw;
+    font-size: 2.14vw;
+}
+.carrosel .linha{
+    position: absolute;
+    margin-top: 8.02vw;
+    height: 29.11vw;
+    width: 1.003vw;
+    align-self: center;
+    justify-self: center;
+    background-color: white;
+}
+#carrosel1{
+    z-index: 1;
+}
+#carrosel2:target{
+    z-index: 1;
+}
+#carrosel3:target{
+    z-index: 1;
+}
+/* --------------------------------------------------------------------------------*/
+/* HISTÓRIA */
+/* --------------------------------------------------------------------------------*/
+#historia{
+    position: relative;
+    text-align: center;
+    font-family: "DelaGothicOne",serif;
+    text-transform: uppercase;
+    font-size: 3.01vw;
+    margin-top: 53.51vw;
+}
+.container{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: url("./imagens/FotoEquipe.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-top: 3.34vw;
+    width: 100%;
+    height: 59.06vw;
+}
+.container p{
+    font-family: 'montserratP',serif;
+    text-align: center;
+    font-size: 2.67vw;
+    margin-top: 14.02vw;
+    margin-bottom: 5.41vw;
+    width: 71.43vw;
+    height: 20.46vw;
+}
+.container img{
+    width: 71.87vw;
+    height: 27.42vw;
+    margin-bottom: 14.70vw;
+}
+/* --------------------------------------------------------------------------------*/
+/* REDES SOCIAIS */
+/* --------------------------------------------------------------------------------*/
+.container2{
+    display: flex;
+}
+#logoSombrinha{
+    margin-top: 16.72vw;
+    margin-left: 5.88vw;
+    width: 34.99vw;
+    height: 33.65vw;
+}
+
+.nossasRedesText{
+    margin-left: 6.02vw;
+    display: flex;
+    font-family: 'DelaGothicOne' , serif;
+    font-size: 2.34vw;
+    color: #F59132;
+    margin-top: 11.23vw;
+}
+.nossasRedesText .typeBlack{
+    color: black;
+    margin-right: 1.07vw;
+
+}
+.container3{
+    display: flex;
+    background-color: #F59132;
+    margin-top: 2.34vw;
+    margin-left: 4.48vw;
+    width: 43.94vw;
+    height: 6.48vw;
+    border-radius: 2.07vw;
+    color: white;
+    font-family: 'montserrat',serif;
+    font-size: 1.33vw;
+}
+.container3 img{
+    margin-left: 1.93vw;
+    margin-top: 0.802vw;
+    width: 4.94vw;
+    height: 4.816vw;
+}
+.container3 h2{
+    margin-top: 1.87vw;
+    margin-left: 1.27vw;
+
+}
+.redes{
+    margin-top: 2.47vw;
+}
+/* --------------------------------------------------------------------------------*/
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+/* FOOTER */
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+footer{
+    display: flex;
+    background-color: #F59132;
+    margin-top: 7.75vw;
+    height: 26.22vw;
+    width: 100%;
+}
+.logo-container{
+    display: flex;
+    align-items: center;
+    margin-left: 6.08vw;
+}
+.logo-container span{
+    font-family: 'montserratP' ,serif;
+    color: white;
+    font-size: 4.34vw;
+    margin-left: 1.47vw;
+    margin-top: 1.33vw;
+}
+.logo-container img{
+    width: 5.88vw;
+    height: 6.48vw;
+}
+.footer-links{
+    font-family: 'montserratP' ,serif;
+    font-size: 2.14vw;
+    list-style-type: none;
+    margin-top: 2.67vw;
+    margin-left: 9.36vw;
+}
+.footer-links a{
+    text-decoration: none;
+    color: white;
+}
+.footer-links li{
+    margin-top: 2.20vw;
+}
+.button-container{
+    margin-top: 1vw;
+    margin-left: 9.36vw;
+}
+.footer-button{
+    display: flex;
+    align-items: center;
+    border-radius: 1.33vw;
+    width: 11.50vw;
+    height: 3.87vw;
+    background-color: white;
+    border: none;
+    font-family: 'montserratP',serif;
+    font-size: 1.60vw;
+    margin-top: 2vw;
+    color: black;
+    transition: 0.2s;
+}
+#restrita{
+    font-size: 1.07vw;
+}
+#restrita img{
+    width: 2.14vw;
+    height: 2.14vw;
+}
+#dados{
+    font-size: 1.07vw;
+}
+#dados img{
+    width: 2.14vw;
+    height: 2.14vw;
+}
+.button-container a{
+    text-decoration: none;
+    color: inherit;
+}
+
+.footer-button img{
+    width: 2.14vw;
+    height: 2.67vw;
+    margin-left: 0.73vw;
+}
+.footer-button strong{
+    margin-left: 0.80vw;
+}
+
+.footer-button:hover {
+    box-shadow:  0 0.20vw 0.6vw -0.13vw #983f00;
+    transform: scale(110%);
+    transition: 0.2s;
+}
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+/* ADICIONANDO MEDIA QUERY PARA TABLET */
+@media (max-width: 820px) {
+    header {
+        height: 118vw;
+    }
+    header a {
+        font-size: 3vw;
+    }
+    .topicos1 {
+        margin-left: 18%;
+        padding-top: 3.5vw;
+    }
+    #logo {
+        width: 10vw;
+        height: 10vw;
+        margin-top: 3.5vw;
+        margin-left: 4vw;
+    }
+    #cel {
+        position: absolute;
+        margin-top: 45vw;
+        margin-left: 22vw;
+        width: 55vw;
+        height: 73vw;
+    }
+    .textao {
+        margin-top: 19vw;
+        margin-left: 6%;
+    }
+    .textao h1 {
+        font-size: 10vw;
+    }
+    .textao h2 {
+        font-size: 3vw;
+        margin-top: 2vw;
+    }
+    .quemSomosText {
+        margin-top: 10vw;
+        margin-left: 28%;
+        margin-bottom: 3vw;
+        font-size: 3vw;
+    }
+    .quemSomosText #special {
+        margin-left: 1vw;
+    }
+    .quadrado1 {
+        margin-left: 7%;
+        margin-top: 12vw;
+        width: 85%;
+        height: 22vw;
+    }
+    .quadrado1 p {
+        font-size: 2vw;
+        width: 60%;
+        height: 18vw;
+        margin-left: 2%;
+        margin-top: 3.5vw;
+    }
+    .quadrado2 {
+        margin-top: 12vw;
+        margin-left: 7%;
+        width: 85%;
+        height: 22vw;
+    }
+    .quadrado2 p {
+        font-size: 2vw;
+        width: 55%;
+        height: 16vw;
+        margin-right: 2%;
+        margin-top: 2vw;
+    }
+    #ferreira {
+        width: 32%;
+        height: 26vw;
+        margin-right: 65%;
+        margin-bottom: 2vw;
+    }
+    #herique {
+        width: 28%;
+        height: 29vw;
+        margin-left: 72%;
+        margin-top: 2vw;
+    }
+    #funcionalidades {
+        font-size: 3vw;
+        margin-top: 12vw;
+    }
+    .carrosel {
+        width: 85%;
+        height: 64vw;
+        margin-top: 112vw;
+    }
+    .carrosel .setas {
+        width: 6vw;
+        height: 8vw;
+    }
+    .carrosel .setaEsquerda {
+        margin-top: 18vw;
+        margin-left: 2%;
+    }
+    .carrosel .setaDireita {
+        margin-top: 18vw;
+        right: -8vw;
+    }
+    .carrosel .bolinhas {
+        width: 12%;
+        height: 2.5vw;
+        margin-top: 60vw;
+        margin-left: 12%;
+    }
+    .carrosel img {
+        width: 35%;
+        height: 46vw;
+        margin-top: 12vw;
+        margin-right: 12%;
+    }
+    .carrosel h1 {
+        margin-top: 3vw;
+        font-size: 4.5vw;
+    }
+    .carrosel p {
+        width: 34%;
+        height: 36vw;
+        margin-top: 13vw;
+        margin-left: 12%;
+        font-size: 3vw;
+    }
+    .carrosel .linha {
+        margin-top: 13vw;
+        height: 46vw;
+    }
+    #historia {
+        margin-top: 87vw;
+        font-size: 4.5vw;
+    }
+    .container {
+        margin-top: 12vw;
+        height: 90vw;
+        background-repeat: no-repeat;
+    }
+    .container p {
+        position: absolute;
+        font-size: 3.2vw;
+        margin-bottom: 51vw;
+        width: 80%;
+        height: 27vw;
+        text-align: center;
+    }
+    .container img {
+        margin-top: 60vw;
+        width: 80%;
+    }
+    #logoSombrinha {
+        position: absolute;
+        margin-left: 21vw;
+        margin-top: 11vw;
+        width: 12vw;
+        height: 11vw;
+    }
+    .nossasRedesText {
+        font-size: 2.5vw;
+        margin-top: 14vw;
+        margin-left: 37vw;
+    }
+    .nossasRedesText .typeBlack {
+        margin-right: 1vw;
+    }
+    .container3 {
+        margin-top: 10vw;
+        margin-left: 21vw;
+        width: 60vw;
+        height: 12vw;
+        font-size: 2vw;
+        text-align: center;
+    }
+    .container3 img {
+        margin-top: 2vw;
+        width: 7vw;
+        height: 8vw;
+    }
+    .container3 h2 {
+        margin-top: 4vw;
+    }
+    footer {
+        margin-top: 15vw;
+        height: 65vw;
+    }
+    .logo-container {
+        margin-left: 6%;
+        margin-bottom: 36vw;
+    }
+    .logo-container span {
+        font-size: 5vw;
+        margin-top: 2.5vw;
+    }
+    .footer-links {
+        position: absolute;
+        font-size: 3vw;
+        margin-top: 24vw;
+        margin-left: 6%;
+    }
+    .footer-links li {
+        margin-top: 5.5vw;
+    }
+    .button-container {
+        margin-left: 26%;
+        margin-top: 22vw;
+    }
+    .footer-button {
+        width: 20vw;
+        height: 7vw;
+        font-size: 2.5vw;
+        margin-top: 3vw;
+    }
+    .footer-button img {
+        width: 4vw;
+        height: 4.5vw;
+    }
+    .footer-button strong {
+        margin-left: 1.5vw;
+    }
+    #restrita img{
+        width: 4vw;
+        height: 4vw;
+    }
+    #dados img{
+        width: 4vw;
+        height: 4vw;
+    }
+
+}
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+/* ADICIONANDO MEDIA QUERY PARA CELULARES */
+@media (max-width: 428px){
+    .quadrado1{
+        height: 30vw;
+    }
+    .quadrado1 img{
+        display: none;
+    }
+    .quadrado1 p{
+        width: 80%;
+        font-size:3vw;
+        text-align: center;
+    }
+    .quadrado2{
+        height: 30vw;
+    }
+    .quadrado2 img{
+        display: none;
+    }
+    .quadrado2 p{
+        width: 80%;
+        font-size: 3vw;
+        margin-bottom: 5vw;
+        text-align: center;
+    }
+}

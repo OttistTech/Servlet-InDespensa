@@ -18,11 +18,9 @@ public class ServletRemoverCEP extends HttpServlet {
         String cepId = request.getParameter("cep_id");
         int remover = cepDAO.deleteCep(cepId);
         if (remover > 0) {
-            request.getRequestDispatcher("sucessoCrud.jsp").forward(request, response);
+            request.getRequestDispatcher("/ErroSucesso/sucessoCrud.jsp").forward(request, response);
         } else {
-            request.getRequestDispatcher("erroCrud.jsp").forward(request, response);
-
-        }
+            request.getRequestDispatcher("/ErroSucesso/erroCrud.jsp").forward(request, response);}
 
     }
 }

@@ -29,7 +29,6 @@
         <br>
         <div class="button-wrapper">
             <a href="${pageContext.request.contextPath}/PaginasCRUD/MENU/index.jsp"><button>Voltar</button></a>
-            <button>Verificar</button>
         </div>
     </div>
     <br><br><br>

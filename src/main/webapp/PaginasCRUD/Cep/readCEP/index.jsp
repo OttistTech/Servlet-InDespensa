@@ -39,6 +39,7 @@
                 %>
                 <div class="linha">
                     <div class="data-item"><%= ceps.getString("cep_id") %></div>
+                    <div class="data-item"><%= ceps.getString("cep") %></div>
                 </div>
                 <%
                     }

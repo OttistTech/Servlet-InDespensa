@@ -2,7 +2,7 @@
 /* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
 @font-face {
     font-family: "montserrat";
-    src: url("/LandingPage/Fonts/Montserrat/Montserrat-Regular.woff");
+    src: url("../../../LandingPage/Fonts/Montserrat/Montserrat-Regular.woff");
 }
 
 /* Adicione seus outros @font-face aqui... */

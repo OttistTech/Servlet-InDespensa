@@ -2,22 +2,22 @@
 /* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
 @font-face {
     font-family: "montserrat";
-    src: url("/LandingPage/Fonts/Montserrat/Montserrat-Regular.woff");
+    src: url("../../LandingPage/Fonts/Montserrat/Montserrat-Regular.woff");
 }
 
 @font-face {
     font-family: "montserratP";
-    src: url("/LandingPage/Fonts/Montserrat/Montserrat-Light.woff");
+    src: url("../../LandingPage/Fonts/Montserrat/Montserrat-Light.woff");
 }
 
 @font-face {
     font-family: "montserratBold";
-    src: url("/LandingPage/Fonts/Montserrat/Montserrat-Bold.woff");
+    src: url("../../LandingPage/Fonts/Montserrat/Montserrat-Bold.woff");
 }
 
 @font-face {
     font-family: "montserratExtraBold";
-    src: url("/LandingPage/Fonts/Montserrat/Montserrat-ExtraBold.woff");
+    src: url("../../LandingPage/Fonts/Montserrat/Montserrat-ExtraBold.woff");
 }
 /* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
 

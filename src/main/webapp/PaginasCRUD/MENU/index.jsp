@@ -33,7 +33,7 @@
     </div>
 
     <div class="button-container">
-        <a href="${pageContext.request.contextPath}/"><button class="footer-button">
+        <a href="${pageContext.request.contextPath}/LandingPage/index.jsp"><button class="footer-button">
             <img src="${pageContext.request.contextPath}/LandingPage/imagens/InternetPreto.png" alt="Site"> <!-- Caminho absoluto para o ícone do site -->
             <strong>Site</strong>
         </button></a>

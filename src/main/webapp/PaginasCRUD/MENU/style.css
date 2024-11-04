@@ -2,7 +2,7 @@
 /* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
 @font-face {
     font-family: "montserrat";
-    src: url("/LandingPage/Fonts/Montserrat/Montserrat-Thin.woff");
+    src: url("../../LandingPage/Fonts/Montserrat/Montserrat-Thin.woff");
 }
 
 @font-face {
@@ -22,7 +22,7 @@
 
 @font-face {
     font-family: "DelaGothicOne";
-    src: url("/LandingPage/Fonts/DelaGothicOne/DelaGothicOne-Regular.woff");
+    src: url("../../LandingPage/Fonts/DelaGothicOne/DelaGothicOne-Regular.woff");
 }
 /* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
 

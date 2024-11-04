@@ -19,11 +19,9 @@ public class ServletCadastrarCEP extends HttpServlet {
         String cepId = request.getParameter("cep_id");
         int atualizar = cepDAO.insertCep(cepId);
         if (atualizar > 0) {
-            request.getRequestDispatcher("sucessoCrud.jsp").forward(request, response);
+            request.getRequestDispatcher("/ErroSucesso/sucessoCrud.jsp").forward(request, response);
         } else {
-            request.getRequestDispatcher("erroCrud.jsp").forward(request, response);
-
-        }
+            request.getRequestDispatcher("/ErroSucesso/erroCrud.jsp").forward(request, response);}
 
     }
 }

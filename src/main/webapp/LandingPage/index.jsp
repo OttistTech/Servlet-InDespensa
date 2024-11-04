@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>InDespensa</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/LandingPage/styleLanding.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/LandingPage/styleLandingPage.css">
     <link rel="icon" href="${pageContext.request.contextPath}/LandingPage/imagens/LogoSombrinha.png">
 </head>
 <body>
@@ -36,7 +36,7 @@
     </section>
     <section class="quadrado2" id="quadrado2">
         <p>O InDespensa nasceu para solucionar o desafio da organização de alimentos e reduzir o desperdício. Pensado para tornar a cozinha mais eficiente e sustentável, ele se apresenta como uma ferramenta essencial para o dia a dia.</p>
-        <img src="${pageContext.request.contextPath}/LandingPage/imagens/image-Photoroom%20(12)%201.png" class="ferreira" alt="pessoa">
+        <img src="${pageContext.request.contextPath}/LandingPage/imagens/image-Photoroom%20(12)%201.png" id="ferreira" alt="pessoa">
     </section>
 </div>
 <section class="type" id="funcionalidades">
@@ -81,7 +81,7 @@
     <h1 class="typeBlack" id="historia">Nossa História</h1>
 </div>
 <section class="container">
-    <p>O <strong>Ottis Tech</strong> nasceu da ideia de cinco alunos da brisa louca no meio da floresta atrás do Colégio Germinare. Obrigado! baixem o Indespensa, ainda não sabemos o significado do nome da empresa, mas é isso mesmo!</p>
+    <p>O <strong>Ottis Tech</strong> nasceu com a missão de unir tecnologia e praticidade, inspirando-se em Otis, que significa "aquele que vem de Óstia," uma cidade histórica italiana. Óstia era conhecida como a "porta de entrada" para Roma, e o nome vem da palavra grega "os," que significa boca, simbolizando a comunicação e a abertura para novas oportunidades.</p>
     <img src="${pageContext.request.contextPath}/LandingPage/imagens/FotosIndividuais.png" alt="fotosindividuais">
 </section>
 <section class="container2">
@@ -103,8 +103,8 @@
                 <h2>indespensa@gmail.com</h2>
             </div>
             <div class="container3">
-                <img src="${pageContext.request.contextPath}/LandingPage/imagens/Phone.png" alt="phone">
-                <h2>(11) 9111-6411</h2>
+                <img src="${pageContext.request.contextPath}/LandingPage/imagens/TikTok.png" alt="tiktok">
+                <h2>@indespensa_</h2>
             </div>
             <div class="container3">
                 <img src="${pageContext.request.contextPath}/LandingPage/imagens/Internet.png" alt="internet">
@@ -133,9 +133,13 @@
             <img src="${pageContext.request.contextPath}/LandingPage/imagens/InternetPreto.png" alt="Site">
             <strong>Site</strong>
         </button></a>
-        <a href="${pageContext.request.contextPath}/CadastroADM/index.jsp"><button class="footer-button">
+        <a href="${pageContext.request.contextPath}/CadastroADM/index.jsp"><button id="restrita"class="footer-button">
             <img src="${pageContext.request.contextPath}/LandingPage/imagens/restrita.png" alt="Cadastro ADM">
             <strong>Área restrita</strong>
+        </button></a>
+        <a href="${pageContext.request.contextPath}/CadastroADM/index.jsp"><button id="dados"class="footer-button">
+            <img src="${pageContext.request.contextPath}/LandingPage/imagens/dadinhos.png" alt="Cadastro ADM">
+            <strong>Área dados</strong>
         </button></a>
     </div>
 </footer>

@@ -19,11 +19,9 @@ public class ServletAtualizarCEP extends HttpServlet {
         String newCep = request.getParameter("newCep");
         int atualizar = cepDAO.updateCep(oldCep,newCep);
         if (atualizar > 0) {
-            request.getRequestDispatcher("sucessoCrud.jsp").forward(request, response);
+            request.getRequestDispatcher("/ErroSucesso/sucessoCrud.jsp").forward(request, response);
         } else {
-            request.getRequestDispatcher("erroCrud.jsp").forward(request, response);
-
-        }
+            request.getRequestDispatcher("/ErroSucesso/erroCrud.jsp").forward(request, response);}
 
     }
 }

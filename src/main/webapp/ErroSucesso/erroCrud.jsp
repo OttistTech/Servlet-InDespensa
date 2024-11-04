@@ -22,7 +22,7 @@
         <h2>Erro no CRUD</h2>
         <p>Ops! Ocorreu algum erro no CRUD, tente novamente mais tarde.</p>
         <br>
-        <button><a href="${pageContext.request.contextPath}/CadastroADM/indexCadastro.jsp">Tentar Novamente</a></button>
+        <button><a href="${pageContext.request.contextPath}/PaginasCRUD/MENU/index.jsp">Tentar Novamente</a></button>
     </div>
     <br><br><br>
     <footer>
