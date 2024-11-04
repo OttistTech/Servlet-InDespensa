@@ -18,12 +18,12 @@
 
 @font-face {
     font-family: "montserratBold";
-    src: url("/LandingPage/Fonts/Montserrat/Montserrat-Bold.woff");
+    src: url("../../../LandingPage/Fonts/Montserrat/Montserrat-Bold.woff");
 }
 
 @font-face {
     font-family: "montserratExtraBold";
-    src: url("/LandingPage/Fonts/Montserrat/Montserrat-ExtraBold.woff");
+    src: url("../../../LandingPage/Fonts/Montserrat/Montserrat-ExtraBold.woff");
 }
 /* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
 

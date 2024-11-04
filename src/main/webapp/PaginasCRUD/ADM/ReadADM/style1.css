@@ -5,6 +5,21 @@
     src: url("../../../LandingPage/Fonts/Montserrat/Montserrat-Regular.woff");
 }
 
+@font-face {
+    font-family: "montserratP";
+    src: url("../../../LandingPage/Fonts/Montserrat/Montserrat-Light.woff");
+}
+
+@font-face {
+    font-family: "montserratBold";
+    src: url("../../../LandingPage/Fonts/Montserrat/Montserrat-Bold.woff");
+}
+
+@font-face {
+    font-family: "montserratExtraBold";
+    src: url("../../../LandingPage/Fonts/Montserrat/Montserrat-ExtraBold.woff");
+}
+
 /* Adicione seus outros @font-face aqui... */
 
 * {
@@ -62,19 +77,6 @@ header img {
     color: #555;
 }
 
-form {
-    display: flex;
-    align-items: center;
-    width: 300px;
-    height: 40px;
-    font-size: 20px;
-    margin: 0 20px 20px;
-    border: solid black 2px;
-    border-radius: 10px;
-    box-shadow: 0 3px 4px -2px rgb(91, 75, 75);
-    overflow: hidden;
-}
-
 .iconBusca {
     background: none;
     border: none;
@@ -106,12 +108,13 @@ form input {
 }
 
 .tabela-container {
-    width: 80%;
-    max-width: 1000px;
-    max-height: 360px; /* Define altura máxima para rolagem vertical */
-    overflow-y: auto;
-    overflow-x: auto; /* Adiciona rolagem horizontal */
-    margin: 0 auto 40px;
+    width: 90%; /* Ajusta para ocupar mais espaço horizontal */
+    max-width: 1200px;
+    max-height: 400px; /* Aumenta a altura máxima para melhor visibilidade */
+    overflow-y: auto; /* Permite rolagem vertical */
+    overflow-x: auto; /* Permite rolagem horizontal */
+    margin: 20px auto; /* Centraliza o contêiner e adiciona espaço vertical */
+    padding: 10px; /* Adiciona espaço interno ao contêiner */
     border: 1px solid #dddddd;
     border-radius: 8px;
     box-shadow: 0 3px 4px -2px rgb(91, 75, 75);
@@ -120,9 +123,9 @@ form input {
 
 .tabela {
     width: 100%;
-    min-width: 600px; /* Força a tabela a ter uma largura mínima */
+    min-width: 800px; /* Aumenta a largura mínima para permitir rolagem horizontal */
     border-collapse: collapse;
-    table-layout: fixed; /* Mantém as colunas em tamanhos fixos */
+    table-layout: auto; /* Permite que a tabela se ajuste automaticamente */
 }
 
 .bar {
@@ -203,50 +206,3 @@ footer {
     transform: scale(1.05);
     transition: 0.2s;
 }
-/*.tabela-container {*/
-/*                        display: block;*/
-/*                        max-height: 400px; !* Altura máxima para rolagem vertical *!*/
-/*                        overflow-y: auto;*/
-/*                        overflow-x: auto; !* Adiciona rolagem horizontal *!*/
-/*                        margin: 0 20px 40px;*/
-/*                        border: 1px solid #dddddd;*/
-/*                        border-radius: 8px;*/
-/*                        box-shadow: 0 3px 4px -2px rgb(91, 75, 75);*/
-/*                        background-color: #ffffff;*/
-/*                    }*/
-
-/*.tabela { */
-/*    width: 100%;*/
-/*    min-width: 800px; !* Força a tabela a ter uma largura mínima para a rolagem horizontal *!*/
-/*    table-layout: fixed; !* Mantém as colunas em tamanhos fixos *!*/
-/*}*/
-/*.tabela-container {*/
-/*                        width: 80%;*/
-/*                        max-width: 1000px;*/
-/*                        max-height: 360px; !* Define altura máxima para rolagem vertical *!*/
-/*                        overflow-y: auto;*/
-/*                        overflow-x: auto; !* Adiciona rolagem horizontal *!*/
-/*                        margin: 0 auto 40px;*/
-/*                        border: 1px solid #dddddd;*/
-/*                        border-radius: 8px;*/
-/*                        box-shadow: 0 3px 4px -2px rgb(91, 75, 75);*/
-/*                        background-color: #ffffff;*/
-/*                    }*/
-
-/*.tabela {*/
-/*    width: 100%;*/
-/*    min-width: 600px; !* Força a tabela a ter uma largura mínima *!*/
-/*    border-collapse: collapse;*/
-/*    table-layout: fixed; !* Mantém as colunas em tamanhos fixos *!*/
-/*}*/
-
-/*.header-item, .data-item {*/
-/*    padding: 8px;*/
-/*    overflow: hidden;*/
-/*    text-overflow: ellipsis;*/
-/*    white-space: nowrap; !* Evita quebra de linha nos dados *!*/
-/*}*/
-
-/*.linha:hover {*/
-/*    background-color: #f1f1f1;*/
-/*}*/

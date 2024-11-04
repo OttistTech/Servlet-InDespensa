@@ -5,116 +5,61 @@
     src: url("../../../LandingPage/Fonts/Montserrat/Montserrat-Regular.woff");
 }
 
-@font-face {
-    font-family: "montserratP";
-    src: url("../../../LandingPage/Fonts/Montserrat/Montserrat-Light.woff");
-}
+/* Adicione seus outros @font-face aqui... */
 
-@font-face {
-    font-family: "montserratBold";
-    src: url("../../../LandingPage/Fonts/Montserrat/Montserrat-Bold.woff");
-}
-
-@font-face {
-    font-family: "montserratExtraBold";
-    src: url("../../../LandingPage/Fonts/Montserrat/Montserrat-ExtraBold.woff");
-}
-
-@font-face {
-    font-family: "montserratSemiBold";
-    src: url("../../../LandingPage/Fonts/Montserrat/Montserrat-SemiBold.woff");
-}
-/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
-
-*{
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
-body{
+body {
+    font-family: "montserrat", sans-serif;
     display: flex;
     flex-direction: column;
+    min-height: 100vh;
+    background-color: #f9f9f9;
 }
 
-header{
+header {
     display: flex;
     align-items: center;
     background-color: #F59132;
     width: 100%;
     height: 93px;
-    box-shadow:  0 2px 5px -2px rgb(91, 75, 75);
+    box-shadow: 0 2px 5px -2px rgb(91, 75, 75);
     color: white;
+    padding: 0 20px;
 }
 
-header h1{
-    position: absolute;
-    font-family: "montserratBold",serif;
-    margin-left: 142px;
+header h1 {
+    margin-left: 100px;
+    font-family: "montserratBold", serif;
     font-size: 48px;
 }
 
-header img{
-    position: absolute;
-    margin-left: 56px;
+header img {
+    margin-right: 20px;
     width: 54px;
     height: 57px;
 }
 
-footer{
+.titulo {
     display: flex;
     flex-direction: column;
-    background-color: #F59132;
-    height: 392px;
-    width: 100%;
+    margin: 52px 20px;
 }
 
-.logo-container{
-    display: flex;
-    align-items: center;
-    margin-left: 116px;
-    margin-top: 48px;
+.titulo h1 {
+    font-family: "montserratBold", serif;
+    font-size: 40px;
+    color: #333;
 }
 
-.logo-container img{
-    width: 60px;
-    height: 66px;
-}
-
-.logo-container span{
-    font-family: 'montserratP',serif;
-    color: white;
-    font-size: 48px;
-    margin-left: 13px;
-    margin-top: 20px;
-}
-.titulo{
-    display: flex;
-    flex-direction: column;
-    margin-top: 52px;
-    margin-bottom: 52px;
-    margin-left: 125px;
-    h1{
-        font-family: "montserratBold",serif;
-        font-size: 40px;
-    }
-    h2{
-        font-family: "montserratP",serif;
-        font-size: 24px ;
-    }
-}
-form {
-    display: flex;
-    align-items: center;
-    width: 265px;
-    height: 40px;
-    font-size: 20px;
-    margin-left: 148px;
-    border: solid black 2px;
-    border-radius: 10px;
-    box-sizing: border-box;
-    box-shadow: 0 3px 4px -2px rgb(91, 75, 75);
-    margin-bottom: 12px;
-    overflow: hidden;
+.titulo h2 {
+    font-family: "montserrat", serif;
+    font-size: 24px;
+    color: #555;
 }
 
 .iconBusca {
@@ -125,8 +70,6 @@ form {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-left: 12px;
-
 }
 
 .iconBusca img {
@@ -138,103 +81,51 @@ form input {
     outline: none;
     border: none;
     font-family: "montserrat";
-    font-size: 20px;
+    font-size: 16px;
+    padding: 8px;
     flex: 1;
 }
-.bar{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    border-radius: 20px;
-    background-color: #e68217;
-}
-.bar li{
-    display: flex;
-    align-items: center;
-    padding-left: 57px;
-    width: 1000px;
-    height: 39px;
-    list-style-type:none;
-    padding-right: 36px;
-    font-family: "montserratBold";
-    font-size: 20px;
-    background-color: #F59132;
-    text-decoration: none;
-}
 
-.class-control{
+.class-control {
     display: flex;
     justify-content: center;
+    padding: 0 20px;
 }
 
-.tabela{
-    width: 1000px;
-    height: 360px;
-    border: solid black 2px;
-    box-sizing: border-box;
-    box-shadow:  0 3px 4px -2px rgb(91, 75, 75);
-    margin-bottom: 114px;
-    justify-content: center;
-}
-
-.button-container{
-    margin-top: 48px;
-    margin-left: 116px;
-}
-
-.footer-button{
-    display: flex;
-    align-items: center;
-    border-radius: 20px;
-    width: 172px;
-    height: 58px;
-    background-color: white;
-    border: none;
-    font-family: 'montserratP',serif;
-    font-size: 24px;
-}
-
-.footer-button a{
-    text-decoration: none;
-    color: black;
-}
-
-.footer-button img{
-    width: 32px;
-    height: 40px;
-    margin-left: 11px;
-}
-
-.footer-button strong{
-    margin-left: 12px;
-}
-
-.footer-button:hover {
-    box-shadow:  0 3px 10px -2px #983f00;
-    transform: scale(110%);
-    transition: 0.2s;
+.tabela-container {
+    width: 90%; /* Ajusta para ocupar mais espaço horizontal */
+    max-width: 1200px;
+    max-height: 400px; /* Aumenta a altura máxima para melhor visibilidade */
+    overflow-y: auto; /* Permite rolagem vertical */
+    overflow-x: auto; /* Permite rolagem horizontal */
+    margin: 20px auto; /* Centraliza o contêiner e adiciona espaço vertical */
+    padding: 10px; /* Adiciona espaço interno ao contêiner */
+    border: 1px solid #dddddd;
+    border-radius: 8px;
+    box-shadow: 0 3px 4px -2px rgb(91, 75, 75);
+    background-color: #ffffff;
 }
 
 .tabela {
-    width: 80%;
-    border: 1px solid #dddddd;
-    border-radius: 8px;
-    overflow: hidden;
+    width: 100%;
+    min-width: 800px; /* Aumenta a largura mínima para permitir rolagem horizontal */
+    border-collapse: collapse;
+    table-layout: auto; /* Permite que a tabela se ajuste automaticamente */
 }
 
 .bar {
-    background-color: #f2f2f2;
     display: flex;
-    justify-content: space-between;
-    padding: 10px;
-    font-weight: bold;
     background-color: #ffa550;
+    font-weight: bold;
+    color: white;
+    padding: 10px;
 }
 
-.header-item {
-    flex: 1;
-    text-align: left;
+.header-item, .data-item {
     padding: 8px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap; /* Evita quebra de linha nos dados */
 }
 
 .dados {
@@ -244,15 +135,60 @@ form input {
 
 .linha {
     display: flex;
-    justify-content: space-between;
     border-bottom: 1px solid #dddddd;
-}
-
-.data-item {
-    flex: 1;
-    padding: 8px;
 }
 
 .linha:hover {
     background-color: #f1f1f1;
+}
+
+footer {
+    display: flex;
+    align-items: center;
+    background-color: #F59132;
+    padding: 20px;
+    color: white;
+    margin-top: auto;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo-container img {
+    width: 60px;
+    height: 66px;
+    margin-right: 10px;
+}
+
+.logo-container span {
+    font-family: 'montserrat', serif;
+    font-size: 24px;
+}
+
+.footer-button {
+    margin-right: 100px;
+    display: flex;
+    align-items: center;
+    border-radius: 20px;
+    padding: 10px 20px;
+    background-color: white;
+    border: none;
+    font-family: 'montserrat', serif;
+    font-size: 16px;
+    margin-left: auto;
+    color: black;
+}
+
+.footer-button img {
+    width: 24px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+.footer-button:hover {
+    box-shadow: 0 3px 10px -2px #983f00;
+    transform: scale(1.05);
+    transition: 0.2s;
 }

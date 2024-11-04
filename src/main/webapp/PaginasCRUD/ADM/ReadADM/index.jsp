@@ -4,13 +4,14 @@
 <%
     AdmDAO admDAO = new AdmDAO();
     ResultSet adms = admDAO.readAdm();
+
 %>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/PaginasCRUD/ADM/ReadADM/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/PaginasCRUD/ADM/ReadADM/style1.css">
     <title>Página de CRUD</title>
 </head>
 <body>
@@ -19,12 +20,10 @@
     <h1>InDespensa</h1>
 </header>
 <div class="titulo">
-    <h1>Tabela Produto</h1>
+    <h1>Tabela ADM</h1>
     <h2>Verifique os dados da tabela</h2>
 </div>
 <form action="${pageContext.request.contextPath}/readADM" method="post">
-    <button type="submit" class="iconBusca"><img src="${pageContext.request.contextPath}/LandingPage/imagens/Search.svg" alt="Lupa"></button>
-    <input type="text" placeholder="Pesquisar...">
 </form>
 <div class="class-control">
     <div class="tabela-container">
@@ -60,10 +59,10 @@
         <img src="${pageContext.request.contextPath}/LandingPage/imagens/LogoEscurinha.png" alt="InDespensa Logo" class="logo">
         <span>InDespensa</span>
     </div>
-    <button class="footer-button">
-        <img src="${pageContext.request.contextPath}/LandingPage/imagens/InternetPreto.png" alt="Site">
-        <a href="${pageContext.request.contextPath}/LandingPage/index.jsp"><strong>Site</strong></a>
-    </button>
+    <a href="${pageContext.request.contextPath}/PaginasCRUD/MENU/index.jsp"><button class="footer-button">
+        <img src="${pageContext.request.contextPath}/LandingPage/imagens/InternetPreto.png" alt="Suporte">
+        <strong>Suporte</strong>
+    </button></a>
 </footer>
 </body>
 </html>

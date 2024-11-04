@@ -14,9 +14,9 @@ public class DbConnection {
          Class.forName("org.postgresql.Driver");
          // Establish a connection using environment variables for host, user, and password
          conn = DriverManager.getConnection(
-                 System.getenv("DB_HOST2"), // Database host (URL)
-                 System.getenv("DB_USER2"), // Database user
-                 System.getenv("DB_PASSWORD2")
+                 System.getenv("DB_HOST3"), // Database host (URL)
+                 System.getenv("DB_USER3"), // Database user
+                 System.getenv("DB_PASSWORD3")
                  // Database password
          );
 
