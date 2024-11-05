@@ -17,7 +17,7 @@
     <h1>Inserção de CEP</h1>
     <form action="${pageContext.request.contextPath}/cadastroCEP" method="post">
         <div class="params">
-            <label for="cep_id">CEP ID:</label>
+            <label for="cep_id">CEP:</label>
             <br>
             <input type="text" id="cep_id" name="cep_id" required>
         </div>

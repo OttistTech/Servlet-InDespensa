@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/CadastroADM/style-adm.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/CadastroADM/styleAdm.css">
     <title>Cadastro ADM</title>
 </head>
 <body>
@@ -16,11 +16,6 @@
 <div class="container">
     <h1 id="texto1">É Bom te ver de volta!</h1>
     <form action="${pageContext.request.contextPath}/verificarLogin" method="post">
-        <h2 id="texto2">Informe seu Email:</h2>
-        <input type="email" id="email" name="email" required>
-        <h2 id="texto3">Informe sua Senha:</h2>
-        <input type="password" id="password" name="password" required>
-        <br>
         <!-- Exibir mensagem de erro, se houver -->
         <%
             String errorMessage = (String) request.getAttribute("errorMessage");
@@ -32,6 +27,11 @@
         <%
             }
         %>
+        <h2 id="texto2">Informe seu Email:</h2>
+        <input type="email" id="email" name="email" required>
+        <h2 id="texto3">Informe sua Senha:</h2>
+        <input type="password" id="password" name="password" required>
+        <br>
         <button type="submit"><h2>Enviar</h2></button>
     </form>
 </div>

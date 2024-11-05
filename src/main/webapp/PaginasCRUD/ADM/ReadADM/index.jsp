@@ -59,10 +59,11 @@
         <img src="${pageContext.request.contextPath}/LandingPage/imagens/LogoEscurinha.png" alt="InDespensa Logo" class="logo">
         <span>InDespensa</span>
     </div>
-    <a href="${pageContext.request.contextPath}/PaginasCRUD/MENU/index.jsp"><button class="footer-button">
+    <button class="footer-button">
+        <a href="${pageContext.request.contextPath}/PaginasCRUD/MENU/index.jsp">
         <img src="${pageContext.request.contextPath}/LandingPage/imagens/InternetPreto.png" alt="Suporte">
-        <strong>Suporte</strong>
-    </button></a>
+        <strong>MENU</strong></a>
+    </button>
 </footer>
 </body>
 </html>

@@ -23,7 +23,7 @@ public class TagDAO {
 
          // Verifica se o ID da tag já existe
          do {
-            pstmt = conn.prepareStatement("SELECT COUNT(*) FROM TAG WHERE ID = ?");
+            pstmt = conn.prepareStatement("SELECT COUNT(*) FROM TAG WHERE TAG_ID = ?");
             pstmt.setInt(1, id); // Define o parâmetro do ID da tag
             ResultSet rs = pstmt.executeQuery(); // Executa a consulta
             if (rs.next()) {
@@ -35,7 +35,7 @@ public class TagDAO {
          } while (idExists);
 
          // Prepara a declaração SQL para inserir uma nova tag
-         pstmt = conn.prepareStatement("INSERT INTO TAG (id, description) VALUES (?, ?)");
+         pstmt = conn.prepareStatement("INSERT INTO TAG (tag_id, description) VALUES (?, ?)");
          pstmt.setInt(1, id); // Define o ID da tag
          pstmt.setString(2, description); // Define a descrição da tag
 
@@ -58,7 +58,7 @@ public class TagDAO {
          conn = connection.connect(); // Conecta ao banco de dados
 
          // Verifica se o ID da tag existe antes de tentar deletar
-         pstmt = conn.prepareStatement("SELECT COUNT(*) FROM TAG WHERE ID = ?");
+         pstmt = conn.prepareStatement("SELECT COUNT(*) FROM TAG WHERE TAG_ID = ?");
          pstmt.setInt(1, id); // Define o parâmetro do ID da tag
          ResultSet rs = pstmt.executeQuery(); // Executa a consulta
          if (rs.next() && rs.getInt(1) == 0) {
@@ -68,7 +68,7 @@ public class TagDAO {
          rs.close(); // Fecha o ResultSet se o ID existir
 
          // Prepara a declaração SQL para deletar a tag
-         pstmt = conn.prepareStatement("DELETE FROM TAG WHERE ID = ?");
+         pstmt = conn.prepareStatement("DELETE FROM TAG WHERE TAG_ID = ?");
          pstmt.setInt(1, id); // Define o ID da tag
 
          // Retorna 1 se a deleção for bem-sucedida, caso contrário retorna 0
@@ -90,7 +90,7 @@ public class TagDAO {
          conn = connection.connect(); // Conecta ao banco de dados
 
          // Verifica se o ID da tag existe antes de tentar atualizar
-         pstmt = conn.prepareStatement("SELECT COUNT(*) FROM TAG WHERE ID = ?");
+         pstmt = conn.prepareStatement("SELECT COUNT(*) FROM TAG WHERE TAG_ID = ?");
          pstmt.setInt(1, id); // Define o parâmetro do ID da tag
          ResultSet rs = pstmt.executeQuery(); // Executa a consulta
          if (rs.next() && rs.getInt(1) == 0) {
@@ -100,7 +100,7 @@ public class TagDAO {
          rs.close(); // Fecha o ResultSet se o ID existir
 
          // Prepara a declaração SQL para atualizar a descrição da tag
-         pstmt = conn.prepareStatement("UPDATE TAG SET DESCRIPTION = ? WHERE ID = ?");
+         pstmt = conn.prepareStatement("UPDATE TAG SET DESCRIPTION = ? WHERE TAG_ID = ?");
          pstmt.setString(1, description); // Define a nova descrição
          pstmt.setInt(2, id); // Define o ID da tag
 
@@ -127,7 +127,7 @@ public class TagDAO {
          }
 
          // Prepara a consulta SQL para contar as tags
-         pstmt = conn.prepareStatement("SELECT COUNT(*) FROM TAG");
+         pstmt = conn.prepareStatement("SELECT * FROM TAG");
          ResultSet rset = pstmt.executeQuery(); // Executa a consulta
          return rset;
       } catch (SQLException sqe) {
